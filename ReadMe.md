@@ -1,5 +1,5 @@
 # Full Stack Projects Collection
-timestamp - 1 21 geomaps area
+timestamp - 145 routes testing at postman
 ***
 
 > ### Project-1 : Travel Bucket-list App
@@ -13,7 +13,7 @@ timestamp - 1 21 geomaps area
   -  setup not found and error middlewares
 - [x] model DB
   - what data to store
-- [ ] setup mongoose
+- [x] setup mongoose
 - [ ] POST /journey/logs
   -  create a new log entry
 - [ ] GET /journey/logs
@@ -38,8 +38,14 @@ timestamp - 1 21 geomaps area
 - [x] morgan( logger that logs all the incoming requests Debugging purposes)
 - [x] helmet (to configure what headers will be sent back as response by our server Security purposes)
 - [x] mongoose( object modelling tool for MongoDB)
+- [x] body-parser (middleware to parse the request body)
 
 > #### Dev dependancies
 
 - [x] eslint ( identifying and reporting on patterns found in ECMAScript/JavaScript code.) https://www.npmjs.com/package/eslint
 - [x] nodemon (restart the server after we make changes)
+
+> #### Refactoring  Options if You want!
+
+- [ ] mongoose geojson https://mongoosejs.com/docs/geojson.html
+& can also refer timestamp 121 geomaps area.

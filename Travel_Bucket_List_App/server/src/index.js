@@ -1,12 +1,19 @@
 const express = require('express');
 const app = express();
+const bodyParser=require('body-parser');
+
+require('dotenv').config();
+
 const morgan = require('morgan');
 const helmet=  require('helmet');
 const cors = require('cors');
+
 const mongoose = require('mongoose');
+
 const PORT = process.env.PORT || 5000;
 
-require('dotenv').config();
+const Logs=require('./api/logs');
+
 
 
 const middlewares=require('./middlewares');
@@ -15,8 +22,13 @@ const middlewares=require('./middlewares');
 mongoose.connect(process.env.DB_URL,
  {
    useNewUrlParser: true,
-   useUnifiedTopology: true}
- );
+   useUnifiedTopology: true
+ })
+ .then(() => console.log('------MongoDB Connected-----'))
+ .catch(err => console.log(err));
+
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 // morgan & helmet middleware to log the incoming request ot the server and Security Headers in response from the server.
@@ -38,6 +50,10 @@ app.get('/',(req,res)=>{
     }
   );
 });
+
+// Routes
+
+app.use('/api/logs',Logs);
 
 // not found middleware if the route requested by the user do not exist.
 app.use(middlewares.notFound);

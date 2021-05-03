@@ -5,6 +5,7 @@
 
 >> - [x] mongoose timestamps schema options will automatically add created_at & updated_at fields for every document. refer timestamps section refer https://mongoosejs.com/docs/guide.html#definition
 
+>> - [x] mongoose do not by default apply validators on the update() queries hence need to specify runValidator:true option while passing such update() queries in mongoose.
 
 
 ***
