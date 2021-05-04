@@ -1,5 +1,5 @@
 # Full Stack Projects Collection
-timestamp - 145 routes testing at postman
+timestamp - 235 frontend mapbox
 ***
 
 > ### Project-1 : Travel Bucket-list App
@@ -14,11 +14,11 @@ timestamp - 145 routes testing at postman
 - [x] model DB
   - what data to store
 - [x] setup mongoose
-- [ ] POST /journey/logs
+- [x] POST /journey/logs
   -  create a new log entry
-- [ ] GET /journey/logs
+- [x] GET /journey/logs
   -  list all log entry
-- [ ] Setup client
+- [x] Setup client
 - [ ] create form to add a new entry
 - [ ] setup map sdk
 - [ ] list all log entries on map
