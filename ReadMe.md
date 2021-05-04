@@ -39,6 +39,7 @@ timestamp - 235 frontend mapbox
 - [x] helmet (to configure what headers will be sent back as response by our server Security purposes)
 - [x] mongoose( object modelling tool for MongoDB)
 - [x] body-parser (middleware to parse the request body)
+- [x] react-map-gl (to use mapbox maps via accesstoken in react)
 
 > #### Dev dependancies
 
