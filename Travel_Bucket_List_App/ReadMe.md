@@ -3,10 +3,15 @@
 > ### Some fun & Important facts I found While Developing
 >> - [x] object id in mongo has timestamp in it. ObjectId.getTimestamp refer https://docs.mongodb.com/manual/reference/method/ObjectId.getTimestamp/
 
->> - [x] mongoose timestamps schema options will automatically add created_at & updated_at fields for every document. refer timestamps section refer https://mongoosejs.com/docs/guide.html#definition
+>> - [x] mongoose timestamps schema options will automatically add created_at & updated_at fields for every document so that if someone make a update to the document the updatedAt will automatically updated to the date and time the update to that document was made in future. refer timestamps section refer https://mongoosejs.com/docs/guide.html#definition
 
 >> - [x] mongoose do not by default apply validators on the update() queries hence need to specify runValidator:true option while passing such update() queries in mongoose.
 
+>> = [x] mongoose can interpret ISO string so you can pass date as var date=new Date() and then date.toISOString() // "yyyy-mm-ddThh-mm-ss.Z".
+
+>> -[x] npx vs npm , npx allows to execute something without installing it globally.
+
+>> -[x] Different options for Maps Mapbox with npm react-map-gl refer https://visgl.github.io/react-map-gl/docs/get-started/get-started,deck.gl etc.
 
 ***
 
