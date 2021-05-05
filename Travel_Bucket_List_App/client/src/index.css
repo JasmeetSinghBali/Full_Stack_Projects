@@ -8,3 +8,9 @@ body {
   overflow: hidden;
 
 }
+
+.marker{
+  stroke:#FFD700;
+  transform: translate(-50%,-100%);
+
+}

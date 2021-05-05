@@ -7,14 +7,20 @@
 
 >> - [x] mongoose do not by default apply validators on the update() queries hence need to specify runValidator:true option while passing such update() queries in mongoose.
 
->> = [x] mongoose can interpret ISO string so you can pass date as var date=new Date() and then date.toISOString() // "yyyy-mm-ddThh-mm-ss.Z".
+>> - [x] mongoose can interpret ISO string so you can pass date as var date=new Date() and then date.toISOString() // "yyyy-mm-ddThh-mm-ss.Z".
 
->> -[x] npx vs npm , npx allows to execute something without installing it globally.
+>> - [x] npx vs npm , npx allows to execute something without installing it globally.
 
->> -[x] Different options for Maps Mapbox with npm react-map-gl refer https://visgl.github.io/react-map-gl/docs/get-started/get-started,deck.gl etc.
+>> - [x] Different options for Maps Mapbox with npm react-map-gl refer https://visgl.github.io/react-map-gl/docs/get-started/get-started,deck.gl etc.
 
+>> - [x] U can design your own custom style map go to dashboard in mapbox and design in mapbox studio and then copy that style url and pass it to React-gl component as prop mapStyle="url", For map styling go to https://visgl.github.io/react-map-gl/docs/get-started/get-started ->API reference->Interactive Map->cntrl+f style
+
+>> - [x] IMPORTANT When fetching data from backend and using useEffect it cannot use the async await approach as useEffect do this to avoid race condition i.e in simple terms useEffect expects that its callback is returning a function not promise, so an alternative is to Define a IIFE immediately invoked  function expression inside the useEffect body refer App.js useEffect Section in src client side.
+
+>> - [x] Icons for your project https://feathericons.com/
+
+>> - [x] API reference->popup at https://visgl.github.io/react-map-gl/docs/api-reference/popup for pop up message u will also find marker related react code in the same docs
 ***
-
 > ## eslint setup
 
 - add a lint script in the package.json and point to the src folder or where your express server is located.

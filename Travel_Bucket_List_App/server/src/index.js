@@ -39,6 +39,7 @@ app.use(helmet());
 
 
 // cors middleware
+// set your cors origin to the port where your react app/frontend is running so that it can request for data to the backend
 app.use(cors({
   origin:process.env.CORS_ORIGIN,
 })); // if origin & options not mentioned  it sets by default the ACCESS-ALLOW-CONTROL-ORIGIN to * i.e anyone can make request to the server.
