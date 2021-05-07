@@ -1,5 +1,5 @@
 # Full Stack Projects Collection
-timestamp - 309 frontend mapbox
+timestamp - 310 frontend mapbox
 ***
 
 > ### Project-1 : Travel Bucket-list App
@@ -19,9 +19,10 @@ timestamp - 309 frontend mapbox
 - [x] GET /journey/logs
   -  list all log entry
 - [x] Setup client
+- [x] list all log entries on map
 - [ ] create form to add a new entry
 - [ ] setup map sdk
-- [ ] list all log entries on map
+
 
 > #### Tech Stack
 

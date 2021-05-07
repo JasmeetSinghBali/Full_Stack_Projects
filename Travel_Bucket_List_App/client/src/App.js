@@ -61,10 +61,10 @@ const App=() => {
               height:`${6*viewport.zoom}`
             }}
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             >
             <line x1="22" y1="2" x2="11" y2="13"></line>
             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -83,7 +83,7 @@ const App=() => {
                {...showPopup,[entry._id]:false}
              )}
              anchor="top" >
-             <div>
+             <div className="popup">
                <h3>{entry.title}</h3>
                <p>{entry.comments}</p>
              </div>
