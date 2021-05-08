@@ -14,3 +14,9 @@ body {
   transform: translate(-50%,-100%);
 
 }
+
+
+.notvismark{
+  stroke:#FF8C00;
+  transform: translate(-50%,-100%);
+}

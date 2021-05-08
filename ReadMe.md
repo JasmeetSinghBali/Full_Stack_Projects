@@ -1,5 +1,5 @@
 # Full Stack Projects Collection
-timestamp - 310 frontend mapbox
+timestamp - 332 pop up form for log entry
 ***
 
 > ### Project-1 : Travel Bucket-list App
@@ -20,8 +20,14 @@ timestamp - 310 frontend mapbox
   -  list all log entry
 - [x] Setup client
 - [x] list all log entries on map
+- [ ] Setup Double click on any location on map to pop up marker with different color(so that we know it was not added via api) and a form with it in UI for User to just add that log entry instead of specifying latitude & longitude manually via API.
 - [ ] create form to add a new entry
 - [ ] setup map sdk
+
+> #### Extra's
+
+- [ ] save the morgan generated logs in database or local storage.
+ refer https://www.npmjs.com/package/morgan dual logging in apache format and uuid to each request section.
 
 
 > #### Tech Stack
