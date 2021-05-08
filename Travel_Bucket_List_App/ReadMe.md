@@ -1,6 +1,6 @@
 # Some Basic Steps/Tutorial to setup backend
 
-> ### Some fun & Important facts I found While Developing
+> ### Some fun & Important facts/bugs/error I found While Developing
 >> - [x] object id in mongo has timestamp in it. ObjectId.getTimestamp refer https://docs.mongodb.com/manual/reference/method/ObjectId.getTimestamp/
 
 >> - [x] mongoose timestamps schema options will automatically add created_at & updated_at fields for every document so that if someone make a update to the document the updatedAt will automatically updated to the date and time the update to that document was made in future. refer timestamps section refer https://mongoosejs.com/docs/guide.html#definition
@@ -21,6 +21,9 @@
 
 >> - [x] API reference->popup at https://visgl.github.io/react-map-gl/docs/api-reference/popup for pop up message u will also find marker related react code in the same docs
 ***
+>> - [x] To avoid the path.split is not a function in react error while using react-hook-form note react-hook-form updated to 7.0.0 from 6.X.X and has breaking changes:
+You have to replace all ref={register} with {...register('value_name')}
+
 > ## eslint setup
 
 - add a lint script in the package.json and point to the src folder or where your express server is located.

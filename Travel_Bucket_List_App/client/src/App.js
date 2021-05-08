@@ -6,6 +6,9 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // backend API fetch function
 import {listLogEntries} from './API';
 
+// importing the pop up new add log entry component
+import LogEntryForm from './LogEntryForm';
+
 require('dotenv').config();
 // console.log(process.env.REACT_APP_MAPBOX_ACCESS_TOKEN);
 
@@ -26,16 +29,24 @@ const App=() => {
     zoom: 2
   });
 
+  // function to refresh all the map component on the map after new marker by user via form is added on the map.
+  const getEntries=async()=>{
+    const logEntries=await listLogEntries();
+    setLogEntries(logEntries);
+  };
+
   // useEffect function that will run only once when the Map component is Mounted
   useEffect(()=>{
 
+    getEntries();
+
     // immediately invoked function expression IIFE (()=>{})() the last () are for executing the IIFE and (()=>{}) is a IIFE basic syntax
-    (async()=>{
-      const logEntries=await listLogEntries();
-      // set the logentries to the log entries we fetched from backend
-      //console.log(logEntries);
-      setLogEntries(logEntries);
-    })();
+    // (async()=>{
+    //   const logEntries=await listLogEntries();
+    //   // set the logentries to the log entries we fetched from backend
+    //   //console.log(logEntries);
+    //   setLogEntries(logEntries);
+    // })();
   },[])// [] is the dependacy array
 
 
@@ -59,9 +70,8 @@ const App=() => {
     >
      {
        logEntries.map(entry=>(
-         <>
+         <React.Fragment key={entry._id}>
          <Marker
-          key={entry._id}
           latitude={entry.latitude}
           longitude={entry.longitude}
           >
@@ -103,17 +113,22 @@ const App=() => {
 
              anchor="top" >
              <div className="popup">
-               <h3>{entry.title}</h3>
-               <p>{entry.comments}</p>
+               <h3>Location: {entry.title}</h3>
+               <hr/>
+               <p>Comments: {entry.comments}</p>
+               <p>Rating: {entry.rating}/5</p>
                <small>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</small>
+               <hr />
+               {entry.image && <img src={entry.image} alt={entry.title} />}
              </div>
            </Popup>
          ):null
        }
-       </>
+       </React.Fragment>
      ))
    }
-   {/*to show  a marker when use double clicks on location on map.*/}
+
+   {/*to show  a marker with pop up form for new log entry when use double clicks on location on map.*/}
    {
      addEntryLocation ? (
        <>
@@ -151,8 +166,12 @@ const App=() => {
         anchor="top" >
          <div className="popup">
            <h3> ✏️ New Log to Travel-Bucket 📑</h3>
-           <p>Name</p>
-           <p>comments</p>
+           <LogEntryForm
+            onClose={()=>{
+             setAddEntryLocation(null);
+             getEntries();
+           }}
+            location={addEntryLocation}/>
          </div>
        </Popup>
        </>

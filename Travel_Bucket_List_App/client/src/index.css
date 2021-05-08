@@ -20,3 +20,30 @@ body {
   stroke:#FF8C00;
   transform: translate(-50%,-100%);
 }
+
+.popup{
+  max-width:40vw;
+  padding: 1rem;
+}
+
+.popup img{
+  height: 200px;
+  width:auto;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.entry-form label,
+.entry-form input,
+.entry-form textarea,
+.entry-form button{
+  font-size:1rem;
+  margin: 0.5rem 0;
+  display: block;
+  width: 100%;
+}
+
+.error{
+  color: #FF8C00;
+}

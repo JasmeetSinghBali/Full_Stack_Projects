@@ -9,6 +9,7 @@
     "dotenv": "^8.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.4.2",
     "react-map-gl": "^6.1.13",
     "react-mapbox-gl": "^5.1.1",
     "react-scripts": "4.0.3",
