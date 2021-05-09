@@ -47,6 +47,7 @@ const LogEntryForm=({location,onClose})=>{
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
       {/*To show the error message if error occurs while new log entry form submission to backend*/}
       { error ? <h3 className="error">{error}</h3> : null}
+      <Picker/>
       <label htmlFor="title">Title</label>
       <input name="title" required {...register('title')}/>
       <label hmtlFor="comments">Comments</label>
