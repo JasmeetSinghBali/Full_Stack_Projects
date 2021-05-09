@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 // importing API endpoint to post new log entry to database via api
 import {createLogEntry} from './API';
 
+// Emoji picker
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
+
 const LogEntryForm=({location,onClose})=>{
   // to load the form new log entry submission and then removing the pop up box.
   const [loading,setLoading]=useState(false);
