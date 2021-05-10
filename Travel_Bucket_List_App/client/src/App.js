@@ -111,11 +111,12 @@ const App=() => {
                 // commented this line so that only one pop up appears at a time on map
                //{...showPopup,[entry._id]:false}
 
-             anchor="top" >
+             anchor="top"
+             sortByDepth={true} >
              <div className="popup">
                <h3>Location: {entry.title}</h3>
                <hr/>
-               <p>Comments: {entry.comments}</p>
+               <p>Comments: {entry.comments} , {entry.description} </p>
                <p>Rating: {entry.rating}/5</p>
                <small>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</small>
                <hr />
@@ -163,7 +164,8 @@ const App=() => {
         closeOnClick={false}
         dynamicPosition={true}
         onClose={()=>setAddEntryLocation(null)}
-        anchor="top" >
+        anchor="top"
+        tipSize={16} >
          <div className="popup">
            <h3> ✏️ New Log to Travel-Bucket 📑</h3>
            <LogEntryForm

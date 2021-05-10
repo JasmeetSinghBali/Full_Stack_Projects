@@ -37,11 +37,13 @@ body {
 .entry-form label,
 .entry-form input,
 .entry-form textarea,
-.entry-form button{
+.entry-form button,
+.entry-form Picker{
   font-size:1rem;
   margin: 0.5rem 0;
   display: block;
   width: 100%;
+  
 }
 
 .error{

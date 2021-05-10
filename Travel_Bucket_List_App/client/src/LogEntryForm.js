@@ -18,6 +18,8 @@ const LogEntryForm=({location,onClose})=>{
   // from react-hook-form docs , can handle errors also refer docs
   const { register, handleSubmit } = useForm();
 
+  const [emoji,setEmoji]=useState('');
+
   // sending this data to backend server from frontend form.
   const onSubmit=async(data)=>{
     //console.log(data);
@@ -43,23 +45,38 @@ const LogEntryForm=({location,onClose})=>{
     }
 
   }
+
+  const handleEmoji=(e)=>{
+    console.log(e.target.value);
+  }
+
+  // function to handle emojis
+  const addEmoji=(e)=>{
+    console.log(e);// capture emoji
+    setEmoji(e.native);
+    let commentsArea=document.getElementsByName("comments");
+    commentsArea.value=commentsArea.value+emoji;// each time click adds a new emooji value
+    console.log(commentsArea);
+
+  }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
       {/*To show the error message if error occurs while new log entry form submission to backend*/}
       { error ? <h3 className="error">{error}</h3> : null}
-      <Picker/>
       <label htmlFor="title">Title</label>
       <input name="title" required {...register('title')}/>
-      <label hmtlFor="comments">Comments</label>
-      <textarea name="comments" rows={3} {...register('comments')}></textarea>
+      <Picker onClick={addEmoji} theme="dark" sheetSize={16} showPreview={false} emojiSize={24} title='Pick your emoji…' emoji='point_up' />
+      <label hmtlFor="comments">Emoji</label>
+      <textarea required value={[...emoji,document.getElementsByName("comments").value]} onChange={handleEmoji} placeholder="Your Comments" name="comments" rows={3} {...register('comments')}></textarea>
       <label htmlFor="description">Description</label>
       <textarea name="description" rows={3} {...register('description')}></textarea>
       <label htmlFor="image">Image</label>
-      <input name="image" {...register('image')} />
+      <input required name="image" {...register('image')} />
       <label htmlFor="visitDate">Visit Date</label>
       <input name="visitDate" type="date" required {...register('visitDate')} />
       <label htmlFor="rating">Rating</label>
-      <input name="rating" type="number" max={5} min={1} {...register('rating')} />
+      <input required name="rating" type="number" max={5} min={1} {...register('rating')} />
       {/*the moment we hit the button mark it the button will be disabled and show loading else it will show mark it*/}
       <button disabled={loading} type="submit">{loading? ' Please Wait.. Taking Off🚀 ' : ' Mark It!👍 ' }</button>
     </form>
