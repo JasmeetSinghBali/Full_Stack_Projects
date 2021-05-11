@@ -4,9 +4,6 @@ import { useForm } from "react-hook-form";
 // importing API endpoint to post new log entry to database via api
 import {createLogEntry} from './API';
 
-// Emoji picker
-import 'emoji-mart/css/emoji-mart.css';
-import { Picker } from 'emoji-mart';
 
 const LogEntryForm=({location,onClose})=>{
   // to load the form new log entry submission and then removing the pop up box.
@@ -18,7 +15,6 @@ const LogEntryForm=({location,onClose})=>{
   // from react-hook-form docs , can handle errors also refer docs
   const { register, handleSubmit } = useForm();
 
-  const [emoji,setEmoji]=useState('');
 
   // sending this data to backend server from frontend form.
   const onSubmit=async(data)=>{
@@ -46,19 +42,7 @@ const LogEntryForm=({location,onClose})=>{
 
   }
 
-  const handleEmoji=(e)=>{
-    console.log(e.target.value);
-  }
 
-  // function to handle emojis
-  const addEmoji=(e)=>{
-    console.log(e);// capture emoji
-    setEmoji(e.native);
-    let commentsArea=document.getElementsByName("comments");
-    commentsArea.value=commentsArea.value+emoji;// each time click adds a new emooji value
-    console.log(commentsArea);
-
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
@@ -66,16 +50,15 @@ const LogEntryForm=({location,onClose})=>{
       { error ? <h3 className="error">{error}</h3> : null}
       <label htmlFor="title">Title</label>
       <input name="title" required {...register('title')}/>
-      <Picker onClick={addEmoji} theme="dark" sheetSize={16} showPreview={false} emojiSize={24} title='Pick your emoji…' emoji='point_up' />
-      <label hmtlFor="comments">Emoji</label>
-      <textarea required value={[...emoji,document.getElementsByName("comments").value]} onChange={handleEmoji} placeholder="Your Comments" name="comments" rows={3} {...register('comments')}></textarea>
+      <label hmtlFor="comments">Comments</label>
+      <textarea  placeholder="How was the trip to this location?" name="comments" rows={3} {...register('comments')}></textarea>
       <label htmlFor="description">Description</label>
       <textarea name="description" rows={3} {...register('description')}></textarea>
       <label htmlFor="image">Image</label>
-      <input required name="image" {...register('image')} />
+      <input type="url" required name="image" {...register('image')} placeholder="Image URL" />
       <label htmlFor="visitDate">Visit Date</label>
       <input name="visitDate" type="date" required {...register('visitDate')} />
-      <label htmlFor="rating">Rating</label>
+      <label htmlFor="rating">Rating (?/5)</label>
       <input required name="rating" type="number" max={5} min={1} {...register('rating')} />
       {/*the moment we hit the button mark it the button will be disabled and show loading else it will show mark it*/}
       <button disabled={loading} type="submit">{loading? ' Please Wait.. Taking Off🚀 ' : ' Mark It!👍 ' }</button>

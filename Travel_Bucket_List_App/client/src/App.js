@@ -115,12 +115,15 @@ const App=() => {
              sortByDepth={true} >
              <div className="popup">
                <h3>Location: {entry.title}</h3>
+               <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
                <hr/>
-               <p>Comments: {entry.comments} , {entry.description} </p>
-               <p>Rating: {entry.rating}/5</p>
-               <small>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</small>
-               <hr />
                {entry.image && <img src={entry.image} alt={entry.title} />}
+               <hr />
+               <h5>🧳 Description (✍️):</h5><p>  {entry.comments} , {entry.description} </p>
+               <h5>Rating: {entry.rating}/5</h5>
+               <hr />
+               <small className="devmes"><b>Emoji Cipher:
+                   ✌️ + 🖱️ + 🗺️ + ✍️ = ❌  </b></small>
              </div>
            </Popup>
          ):null

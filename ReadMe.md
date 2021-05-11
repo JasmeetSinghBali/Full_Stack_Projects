@@ -71,13 +71,14 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 
 - [ ] UI Improvements
-    - [ ] emoji selector in comments. https://allegra9.medium.com/add-emoji-picker-to-your-react-chat-app-30d8cbe8d9a6,youtube.com/watch?v=4-e-EVsFo4A,https://codepen.io/g6khan/pen/rqwWVJ
+    - [ ] set dropdown with smiley face for rating refer react-hook-form docs.
+    - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX in case error occurs while new log entry creation.
     - [ ] automatic title fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input,https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-api?gclid=EAIaIQobChMIpKy4qKy68AIVlQ4rCh3Zrw7jEAAYASAAEgIFk_D_BwE
     - [ ] introduce image uploading , validating image, preview feature.https://www.youtube.com/watch?v=XlAs-Lid-TA, https://www.youtube.com/watch?v=tYGTjxhzrqY
     - [ ] set up proper validation for inputs to avoid dummy data,foul language data.https://www.youtube.com/watch?v=LIkIM5u1mCk
-    - [ ] sliding form
-    - [ ] Style Everything Properly the tags and boxes
+
+
 
 
 ***
