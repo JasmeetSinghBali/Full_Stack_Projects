@@ -38,7 +38,7 @@ body {
 .entry-form input,
 .entry-form textarea,
 .entry-form button,
-.entry-form Picker{
+.entry-form select{
   font-size:1rem;
   margin: 0.5rem 0;
   display: block;
@@ -48,4 +48,9 @@ body {
 
 .error{
   color: #FF8C00;
+}
+
+p.text{
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

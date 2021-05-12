@@ -15,10 +15,8 @@ const logSchema = new Schema({
   description: String,
   comments: String,
   rating: {
-    type: Number,
-    min: 0,
-    max: 5,
-    default: 0
+    type: String,
+    default: 'NaN'
   },
   image: String,
   latitude:{

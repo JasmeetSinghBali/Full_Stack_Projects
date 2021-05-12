@@ -119,8 +119,10 @@ const App=() => {
                <hr/>
                {entry.image && <img src={entry.image} alt={entry.title} />}
                <hr />
-               <h5>🧳 Description (✍️):</h5><p>  {entry.comments} , {entry.description} </p>
-               <h5>Rating: {entry.rating}/5</h5>
+               <h5>🧳 Comments </h5><p>  {entry.comments} , {entry.description} </p>
+               <hr />
+               <h5>✍️ Description</h5><p> {entry.description} </p>
+               <h5>Rating: {entry.rating==='NaN'?'NR 😶':entry.rating}</h5>
                <hr />
                <small className="devmes"><b>Emoji Cipher:
                    ✌️ + 🖱️ + 🗺️ + ✍️ = ❌  </b></small>

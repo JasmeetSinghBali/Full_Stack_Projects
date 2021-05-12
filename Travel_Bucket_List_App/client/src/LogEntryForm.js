@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import {createLogEntry} from './API';
 
 
+
+
 const LogEntryForm=({location,onClose})=>{
   // to load the form new log entry submission and then removing the pop up box.
   const [loading,setLoading]=useState(false);
@@ -35,6 +37,7 @@ const LogEntryForm=({location,onClose})=>{
       onClose();
 
     }catch(err){
+      console.log(err);
       console.error(err);
       setError(err.message);
       setLoading(false);// so that when form data new log entry is handled the loading state is disabled.
@@ -47,21 +50,39 @@ const LogEntryForm=({location,onClose})=>{
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
       {/*To show the error message if error occurs while new log entry form submission to backend*/}
-      { error ? <h3 className="error">{error}</h3> : null}
-      <label htmlFor="title">Title</label>
+      { error ?
+         <div class="alert alert-danger" role="alert">
+         {error}
+         </div>:null}
+      <small class="form-text text-muted">
+      <b>Required : Title ,
+                Image ,
+                VisitDate</b>
+      </small>
+      <label htmlFor="title"><b>Title</b></label>
       <input name="title" required {...register('title')}/>
-      <label hmtlFor="comments">Comments</label>
-      <textarea  placeholder="How was the trip to this location?" name="comments" rows={3} {...register('comments')}></textarea>
-      <label htmlFor="description">Description</label>
-      <textarea name="description" rows={3} {...register('description')}></textarea>
-      <label htmlFor="image">Image</label>
-      <input type="url" required name="image" {...register('image')} placeholder="Image URL" />
-      <label htmlFor="visitDate">Visit Date</label>
+      <label hmtlFor="comments"><b>Comments</b></label>
+      <textarea  placeholder="What did you feel about this place ?" name="comments" rows={3} {...register('comments')}></textarea>
+      <label htmlFor="description"><b>Description</b></label>
+      <textarea placeholder="Any specific details you wanna share about this place !" name="description" rows={3} {...register('description')}></textarea>
+      <label htmlFor="image"><b>Image</b></label>
+      <input aria-describedby="passwordHelpBlock" type="url" required name="image" {...register('image')} />
+      <small id="passwordHelpBlock" class="form-text text-muted">
+      Must be valid image url.
+      </small>
+      <label htmlFor="visitDate"><b>Visit Date</b></label>
       <input name="visitDate" type="date" required {...register('visitDate')} />
-      <label htmlFor="rating">Rating (?/5)</label>
-      <input required name="rating" type="number" max={5} min={1} {...register('rating')} />
+      <label htmlFor="rating"><b>Rating</b></label>
+      <select required name="rating" {...register('rating')}>
+        <option value="NaN">NaN</option>
+        <option value="⭐">⭐</option>
+        <option value="⭐⭐">⭐⭐</option>
+        <option value="⭐⭐⭐">⭐⭐⭐</option>
+        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+      </select>
       {/*the moment we hit the button mark it the button will be disabled and show loading else it will show mark it*/}
-      <button disabled={loading} type="submit">{loading? ' Please Wait.. Taking Off🚀 ' : ' Mark It!👍 ' }</button>
+      <button class="btn btn-outline-dark"  disabled={loading} type="submit">{loading? ' Please Wait.. Taking Off🚀 ' : ' Mark It!👍 ' }</button>
     </form>
   )
 };
