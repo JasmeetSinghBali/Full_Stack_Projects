@@ -73,11 +73,11 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 - [ ] UI Improvements
     - [x] set dropdown with stars for rating refer react-hook-form docs.
     - [x] red alert div message set up if error occurs while new log entry in the DB.
+    - [ ] automatic title fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-api
     - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
-    - [ ] automatic title fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input,https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-api?gclid=EAIaIQobChMIpKy4qKy68AIVlQ4rCh3Zrw7jEAAYASAAEgIFk_D_BwE
     - [ ] introduce image uploading , validating image, preview feature.https://www.youtube.com/watch?v=XlAs-Lid-TA, https://www.youtube.com/watch?v=tYGTjxhzrqY
-    - [ ] set up proper validation for inputs to avoid dummy data,foul language data.https://www.youtube.com/watch?v=LIkIM5u1mCk
+    - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.https://www.youtube.com/watch?v=LIkIM5u1mCk
 
 
 
@@ -96,6 +96,7 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 & can also refer timestamp 121 geomaps area.
 
 > #### Issue
+- [ ] Getting Default lat long cordinates details via reverse geocoding even after providing the cordinates of the double click location by the user.
 - [ ] when user types long string without spaces in textbox the textbox overflows when we view it in pop up.
 https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [ ] Need to address the situation where user type space, tabs etc in the textbox https://stackoverflow.com/questions/1172206/how-to-check-if-a-text-is-all-white-space-characters-in-client-side/1173854

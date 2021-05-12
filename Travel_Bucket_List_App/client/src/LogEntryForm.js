@@ -6,7 +6,6 @@ import {createLogEntry} from './API';
 
 
 
-
 const LogEntryForm=({location,onClose})=>{
   // to load the form new log entry submission and then removing the pop up box.
   const [loading,setLoading]=useState(false);
@@ -72,7 +71,7 @@ const LogEntryForm=({location,onClose})=>{
       </small>
       <label htmlFor="visitDate"><b>Visit Date</b></label>
       <input name="visitDate" type="date" required {...register('visitDate')} />
-      <label htmlFor="rating"><b>Rating</b></label>
+      <label htmlFor="rating"><b>⭐ Rating</b></label>
       <select required name="rating" {...register('rating')}>
         <option value="NaN">NaN</option>
         <option value="⭐">⭐</option>

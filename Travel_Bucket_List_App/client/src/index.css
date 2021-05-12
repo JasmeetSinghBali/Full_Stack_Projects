@@ -34,6 +34,15 @@ body {
   display: block;
 }
 
+.entry-form #title{
+  color: #333;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0 0 30px;
+}
+
 .entry-form label,
 .entry-form input,
 .entry-form textarea,
@@ -44,13 +53,4 @@ body {
   display: block;
   width: 100%;
 
-}
-
-.error{
-  color: #FF8C00;
-}
-
-p.text{
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

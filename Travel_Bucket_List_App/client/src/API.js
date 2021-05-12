@@ -20,3 +20,24 @@ export async function createLogEntry(entry){
   });
   return response.json();
 }
+
+
+export async function getLocation(latitude,longitude){
+  console.log("I am inside getLocation")
+  console.log(latitude);
+  console.log(longitude);
+  // ===============add a try catch here===============
+ //  const getLocs=async(latitude,longitude)=>{
+ //    var response=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+ //    return response.json();
+ //  }
+ //  const getLocation=async(latitude,longitude)=>{
+ //    getLocs().then((data)=>{
+ //      console.log(data);
+ //      return data
+ //    })
+ //
+ //    //const result=locs.map(el=>[el.countryName]);
+ //    //return result;
+ // }
+}

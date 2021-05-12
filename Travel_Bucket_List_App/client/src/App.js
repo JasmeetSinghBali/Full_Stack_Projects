@@ -9,6 +9,8 @@ import {listLogEntries} from './API';
 // importing the pop up new add log entry component
 import LogEntryForm from './LogEntryForm';
 
+import {getLocation} from './API';
+
 require('dotenv').config();
 // console.log(process.env.REACT_APP_MAPBOX_ACCESS_TOKEN);
 
@@ -28,6 +30,8 @@ const App=() => {
     longitude: 78.9629,
     zoom: 2
   });
+
+  const [loc,setLoc]=useState();
 
   // function to refresh all the map component on the map after new marker by user via form is added on the map.
   const getEntries=async()=>{
@@ -50,6 +54,7 @@ const App=() => {
   },[])// [] is the dependacy array
 
 
+
  // function to handle double click to add a log entry with marker in UI by doble clicking the location on the map.
  const showAddMarkerPopup=(event)=>{
    //console.log(event);// will have a lngLat array to grab longitude latitude of the location where the user double clicked
@@ -57,8 +62,21 @@ const App=() => {
    setAddEntryLocation({
      latitude,
      longitude
-   })
+   });
+   console.log("I am inside double click handler")
+   console.log(latitude,longitude);
+   console.log('===========');
+   getLocation(latitude,longitude)
+   .then(
+     (data)=>{console.log(data)}
+   )
+   .catch(
+     (err)=>{console.log(err)}
+   );
+
  }
+
+
 
   return (
     <ReactMapGL
@@ -119,10 +137,10 @@ const App=() => {
                <hr/>
                {entry.image && <img src={entry.image} alt={entry.title} />}
                <hr />
-               <h5>🧳 Comments </h5><p>  {entry.comments} , {entry.description} </p>
+               <h5>🧳 Comments: </h5><p>  {entry.comments} , {entry.description} </p>
                <hr />
-               <h5>✍️ Description</h5><p> {entry.description} </p>
-               <h5>Rating: {entry.rating==='NaN'?'NR 😶':entry.rating}</h5>
+               <h5>✍️ Description: </h5><p> {entry.description} </p>
+               <h5>😍 Rating: {entry.rating==='NaN'?'NR 😶':entry.rating}</h5>
                <hr />
                <small className="devmes"><b>Emoji Cipher:
                    ✌️ + 🖱️ + 🗺️ + ✍️ = ❌  </b></small>
@@ -172,7 +190,7 @@ const App=() => {
         anchor="top"
         tipSize={16} >
          <div className="popup">
-           <h3> ✏️ New Log to Travel-Bucket 📑</h3>
+           <h3> ✏️ New Log to Travel-Bucket 📑 {loc}</h3>
            <LogEntryForm
             onClose={()=>{
              setAddEntryLocation(null);
