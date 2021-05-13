@@ -15,7 +15,17 @@
 > #### Features
 - GET,POST Entries in the travel bucket list via backend(api).
 - Create New Travel Entry via double click on map via Front-end UI Form on the custom map from mapbox.
+
+<img src="./project_images/ui_second_look_v1.2_travelBucketList.png">
+
+
+> #### Updates
+- [x] dropdown with stars for rating.
+- [x] red alert div message set up if error occurs while new log entry in the DB.
+- [x] automatic description fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-ap
 ***
+
+
 
 > #### Tech Stack
 
@@ -71,13 +81,15 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 
 - [ ] UI Improvements
-    - [x] set dropdown with stars for rating refer react-hook-form docs.
-    - [x] red alert div message set up if error occurs while new log entry in the DB.
-    - [ ] automatic title fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-api
+    - [ ] update the favicon icon use a custom or your own icon for page rather than default react app
     - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
     - [ ] introduce image uploading , validating image, preview feature.https://www.youtube.com/watch?v=XlAs-Lid-TA, https://www.youtube.com/watch?v=tYGTjxhzrqY
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.https://www.youtube.com/watch?v=LIkIM5u1mCk
+    - [x] set dropdown with stars for rating refer react-hook-form docs.
+    - [x] red alert div message set up if error occurs while new log entry in the DB.
+    - [x] automatic title fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-api
+
 
 
 
@@ -86,6 +98,7 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 - [ ] Backend Improvements
    - [ ] Add New User Signup/Login and Email verification.(via backend)
    - [ ] Protect the map displaying routes only show it to the logged in user and only allow the user to make a marker if he/sheverifies email.
+   - [ ] capture IP's of the request made can be done via morgan or refer react-mapbox docs Geolocate control in the API refferences. https://visgl.github.io/react-map-gl/docs/api-reference/geolocate-control
    - [ ] save the morgan generated logs in database or local storage to know who visited kinda security/debugging.
  refer https://www.npmjs.com/package/morgan dual logging in apache format and uuid to each request section.
 ***
@@ -95,8 +108,9 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 - [ ] mongoose geojson https://mongoosejs.com/docs/geojson.html
 & can also refer timestamp 121 geomaps area.
 
-> #### Issue
-- [ ] Getting Default lat long cordinates details via reverse geocoding even after providing the cordinates of the double click location by the user.
+> #### Issues !!
 - [ ] when user types long string without spaces in textbox the textbox overflows when we view it in pop up.
 https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [ ] Need to address the situation where user type space, tabs etc in the textbox https://stackoverflow.com/questions/1172206/how-to-check-if-a-text-is-all-white-space-characters-in-client-side/1173854
+- [x] Getting Default lat long cordinates details via reverse geocoding even after providing the cordinates of the double click location by the user. Solved: had to make a seperate call to the api and then resolve promise for the async call.
+- [x] the textarea Description field is not sending the the autofill data to the DB. solved: passed the location description prop directly to the data that is posted to the DB.

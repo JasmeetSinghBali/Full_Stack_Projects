@@ -23,9 +23,15 @@ export async function createLogEntry(entry){
 
 
 export async function getLocation(latitude,longitude){
-  console.log("I am inside getLocation")
-  console.log(latitude);
-  console.log(longitude);
+  try{
+    const response=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+    const result=response.json();
+    console.log('Reverse Geocoding Success!!')
+    return result;
+  }catch(err){
+    console.log(err);
+    return 'Reverse Geocoding Failed!!';
+  }
   // ===============add a try catch here===============
  //  const getLocs=async(latitude,longitude)=>{
  //    var response=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);

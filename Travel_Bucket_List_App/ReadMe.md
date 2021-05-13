@@ -45,10 +45,23 @@ eslint-config-airbnb-base@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugi
 √ Would you like to install them now with npm? · No / Yes - yes
 
 > ## Database Schema Blueprint
-Travel Entry
+
+****Travel Entry v1****
 
 - title -text
 - description - text
+- comments - text
+- rating - scale of 1-5
+- image - text -url
+- latitude - number
+- longitude - number
+- createdAt - datetime
+- updatedAt - datetime
+
+****Travel Entry v1.13 Updated****
+
+- type of travel - text -select
+- description - text - automatically filled
 - comments - text
 - rating - scale of 1-5
 - image - text -url

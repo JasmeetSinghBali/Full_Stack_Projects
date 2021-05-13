@@ -32,6 +32,8 @@ const App=() => {
   });
 
   const [loc,setLoc]=useState();
+  const [subDivision,setsubDivision]=useState();
+  const [locDescription,setlocDescription]=useState();
 
   // function to refresh all the map component on the map after new marker by user via form is added on the map.
   const getEntries=async()=>{
@@ -68,7 +70,19 @@ const App=() => {
    console.log('===========');
    getLocation(latitude,longitude)
    .then(
-     (data)=>{console.log(data)}
+     (data)=>{
+       const locDetails={
+         continent:data.continent,
+         country:data.countryName,
+         subdivision:data.principalSubdivision,
+         locdescription:data.localityInfo
+       }
+       console.log(data);
+       console.log(locDetails.locdescription.informative[1].name+','+locDetails.locdescription.informative[1].description+','+locDetails.locdescription.administrative[1].description+','+locDetails.locdescription.administrative[2].name);
+       setLoc(locDetails.country);
+       setsubDivision(locDetails.subdivision);
+       setlocDescription(locDetails.locdescription.informative[1].name+','+locDetails.locdescription.informative[1].description+','+locDetails.locdescription.administrative[1].description+','+locDetails.locdescription.administrative[2].name);
+     }
    )
    .catch(
      (err)=>{console.log(err)}
@@ -132,15 +146,15 @@ const App=() => {
              anchor="top"
              sortByDepth={true} >
              <div className="popup">
-               <h3>Location: {entry.title}</h3>
-               <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
-               <hr/>
                {entry.image && <img src={entry.image} alt={entry.title} />}
                <hr />
-               <h5>🧳 Comments: </h5><p>  {entry.comments} , {entry.description} </p>
+               <h3>🎯Location : {entry.description}</h3>
+               <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
+               <hr/>
+               <h5>🧳 Comments: </h5><p>  {entry.comments} </p>
                <hr />
-               <h5>✍️ Description: </h5><p> {entry.description} </p>
-               <h5>😍 Rating: {entry.rating==='NaN'?'NR 😶':entry.rating}</h5>
+               <h5>🏷️ Tag: {entry.title} </h5>
+               <h5>😍 Rating: {entry.rating==='NaN'?'Not Rated 😶':entry.rating}</h5>
                <hr />
                <small className="devmes"><b>Emoji Cipher:
                    ✌️ + 🖱️ + 🗺️ + ✍️ = ❌  </b></small>
@@ -190,13 +204,16 @@ const App=() => {
         anchor="top"
         tipSize={16} >
          <div className="popup">
-           <h3> ✏️ New Log to Travel-Bucket 📑 {loc}</h3>
+           <h3> New Log ✏️ 📑</h3>
            <LogEntryForm
             onClose={()=>{
              setAddEntryLocation(null);
              getEntries();
            }}
-            location={addEntryLocation}/>
+            location={addEntryLocation}
+            locCountry={loc}
+            locDivision={subDivision}
+            locDescription={locDescription}/>
          </div>
        </Popup>
        </>
