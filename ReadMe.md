@@ -34,6 +34,7 @@
 - [x] MongoDB
 - [x] React & React Hooks
 - [x] Mapbox
+- [x] Cloudinary
 
 > #### Core dependancies
 
@@ -45,6 +46,7 @@
 - [x] body-parser (middleware to parse the request body)
 - [x] react-map-gl (to use mapbox maps via accesstoken in react)
 - [x] react-hook-form https://react-hook-form.com/
+- [ ] multer & multer storage cloudinary to handle multipart/form-data and upload images to cloudinary (backend).
 
 > #### Dev dependancies
 
@@ -81,11 +83,12 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 
 - [ ] UI Improvements
+    - [ ] Starability rating dynamic star selection rather than select.
     - [ ] update the favicon icon use a custom or your own icon for page rather than default react app
     - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
-    - [ ] introduce image uploading , validating image, preview feature.https://www.youtube.com/watch?v=XlAs-Lid-TA, https://www.youtube.com/watch?v=tYGTjxhzrqY
-    - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.https://www.youtube.com/watch?v=LIkIM5u1mCk
+    - [ ] introduce image uploading , validating image, preview feature, progress bar of uploading image. https://www.youtube.com/watch?v=XeiOnkEI7XI & thumbnail,cloudinary backend from colt udemy.
+    - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
     - [x] set dropdown with stars for rating refer react-hook-form docs.
     - [x] red alert div message set up if error occurs while new log entry in the DB.
     - [x] automatic title fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-api

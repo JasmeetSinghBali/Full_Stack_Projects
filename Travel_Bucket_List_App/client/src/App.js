@@ -65,9 +65,9 @@ const App=() => {
      latitude,
      longitude
    });
-   console.log("I am inside double click handler")
-   console.log(latitude,longitude);
-   console.log('===========');
+   //console.log("I am inside double click handler")
+   //console.log(latitude,longitude);
+   //console.log('===========');
    getLocation(latitude,longitude)
    .then(
      (data)=>{
@@ -77,8 +77,8 @@ const App=() => {
          subdivision:data.principalSubdivision,
          locdescription:data.localityInfo
        }
-       console.log(data);
-       console.log(locDetails.locdescription.informative[1].name+','+locDetails.locdescription.informative[1].description+','+locDetails.locdescription.administrative[1].description+','+locDetails.locdescription.administrative[2].name);
+       //console.log(data);
+       //console.log(locDetails.locdescription.informative[1].name+','+locDetails.locdescription.informative[1].description+','+locDetails.locdescription.administrative[1].description+','+locDetails.locdescription.administrative[2].name);
        setLoc(locDetails.country);
        setsubDivision(locDetails.subdivision);
        setlocDescription(locDetails.locdescription.informative[1].name+','+locDetails.locdescription.informative[1].description+','+locDetails.locdescription.administrative[1].description+','+locDetails.locdescription.administrative[2].name);
@@ -148,7 +148,7 @@ const App=() => {
              <div className="popup">
                {entry.image && <img src={entry.image} alt={entry.title} />}
                <hr />
-               <h3>🎯Location : {entry.description}</h3>
+               <h3>🎯Location Description: </h3><p>{entry.description}</p>
                <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
                <hr/>
                <h5>🧳 Comments: </h5><p>  {entry.comments} </p>

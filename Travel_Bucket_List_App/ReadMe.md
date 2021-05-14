@@ -20,10 +20,13 @@
 >> - [x] Icons for your project https://feathericons.com/
 
 >> - [x] API reference->popup at https://visgl.github.io/react-map-gl/docs/api-reference/popup for pop up message u will also find marker related react code in the same docs
-***
+
 >> - [x] To avoid the path.split is not a function in react error while using react-hook-form note react-hook-form updated to 7.0.0 from 6.X.X and has breaking changes:
 You have to replace all ref={register} with {...register('value_name')}
 
+>> - [x] Have to Set form attribute enctype="multipart/form-data" in the form to be able to send files via html form like image upload files.
+
+>> - [x] To parse multipart/form-data like image file use multer middleware.
 > ## eslint setup
 
 - add a lint script in the package.json and point to the src folder or where your express server is located.
