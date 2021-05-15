@@ -10,8 +10,11 @@ cloudinary.config({
 
 const storage=new CloudinaryStorage({
   cloudinary,
-  folder:'TravelBucket',
-  allowedFormats:['jpeg','png','jpg']
+  params:{
+    folder:'TravelBucket',
+    allowedFormats:['jpeg','png','jpg']
+  }
+
 });
 
 module.exports={

@@ -13,7 +13,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   // useState to handle errors while filling form
   const [error,setError]=useState('');
 
-  const [fileimage,setFileImage]=useState();
+  const [selectimage,setSelectImage]=useState();
 
   // from react-hook-form docs , can handle errors also refer docs
   const { register, handleSubmit } = useForm();
@@ -33,7 +33,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       data.latitude=location.latitude;
       data.longitude=location.longitude;
       data.description=locDescription;
-      //data.image=fileimage;
+      //data.image=selectimage;
 
       // send data to API to store in database
       const created=await createLogEntry(data);
@@ -50,20 +50,25 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   }
 
   // to handle choose file area when a new file is selected
-  const logImage=async(e)=>{
-    console.log(e.target.files);// pass the array of images
+  const fileSelectHandler=(e)=>{
+
+    const imagesArray=e.target.files;
+    console.log(imagesArray);
+
+    uploadImageToCloudinary(imagesArray);
 
     // Step 1 call the api endpoint to upload this image to cloudinary
-    const result=await uploadImageToCloudinary(e.target.files);
-    console.log(result);
+     // uploadImageToCloudinary(images)
+     // .then(
+     //   (data)=>{
+     //       console.log(data);
+     //     }
+     //   )
+     //   .catch(
+     //     (err)=>{console.log(err)}
+     //   );
 
     // Step-2 Call another API to get the image url u just uploaded on the cloudinary & send this url to the DB in  the onsubmit handler.
-
-
-    //setFileImage(e.target.files[0]);
-    //console.log(fileimage); //capture the file upload event
-
-    // api call to upload the file to cloudinary and then set the url of that cloudinary image url as the image.
   }
 
 
@@ -98,9 +103,9 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       <label hmtlFor="comments"><b>Comments</b></label>
       <textarea  placeholder="How did you feel about the trip?" name="comments" rows={3} {...register('comments')}></textarea>
       <label htmlFor="image"><b>Image</b></label>
-      <input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={logImage} multiple {...register('image')} />
+      <input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} multiple/>
       <small id="imageHelpBlock" className="form-text text-muted">
-      Required , must be valid image url.
+      Required , max 5 images.
       </small>
       <label htmlFor="visitDate"><b>Visit Date</b></label>
       <input aria-describedby="visitdatehelp" name="visitDate" type="date" required {...register('visitDate')} />

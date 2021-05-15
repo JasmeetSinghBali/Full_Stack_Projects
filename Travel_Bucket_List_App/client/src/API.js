@@ -52,18 +52,23 @@ export async function getLocation(latitude,longitude){
 }
 
 // Function to upload the Image to cloudinary
-export async function uploadImageToCloudinary(fileimage){
-   // console.log("inside upload function to cloudinary!");
-   // console.log(fileimage);
+export async function uploadImageToCloudinary(imagesArray){
+    console.log("inside upload function to cloudinary!");
+    console.log(imagesArray);
+
    // return 'Image uploaded to cloudinary';
 
    //MAKE CALL TO THE BACKEND API ENDPOINT TO STORE THESE IMAGES TO CLOUDINARY
+
+   console.log("sending image in body to api backend.....")
    const response=await fetch(`${API_URL}/api/uploadImage`,{
-     method:'POST',
-     headers:{
-       'Content-type':'application/json'
-     },
-     body:JSON.stringify(fileimage)
-   });
+      method:'POST',
+      headers:{
+        'Content-type':'multipart/form-data'
+      },
+      body:imagesArray
+    });
+
+   return response.json();
 
 }
