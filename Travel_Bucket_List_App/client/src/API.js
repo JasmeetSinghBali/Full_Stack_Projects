@@ -63,12 +63,9 @@ export async function uploadImageToCloudinary(imagesArray){
    console.log("sending image in body to api backend.....")
    const response=await fetch(`${API_URL}/api/uploadImage`,{
       method:'POST',
-      headers:{
-        'Content-type':'multipart/form-data'
-      },
       body:imagesArray
     });
-
-   return response.json();
+   const result=response.json();
+   return result;
 
 }

@@ -1,10 +1,16 @@
 import React,{useState} from 'react';
 import { useForm } from "react-hook-form";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 // importing API endpoint to post new log entry to database via api
 import {createLogEntry} from './API';
 import {uploadImageToCloudinary} from './API';
 
+// cludinary depedancy
+import {Image} from 'cloudinary-react';
+import axios from 'axios';
+require('dotenv').config();
+//console.log(process.env.REACT_APP_CLOUDINARY_URL);
 
 const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   // to load the form new log entry submission and then removing the pop up box.
@@ -13,7 +19,9 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   // useState to handle errors while filling form
   const [error,setError]=useState('');
 
-  const [selectimage,setSelectImage]=useState();
+  const [selectImage,setSelectImage]=useState();
+  const [progressbar,setProgressBar]=useState();
+  const [uploadloading,setUploadLoading]=useState(false);
 
   // from react-hook-form docs , can handle errors also refer docs
   const { register, handleSubmit } = useForm();
@@ -52,10 +60,50 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   // to handle choose file area when a new file is selected
   const fileSelectHandler=(e)=>{
 
-    const imagesArray=e.target.files;
+    setUploadLoading(true);
+    const imagesArray=e.target.files[0];
+    const formData=new FormData();
     console.log(imagesArray);
 
-    uploadImageToCloudinary(imagesArray);
+    formData.append("file",imagesArray);
+    formData.append("upload_preset",process.env.REACT_APP_UPLOAD_PRESET);
+
+    //console.log(formData);// remember the form data cannot be console.logged!
+
+    // make the post request
+    const uploadUrl=`${process.env.REACT_APP_CLOUDINARY_URL}/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`;
+    console.log(uploadUrl);
+
+    axios.post(uploadUrl,formData,{
+      onUploadProgress:progressEvent=>{
+        console.log('Upload Progress: '+ Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
+        var progress=Math.round(progressEvent.loaded/progressEvent.total*100);
+        setProgressBar(progress);
+        if(progress===100){
+          setProgressBar(null);
+        }
+      }
+    })
+    .then((data)=>{
+       console.log(data);
+       console.log(data.data.secure_url);
+       setSelectImage(data.data.secure_url);
+       setUploadLoading(false);
+     })
+     .catch((err)=>{
+       console.log(err);
+     })
+
+
+    // console.log(imagesArray);
+    //
+    // uploadImageToCloudinary(imagesArray)
+    // .then((data)=>{
+    //   console.log(data);
+    // })
+    // .catch((err)=>{
+    //   console.log(err)
+    // });
 
     // Step 1 call the api endpoint to upload this image to cloudinary
      // uploadImageToCloudinary(images)
@@ -102,11 +150,13 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       </select>
       <label hmtlFor="comments"><b>Comments</b></label>
       <textarea  placeholder="How did you feel about the trip?" name="comments" rows={3} {...register('comments')}></textarea>
-      <label htmlFor="image"><b>Image</b></label>
-      <input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} multiple/>
-      <small id="imageHelpBlock" className="form-text text-muted">
-      Required , max 5 images.
-      </small>
+      {progressbar?<ProgressBar animated now={progressbar} label={`${progressbar}%`} />:null}
+      {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} style={{ width:"200px",crop:"scale" }} />:null}
+      {!selectImage?<label htmlFor="image"><b>Image</b></label>:null}
+      {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} disabled={uploadloading} />:null}
+      {!selectImage?<small id="imageHelpBlock" className="form-text text-muted">
+      {uploadloading? 'Say Cheese! 📷 Please Wait....' : 'Required'}
+      </small>:null}
       <label htmlFor="visitDate"><b>Visit Date</b></label>
       <input aria-describedby="visitdatehelp" name="visitDate" type="date" required {...register('visitDate')} />
       <small id="visitdatehelp" className="form-text text-muted">

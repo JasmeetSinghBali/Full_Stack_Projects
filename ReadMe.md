@@ -18,14 +18,16 @@
 
 <img src="./project_images/ui_second_look_v1.2_travelBucketList.png">
 
-
-> #### Updates
+***
+> #### Updates 1.1
 - [x] dropdown with stars for rating.
 - [x] red alert div message set up if error occurs while new log entry in the DB.
 - [x] automatic description fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-ap
 ***
 
-
+> #### Updates 1.2
+- [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed :) !!
+***
 
 > #### Tech Stack
 
@@ -83,11 +85,13 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 
 - [ ] UI Improvements
+    - [ ] Need to reconfigure the upload image routes to cloudinary at backend, currently the upload images via upload preset is successfull on client side.
+    - [ ] introduce image uploading , validating image, preview feature, progress bar of uploading image thumbnail,corausal from  colt udemy.
+    - [ ] Tag and additional cloudinary functionalities https://cloudinary.com/documentation/additional_upload_api_options
     - [ ] Starability rating dynamic star selection rather than select.
     - [ ] update the favicon icon use a custom or your own icon for page rather than default react app
     - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
-    - [ ] introduce image uploading , validating image, preview feature, progress bar of uploading image. https://www.youtube.com/watch?v=XeiOnkEI7XI & thumbnail,cloudinary backend from colt udemy.
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
     - [x] set dropdown with stars for rating refer react-hook-form docs.
     - [x] red alert div message set up if error occurs while new log entry in the DB.
@@ -112,9 +116,9 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 & can also refer timestamp 121 geomaps area.
 
 > #### Issues !!
-- [ ] Multipart boundry not found while sending image in body to backend.
 - [ ] when user types long string without spaces in textbox the textbox overflows when we view it in pop up.
 https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [ ] Need to address the situation where user type space, tabs etc in the textbox https://stackoverflow.com/questions/1172206/how-to-check-if-a-text-is-all-white-space-characters-in-client-side/1173854
+- [x] Multipart boundry not found while sending image in body to backend.
 - [x] Getting Default lat long cordinates details via reverse geocoding even after providing the cordinates of the double click location by the user. Solved: had to make a seperate call to the api and then resolve promise for the async call.
 - [x] the textarea Description field is not sending the the autofill data to the DB. solved: passed the location description prop directly to the data that is posted to the DB.

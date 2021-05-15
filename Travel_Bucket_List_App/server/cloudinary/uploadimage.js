@@ -8,6 +8,9 @@ const upload=multer({dest:'uploads/'});
 // to upload the image to cloudinary
 router.post('/',upload.array('image'),(req,res,next)=>{
   try{
+    if(!req.body || !req.files){
+      console.log('Something went wrong!');
+    }
     console.log("==========At Backend Side upload image to cloudinary========");
     return req.files;
   }catch(err){
