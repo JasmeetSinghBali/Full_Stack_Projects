@@ -1,5 +1,7 @@
 // Upload image from frontend form to Cloudinary
 const {Router}=require('express');
+const express=require('express');
+const app=express();
 const router=Router();
 const multer=require('multer');
 const {storage}=require('./');
@@ -7,11 +9,12 @@ const upload=multer({dest:'uploads/'});
 const axios=require('axios');
 
 
+
 // to upload the image to cloudinary
-router.post('/',(req,res,next)=>{
+router.post('/toCloudinary',(req,res,next)=>{
   try{
     console.log(req.body);
-    res.json(typeof(req.body));
+    res.send(typeof(req.body));
 
     //res.json({message:'Reached Backend'});
   }catch(err){

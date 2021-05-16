@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser=require('body-parser');
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
 require('dotenv').config();
 
 const morgan = require('morgan');
@@ -37,8 +40,7 @@ mongoose.connect(process.env.DB_URL,
  .then(() => console.log('------MongoDB Connected-----'))
  .catch(err => console.log(err));
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+
 
 
 // morgan & helmet middleware to log the incoming request ot the server and Security Headers in response from the server.

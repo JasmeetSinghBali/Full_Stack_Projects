@@ -21,6 +21,7 @@ export async function createLogEntry(entry){
     },
     body:JSON.stringify(entry)
   });
+  console.log(entry);
   return response.json();
 }
 
@@ -62,16 +63,15 @@ export async function uploadImageToCloudinary(imagesStringObject){
 
      //MAKE CALL TO THE BACKEND API ENDPOINT TO STORE THESE IMAGES TO CLOUDINARY
 
-      const response=await fetch(`${API_URL}/api/uploadImage`,{
+      const response=await fetch(`${API_URL}/api/uploadImage/toCloudinary`,{
           method:'POST',
           headers:{
-            'Accept':'application/json'
+            'Content-type':'application/json'
           },
           body:JSON.stringify(imagesStringObject)
         });
        const result=response.json();
        return result;
-
     }catch(err){
       console.log(err);
     }

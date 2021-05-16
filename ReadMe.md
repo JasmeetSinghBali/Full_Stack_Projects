@@ -93,6 +93,7 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
     - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
+    - [x] Upload Image via client side DONE with progress bar and url from cloudinary stored in MongoDB.
     - [x] set dropdown with stars for rating refer react-hook-form docs.
     - [x] red alert div message set up if error occurs while new log entry in the DB.
     - [x] automatic title fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-api
@@ -117,6 +118,7 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 > #### Issues !!
 - [ ] logentries.map, Operation `logsentries.find()` buffering timed out after 10000ms is not a function sometimes Mongoose throws error buffering timed out need to handle the error to avoid the breaking of the entire application.
+- [ ] image upload via backend not completed yet , the object imagesStringArray gets destroyed when it reaches backend.
 - [ ] when user types long string without spaces in textbox the textbox overflows when we view it in pop up.
 https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [ ] Need to address the situation where user type space, tabs etc in the textbox https://stackoverflow.com/questions/1172206/how-to-check-if-a-text-is-all-white-space-characters-in-client-side/1173854
