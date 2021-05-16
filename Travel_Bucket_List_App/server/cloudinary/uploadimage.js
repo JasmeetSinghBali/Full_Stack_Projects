@@ -4,15 +4,16 @@ const router=Router();
 const multer=require('multer');
 const {storage}=require('./');
 const upload=multer({dest:'uploads/'});
+const axios=require('axios');
+
 
 // to upload the image to cloudinary
-router.post('/',upload.array('image'),(req,res,next)=>{
+router.post('/',(req,res,next)=>{
   try{
-    if(!req.body || !req.files){
-      console.log('Something went wrong!');
-    }
-    console.log("==========At Backend Side upload image to cloudinary========");
-    return req.files;
+    console.log(req.body);
+    res.json(typeof(req.body));
+
+    //res.json({message:'Reached Backend'});
   }catch(err){
     // res.json({message:'🤞🏼'});
     //console.log(err.name); // returns ValidationError it gives the name of the error

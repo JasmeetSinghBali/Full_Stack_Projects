@@ -116,6 +116,7 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 & can also refer timestamp 121 geomaps area.
 
 > #### Issues !!
+- [ ] logentries.map, Operation `logsentries.find()` buffering timed out after 10000ms is not a function sometimes Mongoose throws error buffering timed out need to handle the error to avoid the breaking of the entire application.
 - [ ] when user types long string without spaces in textbox the textbox overflows when we view it in pop up.
 https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [ ] Need to address the situation where user type space, tabs etc in the textbox https://stackoverflow.com/questions/1172206/how-to-check-if-a-text-is-all-white-space-characters-in-client-side/1173854

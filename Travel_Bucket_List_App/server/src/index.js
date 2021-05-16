@@ -38,7 +38,7 @@ mongoose.connect(process.env.DB_URL,
  .catch(err => console.log(err));
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 
 
 // morgan & helmet middleware to log the incoming request ot the server and Security Headers in response from the server.

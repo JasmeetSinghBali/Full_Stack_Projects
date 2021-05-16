@@ -1,3 +1,4 @@
+// FUNCTION TO MAKE CALLS TO OUR BACKEND API ROUTES!
 import axios from 'axios';
 import multer from 'multer';
 // function for calling our Backend to get all logs
@@ -52,20 +53,28 @@ export async function getLocation(latitude,longitude){
 }
 
 // Function to upload the Image to cloudinary
-export async function uploadImageToCloudinary(imagesArray){
-    console.log("inside upload function to cloudinary!");
-    console.log(imagesArray);
+export async function uploadImageToCloudinary(imagesStringObject){
+    try{
+      console.log("inside upload function to cloudinary!");
+      console.log(imagesStringObject);
 
-   // return 'Image uploaded to cloudinary';
 
-   //MAKE CALL TO THE BACKEND API ENDPOINT TO STORE THESE IMAGES TO CLOUDINARY
 
-   console.log("sending image in body to api backend.....")
-   const response=await fetch(`${API_URL}/api/uploadImage`,{
-      method:'POST',
-      body:imagesArray
-    });
-   const result=response.json();
-   return result;
+     //MAKE CALL TO THE BACKEND API ENDPOINT TO STORE THESE IMAGES TO CLOUDINARY
+
+      const response=await fetch(`${API_URL}/api/uploadImage`,{
+          method:'POST',
+          headers:{
+            'Accept':'application/json'
+          },
+          body:JSON.stringify(imagesStringObject)
+        });
+       const result=response.json();
+       return result;
+
+    }catch(err){
+      console.log(err);
+    }
+
 
 }
