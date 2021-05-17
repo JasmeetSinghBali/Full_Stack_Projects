@@ -17,18 +17,10 @@ const PORT = process.env.PORT || 5000;
 
 // Routes
 const Logs=require('./api/logs');
-const UploadImage=require('../cloudinary/uploadimage');
+// const UploadImage=require('../cloudinary/uploadimage');
 
 
 const middlewares=require('./middlewares');
-
-
-// REMINDER: seperate this as different route in api directory later
-//=============UNDER CONSTRUCTION AREA========================
-
-// IMAGE UPLOAD ROUTE TO CLODUINARY GOES HERE
-
-//=================UNDER CONSTRUCTION AREA=====================
 
 
 // connecting to MongDB
@@ -64,9 +56,10 @@ app.get('/',(req,res)=>{
   );
 });
 
+
 // Routes
 app.use('/api/logs',Logs);
-app.use('/api/uploadImage',UploadImage);
+
 
 // not found middleware if the route requested by the user do not exist.
 app.use(middlewares.notFound);

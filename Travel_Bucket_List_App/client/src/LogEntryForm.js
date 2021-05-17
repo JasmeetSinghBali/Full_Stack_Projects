@@ -4,7 +4,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 
 // importing API endpoint to post new log entry to database via api
 import {createLogEntry} from './API';
-import {uploadImageToCloudinary} from './API';
+
 
 // cludinary depedancy
 import {Image} from 'cloudinary-react';
@@ -19,7 +19,8 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   // useState to handle errors while filling form
   const [error,setError]=useState('');
 
-  const [imagesString,setImagesString]=useState([]);
+
+
   const [selectImage,setSelectImage]=useState();
   const [progressbar,setProgressBar]=useState();
   const [uploadloading,setUploadLoading]=useState(false);
@@ -29,7 +30,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
 
 
-  // sending this data to backend server from frontend form.
+  // sending this data to backend server from frontend form for creation of new log entry
   const onSubmit=async(data)=>{
     //console.log(data);
     try{
@@ -58,81 +59,113 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
   }
 
-  // to handle choose file area when a new file is selected
+  // to handle choose file area when a new Image file is selected
   const fileSelectHandler=(e)=>{
 
-  // ============ Server side Image Upload Not completed
-  //const imagesArray=e.target.files;
-  //console.log(imagesArray);
+    // ============= CLIENT SIDE Single IMAGE UPLOAD VERSION ==================
+      // setUploadLoading(true);
+      // const imagesArray=e.target.files[0];
+      // const formData=new FormData();
+      // console.log(imagesArray);
+      //
+      // formData.append("file",imagesArray);
+      // formData.append("upload_preset",process.env.REACT_APP_UPLOAD_PRESET);
+      //
+      // //console.log(formData);// remember the form data cannot be console.logged!
+      //
+      // // make the post request
+      // const uploadUrl=`${process.env.REACT_APP_CLOUDINARY_URL}/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`;
+      // console.log(uploadUrl);
+      //
+      // axios.post(uploadUrl,formData,{
+      //   onUploadProgress:progressEvent=>{
+      //     console.log('Upload Progress: '+ Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
+      //     var progress=Math.round(progressEvent.loaded/progressEvent.total*100);
+      //     setProgressBar(progress);
+      //     if(progress===100){
+      //       setProgressBar(null);
+      //     }
+      //   }
+      // })
+      // .then((data)=>{
+      //    console.log(data);
+      //    console.log(data.data.secure_url);
+      //    setSelectImage(data.data.secure_url);
+      //    setUploadLoading(false);
+      //  })
+      //  .catch((err)=>{
+      //    console.log(err);
+      //  })
 
-  // Iterate over the imagesArray and convert each image as base64 encoded long string and then finally make an array of images of type string.
-  // if(imagesArray){
-  //   [].forEach.call(imagesArray,readFiles);
-  // }
-  //
-  // function readFiles(file){
-  //   if(/\.(jpe?g|png|gif)$/i.test(file.name) ){
-  //     var reader=new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onloadend=()=>{
-  //       //console.log(reader.result);// Grab each Image String and append them into 1 final string.
-  //       setImagesString(imagesString.push(reader.result));
-  //     }
-  //   }
-  // }
-  //
-  // console.log("Final Images Array in a String format!");
-  // //console.log(imagesString);
-  // const imagesStringFinal={...[imagesString]};
-  // console.log(imagesStringFinal);
-  //
-  // // call the api to trigger the route at backend to upload image to cloudinary
-  // uploadImageToCloudinary(imagesStringFinal)
-  // .then((data)=>{
-  //   console.log(data);
-  // })
-  // .catch((err)=>{
-  //   console.log(err);
-  // });
+       // ============= UNDER CONSTRUCTION ========================
+       // ============= CLIENT SIDE Multiple IMAGE UPLOAD VERSION ==================
+         setUploadLoading(true);
+         const imagesArray=e.target.files;
+         const formData=new FormData();
+         console.log(imagesArray);
 
-
-
-    // ============= CLIENT SIDE IMAGE UPLOAD VERSION ==================
-     setUploadLoading(true);
-     const imagesArray=e.target.files[0];
-     const formData=new FormData();
-     console.log(imagesArray);
-
-     formData.append("file",imagesArray);
-     formData.append("upload_preset",process.env.REACT_APP_UPLOAD_PRESET);
-
-     //console.log(formData);// remember the form data cannot be console.logged!
-
-     // make the post request
-     const uploadUrl=`${process.env.REACT_APP_CLOUDINARY_URL}/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`;
-     console.log(uploadUrl);
-
-     axios.post(uploadUrl,formData,{
-       onUploadProgress:progressEvent=>{
-         console.log('Upload Progress: '+ Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
-         var progress=Math.round(progressEvent.loaded/progressEvent.total*100);
-         setProgressBar(progress);
-         if(progress===100){
-           setProgressBar(null);
+         // refer colt how he stores the image array
+         const imagesCollection=[];
+         for (let i=0;i<imagesArray.length;i++){
+           imagesCollection.push(imagesArray[i]);
          }
-       }
-     })
-     .then((data)=>{
-        console.log(data);
-        console.log(data.data.secure_url);
-        setSelectImage(data.data.secure_url);
-        setUploadLoading(false);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+         console.log(imagesCollection);
 
-  }
+
+
+      // ============ UNDER CONSTRUCTION ========================
+
+
+
+  // ============ Server side Image Upload Not completed
+  // const imagesArray=e.target.files[0];
+  // console.log(imagesArray);
+  //
+  //
+  //  //Iterate over the imagesArray and convert each image as base64 encoded long string and then finally make an array of images of type string.
+  //  //if(imagesArray){
+  // // [].forEach.call(imagesArray,readFiles);
+  //  //}
+  //
+  //  // function readFiles(file){
+  //  //   if(/\.(jpe?g|png|gif)$/i.test(file.name) ){
+  //  //     var reader=new FileReader();
+  //  //     reader.readAsDataURL(file);
+  //  //     reader.onloadend=()=>{
+  //  //       //console.log(reader.result);// Grab each Image String and append them into 1 final string.
+  //  //       setImagesString(imagesString.push(reader.result));
+  //  //     }
+  //  //   }
+  //  // }
+  //
+  //  //console.log("Final Images Array in a String format!");
+  //  //console.log(imagesString);
+  //
+  //  const reader=new FileReader();
+  //  reader.readAsDataURL(imagesArray);
+  //  reader.onloadend=()=>{
+  //    //console.log(reader.result);
+  //    imagesString[0]=reader.result
+  //    setImagesString(...imagesString);
+  //  }
+  //  //console.log(imagesString);
+  //  //console.log(JSON.stringify(imagesString));
+  //
+  //  uploadImage(imagesString);
+  //
+  //  // call the api to trigger the route at backend to upload image to cloudinary
+  //
+  //
+  //
+  //   // uploadImageToCloudinary(imagesString)
+  //   // .then((data)=>{
+  //   //   console.log(data);
+  //   // })
+  //   // .catch((err)=>{
+  //   //   console.log(err);
+  //   // });
+
+}
 
 
 
@@ -168,10 +201,16 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       {progressbar?<ProgressBar animated now={progressbar} label={`${progressbar}%`} />:null}
       {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} style={{ width:"200px",crop:"scale" }} />:null}
       {!selectImage?<label htmlFor="image"><b>Image</b></label>:null}
-      {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} disabled={uploadloading} />:null}
+      {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} disabled={uploadloading} multiple />:null}
       {progressbar?<small id="imageHelpBlock" className="form-text text-muted">
       'Say Cheese! 📷 Please Wait....'
       </small>:null}
+
+      {/*<label htmlFor="image"><b>Image</b></label>
+      <input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} disabled={uploadloading} multiple />
+      <small id="imageHelpBlock" className="form-text text-muted">
+      'Required'
+      </small>*/}
       <label htmlFor="visitDate"><b>Visit Date</b></label>
       <input aria-describedby="visitdatehelp" name="visitDate" type="date" required {...register('visitDate')} />
       <small id="visitdatehelp" className="form-text text-muted">

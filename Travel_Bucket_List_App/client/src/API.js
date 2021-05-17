@@ -1,6 +1,5 @@
 // FUNCTION TO MAKE CALLS TO OUR BACKEND API ROUTES!
 import axios from 'axios';
-import multer from 'multer';
 // function for calling our Backend to get all logs
 const API_URL='http://localhost:5000';
 
@@ -25,7 +24,7 @@ export async function createLogEntry(entry){
   return response.json();
 }
 
-// ================NEED TO RECONFIGURE THE ROUTES WITH BACKEND API URL AND MAKE THESE API CALLS AT THE BACKEND====================
+
 // function to get location and its description via latitude longitude that was captured when user double clicked on the map.
 export async function getLocation(latitude,longitude){
   try{
@@ -37,44 +36,32 @@ export async function getLocation(latitude,longitude){
     //console.log(err);
     return 'Reverse Geocoding Failed!!';
   }
-  // ===============add a try catch here===============
- //  const getLocs=async(latitude,longitude)=>{
- //    var response=await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
- //    return response.json();
- //  }
- //  const getLocation=async(latitude,longitude)=>{
- //    getLocs().then((data)=>{
- //      console.log(data);
- //      return data
- //    })
- //
- //    //const result=locs.map(el=>[el.countryName]);
- //    //return result;
- // }
-}
-
-// Function to upload the Image to cloudinary
-export async function uploadImageToCloudinary(imagesStringObject){
-    try{
-      console.log("inside upload function to cloudinary!");
-      console.log(imagesStringObject);
-
-
-
-     //MAKE CALL TO THE BACKEND API ENDPOINT TO STORE THESE IMAGES TO CLOUDINARY
-
-      const response=await fetch(`${API_URL}/api/uploadImage/toCloudinary`,{
-          method:'POST',
-          headers:{
-            'Content-type':'application/json'
-          },
-          body:JSON.stringify(imagesStringObject)
-        });
-       const result=response.json();
-       return result;
-    }catch(err){
-      console.log(err);
-    }
+  //const result=locs.map(el=>[el.countryName]);
 
 
 }
+
+// // ==========BACKEND VERSION THE IMAGE STRING,ARRAY,BASE^$ ENCODED STRINGIFIED OBJECT GETs DESTROYED REACHING AT BACKEND Function to upload the Image to cloudinary
+// export async function uploadImageToCloudinary(imagesStringArray){
+//     try{
+//       console.log("inside upload function to cloudinary! stringified version");
+//       console.log(JSON.stringify(imagesStringArray));
+//       return 'calling backend image upload';
+//
+//
+//
+//      //MAKE CALL TO THE BACKEND API ENDPOINT TO STORE THESE IMAGES TO CLOUDINARY
+//
+//       // const response=await fetch(`${API_URL}/api/uploadImage/toCloudinary`,{
+//       //     method:'POST',
+//       //     headers:{
+//       //       'Content-type':'application/json'
+//       //     },
+//       //     body:JSON.stringify(imagesStringObject)
+//       //   });
+//       //  const result=response.json();
+//       //  return result;
+//     }catch(err){
+//       console.log(err);
+//     }
+//   }
