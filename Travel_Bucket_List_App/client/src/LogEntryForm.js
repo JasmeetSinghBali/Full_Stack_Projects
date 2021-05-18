@@ -97,29 +97,12 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       //    console.log(err);
       //  })
 
-       // ============= UNDER CONSTRUCTION ========================
-       // ============= CLIENT SIDE Multiple IMAGE UPLOAD VERSION ==================
-         setUploadLoading(true);
-         const imagesArray=e.target.files;
-         const formData=new FormData();
-         console.log(imagesArray);
-
-         // refer colt how he stores the image array
-         const imagesCollection=[];
-         for (let i=0;i<imagesArray.length;i++){
-           imagesCollection.push(imagesArray[i]);
-         }
-         console.log(imagesCollection);
 
 
 
-      // ============ UNDER CONSTRUCTION ========================
-
-
-
-  // ============ Server side Image Upload Not completed
-  // const imagesArray=e.target.files[0];
-  // console.log(imagesArray);
+  // ============ Server side Image Upload NOT COMPLETED ==============
+  const imagesArray=e.target.files;
+  console.log(imagesArray);
   //
   //
   //  //Iterate over the imagesArray and convert each image as base64 encoded long string and then finally make an array of images of type string.
