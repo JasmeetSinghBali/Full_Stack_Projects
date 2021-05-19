@@ -1,6 +1,8 @@
 # Full Stack Projects Collection
 
-****Status: Completed With Travel Bucket-List App Version - 1 Not Deployed Yet!****
+> #### Status:
+- [x] ****Project-1 Travel Bucket List Completed --> Not deployed yet****
+- [ ] ****Project-2 Blockchain Currency Exchange App ----> Under Development****
 
 ***
 
@@ -28,6 +30,12 @@
 > #### Updates 1.2
 - [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed :) !!
 ***
+
+==============================================================================
+
+> ##                    DEVELOPER SECTION
+
+===============================================================================
 
 > #### Tech Stack
 
@@ -125,3 +133,61 @@ https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [x] Multipart boundry not found while sending image in body to backend. Solved: just remove the headers part where u mention content-type:multipart/formData
 - [x] Getting Default lat long cordinates details via reverse geocoding even after providing the cordinates of the double click location by the user. Solved: had to make a seperate call to the api and then resolve promise for the async call.
 - [x] the textarea Description field is not sending the the autofill data to the DB. solved: passed the location description prop directly to the data that is posted to the DB.
+***
+
+===========================================================
+
+> ## Project - 2 Blockchain buy/sell tokens Smart Contract with Client Side Application
+
+===========================================================
+> ### First Look
+> ### Features
+> ### Updates/Versions
+
+============================================================
+
+> ##               DEVELOPER SECTION
+
+============================================================
+
+> ### Tech Stack (NERS)
+
+- [x] Node.js
+- [x] Ethereum
+- [x] React.js
+- [x] Solidity
+
+***
+> ### Core Dependencies
+
+- [x] Ganache
+- [x] truffle@5.1.14 https://www.npmjs.com/package/truffle
+- [x] web3
+- [x] Metamask (Browser extension)
+- [x] mocha, chai (Testing)
+- [x] babel https://babeljs.io/(Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.)
+- [x] react-bootstrap (for styles/UI/UX)
+
+***
+> ### Blueprint
+
+               Browser ----->   FrontendApp/website------> Blockchain          
+                                                      (Nodes,transactions,Data)<----> Smart Contracts/Code(Solidity)
+                                  (html+css+js)
+
+- [ ] Set Up a Blockchain.
+- [ ] Write 2 Smart Contracts
+   - [ ] For swapping tokens/exchange
+   - [ ] Creating our own token / cryptocurrency
+- [ ] Write Tests for Smart Contracts
+   - [ ] test for Buy tokens SC
+   - [ ] test for Sell tokens SC
+- [ ] Build Client Side Appplication/website/webApp
+- [ ] Deploy
+
+***
+> ### Future Improvements in UI or backend
+
+***
+
+> ### Issues !!

@@ -67,7 +67,7 @@ eslint-config-airbnb-base@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugi
 - description - text - automatically filled
 - comments - text
 - rating - scale of 1-5
-- image - text -url
+- image - file -upload(client side)
 - latitude - number
 - longitude - number
 - createdAt - datetime
