@@ -1,8 +1,10 @@
 # Full Stack Projects Collection
 
-> #### Status:
-- [x] ****Project-1 Travel Bucket List Completed --> Not deployed yet****
-- [ ] ****Project-2 Blockchain Currency Exchange App ----> Under Development****
+> ### Status:
+- [x] ****Project-1 Travel Bucket List ---****
+   - [ ] ****Completed --> Not deployed****
+- [ ] ****Project-2 Blockchain Currency Exchange App ----****
+    - [ ] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
 
 ***
 
@@ -28,7 +30,7 @@
 ***
 
 > #### Updates 1.2
-- [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed :) !!
+- [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed and stored in DB :) !!
 ***
 
 ==============================================================================
@@ -93,14 +95,15 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 
 - [ ] UI Improvements
-    - [ ] Need to reconfigure the upload image routes to cloudinary at backend, currently the upload images via upload preset is successfull on client side.
-    - [ ] introduce image uploading , validating image, preview feature, progress bar of uploading image thumbnail,corausal from  colt udemy.
+
+    - [ ] validating image, thumbnail via react-bootstrap images rounded.
     - [ ] Tag and additional cloudinary functionalities https://cloudinary.com/documentation/additional_upload_api_options
+    - [ ] Need to reconfigure the upload image routes to cloudinary at backend, currently the upload images via upload preset is successfull on client side.
     - [ ] Starability rating dynamic star selection rather than select.
-    - [ ] update the favicon icon use a custom or your own icon for page rather than default react app
     - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
+    - [x] update the favicon icon use a custom or your own icon for page rather than default react app
     - [x] Upload Image via client side DONE with progress bar and url from cloudinary stored in MongoDB.
     - [x] set dropdown with stars for rating refer react-hook-form docs.
     - [x] red alert div message set up if error occurs while new log entry in the DB.
@@ -112,6 +115,12 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 ***
 - [ ] Backend Improvements
+   - [ ] Set up Edit route
+      - [ ] Backend only
+      - [ ] Integrate with frontend
+   - [ ] Set up Delete route
+      - [ ] Backend only
+      - [ ] Integrate with frontend
    - [ ] Add New User Signup/Login and Email verification.(via backend)
    - [ ] Protect the map displaying routes only show it to the logged in user and only allow the user to make a marker if he/sheverifies email.
    - [ ] capture IP's of the request made can be done via morgan or refer react-mapbox docs Geolocate control in the API refferences. https://visgl.github.io/react-map-gl/docs/api-reference/geolocate-control
@@ -139,6 +148,10 @@ https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 
 > ## Project - 2 Blockchain buy/sell tokens Smart Contract with Client Side Application
 
+Prerequisites:
+  - [ ] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
+
+timestamp - 27 SC for your own cryptocurrency
 ===========================================================
 > ### First Look
 > ### Features
@@ -156,6 +169,11 @@ https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [x] Ethereum
 - [x] React.js
 - [x] Solidity
+
+> ### Token Standard
+
+- [x] ERC-20 TOKEN STANDARD
+- [x] SRC : https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
 
 ***
 > ### Core Dependencies
@@ -175,6 +193,7 @@ https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
                                                       (Nodes,transactions,Data)<----> Smart Contracts/Code(Solidity)
                                   (html+css+js)
 
+- [x] Set up basic boilerplate, project folders, Install dependencies
 - [ ] Set Up a Blockchain.
 - [ ] Write 2 Smart Contracts
    - [ ] For swapping tokens/exchange

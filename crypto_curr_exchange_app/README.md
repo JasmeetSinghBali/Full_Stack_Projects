@@ -12,6 +12,11 @@
    - [x] migrations to put the smart contract on the blockchain that we edit a/c to requirement.
 - [x] Components directory
    - [x] All the application code for the client side resides(React)
+- [x] Migrations
+  - [x] are used to change the state of the blockchain and migrating Smart contract to the blockchain.
+  - [x] each migrations have artifacts these artifacts are basically javascript version of the smart contract.
+- [x] Ethereum allows to create our own cryptocurrency without creating blockchain i.e we can write a SC to govern our own cryptocurrency via ERC 20 token. https://ethereum.org/en/developers/docs/standards/tokens/erc-20/
+- [x] Sources for cryptocurrency https://coinmarketcap.com/ , https://etherscan.io/
 
 
 ***
