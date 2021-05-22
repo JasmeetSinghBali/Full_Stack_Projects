@@ -12,6 +12,9 @@ import axios from 'axios';
 require('dotenv').config();
 //console.log(process.env.REACT_APP_CLOUDINARY_URL);
 
+const sightengine=require('sightengine')(`${process.env.REACT_APP_SIGHT_API_USER}`,`${process.env.REACT_APP_SIGHT_API_SECRET}`);
+//console.log(process.env.REACT_APP_SIGHT_API_SECRET);
+
 const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   // to load the form new log entry submission and then removing the pop up box.
   const [loading,setLoading]=useState(false);
@@ -63,46 +66,79 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   const fileSelectHandler=(e)=>{
 
     // ============= CLIENT SIDE Single IMAGE UPLOAD VERSION ==================
-      // setUploadLoading(true);
-      // const imagesArray=e.target.files[0];
-      // const formData=new FormData();
-      // console.log(imagesArray);
-      //
-      // formData.append("file",imagesArray);
-      // formData.append("upload_preset",process.env.REACT_APP_UPLOAD_PRESET);
-      //
-      // //console.log(formData);// remember the form data cannot be console.logged!
-      //
-      // // make the post request
-      // const uploadUrl=`${process.env.REACT_APP_CLOUDINARY_URL}/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`;
-      // console.log(uploadUrl);
-      //
-      // axios.post(uploadUrl,formData,{
-      //   onUploadProgress:progressEvent=>{
-      //     console.log('Upload Progress: '+ Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
-      //     var progress=Math.round(progressEvent.loaded/progressEvent.total*100);
-      //     setProgressBar(progress);
-      //     if(progress===100){
-      //       setProgressBar(null);
-      //     }
-      //   }
-      // })
-      // .then((data)=>{
-      //    console.log(data);
-      //    console.log(data.data.secure_url);
-      //    setSelectImage(data.data.secure_url);
-      //    setUploadLoading(false);
-      //  })
-      //  .catch((err)=>{
-      //    console.log(err);
-      //  })
+       setUploadLoading(true);
+       const imagesArray=e.target.files[0];
+       const formData=new FormData();
+       console.log(imagesArray);
+
+       formData.append("file",imagesArray);
+
+       // validate image client side
+       const t=imagesArray.type.split('/').pop().toLowerCase();
+       if (t !== "jpeg" && t !== "jpg" && t !== "png" && t !== "bmp" && t !== "gif")
+       {
+        alert('Invalid Image File format');
+        document.getElementsByName("image").value = "";
+        window.location.reload();
+        return false;
+      }
+      if (imagesArray.size > 1024000) {
+        alert('Max Upload size is 1MB only');
+        document.getElementByName("image").value = "";
+        window.location.reload();
+        return false;
+      }
+
+      // Transform Images/ Tag,AI recoginition,Moderation to restrict nude/raw/voilent/offensive images
 
 
 
+       formData.append("upload_preset",process.env.REACT_APP_UPLOAD_PRESET);
 
+       //console.log(formData);// remember the form data cannot be console.logged!
+
+       // make the post request
+       const uploadUrl=`${process.env.REACT_APP_CLOUDINARY_URL}/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`;
+       console.log(uploadUrl);
+
+       axios.post(uploadUrl,formData,{
+         onUploadProgress:progressEvent=>{
+           console.log('Upload Progress: '+ Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
+           var progress=Math.round(progressEvent.loaded/progressEvent.total*100);
+           setProgressBar(progress);
+           if(progress===100){
+             setProgressBar(null);
+           }
+         }
+       })
+       .then((data)=>{
+          console.log(data);
+          console.log(data.data.secure_url);
+          setSelectImage(data.data.secure_url);
+          sightengine.check(['nudity','wad','properties','celebrities','offensive','faces','scam','text-content','face-attributes','gore','text']).set_url(`${data.data.secure_url}`)
+          .then(function(result) {
+            console.log(result.nudity);
+            const safeIndex=result.nudity.safe*100;
+            if(result.nudity.safe<90){
+              console.log('Buzzzzzzz Wrong Image Dont allow it!');
+              return;
+            }
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+          setUploadLoading(false);
+        })
+        .catch((err)=>{
+          console.log(err);
+        })
+
+
+
+  // ============= Can make the overall App work slow =================
   // ============ Server side Image Upload NOT COMPLETED ==============
-  const imagesArray=e.target.files;
-  console.log(imagesArray);
+  //const imagesArray=e.target.files;
+  //console.log(imagesArray);
   //
   //
   //  //Iterate over the imagesArray and convert each image as base64 encoded long string and then finally make an array of images of type string.
@@ -152,6 +188,10 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
 
 
+
+
+
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form" encType="multipart/form-data">
       {/*To show the error message if error occurs while new log entry form submission to backend*/}
@@ -182,9 +222,9 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       <label hmtlFor="comments"><b>Comments</b></label>
       <textarea  placeholder="How did you feel about the trip?" name="comments" rows={3} {...register('comments')}></textarea>
       {progressbar?<ProgressBar animated now={progressbar} label={`${progressbar}%`} />:null}
-      {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} style={{ width:"200px",crop:"scale" }} />:null}
+      {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} style={{ width:"300px",crop:"scale" }} />:null}
       {!selectImage?<label htmlFor="image"><b>Image</b></label>:null}
-      {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} disabled={uploadloading} multiple />:null}
+      {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" accept="image/*" onChange={fileSelectHandler} disabled={uploadloading}/>:null}
       {progressbar?<small id="imageHelpBlock" className="form-text text-muted">
       'Say Cheese! 📷 Please Wait....'
       </small>:null}

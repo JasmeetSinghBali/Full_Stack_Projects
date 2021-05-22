@@ -47,6 +47,7 @@
 - [x] React & React Hooks
 - [x] Mapbox
 - [x] Cloudinary
+- [x] sightengine
 
 > #### Core dependancies
 
@@ -96,13 +97,16 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 - [ ] UI Improvements
 
-    - [ ] validating image, thumbnail via react-bootstrap images rounded.
-    - [ ] Tag and additional cloudinary functionalities https://cloudinary.com/documentation/additional_upload_api_options
+    - [ ] validating image for no nude/voilence/disturbing/raw content.
+    https://dashboard.sightengine.com/getstarted moderate in direct upload.
+    - [ ] Tag and additional cloudinary functionalities image recoginition https://cloudinary.com/documentation/additional_upload_api_options
     - [ ] Need to reconfigure the upload image routes to cloudinary at backend, currently the upload images via upload preset is successfull on client side.
     - [ ] Starability rating dynamic star selection rather than select.
     - [ ] style the form with bootstrap
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
+    - [x] wrong filetype/size restrictions client side check done etc.
+    - [x] thumbnail via react-bootstrap images rounded.
     - [x] update the favicon icon use a custom or your own icon for page rather than default react app
     - [x] Upload Image via client side DONE with progress bar and url from cloudinary stored in MongoDB.
     - [x] set dropdown with stars for rating refer react-hook-form docs.
@@ -122,7 +126,7 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
       - [ ] Backend only
       - [ ] Integrate with frontend
    - [ ] Add New User Signup/Login and Email verification.(via backend)
-   - [ ] Protect the map displaying routes only show it to the logged in user and only allow the user to make a marker if he/sheverifies email.
+   - [ ] Protect the map displaying routes only show it to the logged in user and only allow the user to make a marker if he/she verifies email.
    - [ ] capture IP's of the request made can be done via morgan or refer react-mapbox docs Geolocate control in the API refferences. https://visgl.github.io/react-map-gl/docs/api-reference/geolocate-control
    - [ ] save the morgan generated logs in database or local storage to know who visited kinda security/debugging.
  refer https://www.npmjs.com/package/morgan dual logging in apache format and uuid to each request section.

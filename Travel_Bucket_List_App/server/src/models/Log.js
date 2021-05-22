@@ -18,12 +18,7 @@ const logSchema = new Schema({
     type: String,
     default: 'NaN'
   },
-  image: [
-    {
-      url: String,
-      filename: String  
-    }
-  ],
+  image: String,
   latitude:{
     ...requiredNumber,
     min:-90,

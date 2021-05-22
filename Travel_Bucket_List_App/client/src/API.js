@@ -1,5 +1,5 @@
 // FUNCTION TO MAKE CALLS TO OUR BACKEND API ROUTES!
-import axios from 'axios';
+//import axios from 'axios';
 // function for calling our Backend to get all logs
 const API_URL='http://localhost:5000';
 

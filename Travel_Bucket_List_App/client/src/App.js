@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState,useEffect } from 'react';
 import ReactMapGL,{ Marker,Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
+import Image from 'react-bootstrap/Image';
 // backend API fetch function
 import {listLogEntries} from './API';
 
@@ -146,7 +146,7 @@ const App=() => {
              anchor="top"
              sortByDepth={true} >
              <div className="popup">
-               {entry.image && <img src={entry.image} alt={entry.title} />}
+               {!entry.image ? <Image src="../public/newlog.gif" alt="No Image was Uploaded for this entry!" rounded/>:<Image src={entry.image} alt={entry.title} rounded />}
                <hr />
                <h3>🎯Location Description: </h3><p>{entry.description}</p>
                <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
