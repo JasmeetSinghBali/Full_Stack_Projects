@@ -5,8 +5,10 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 // importing API endpoint to post new log entry to database via api
 import {createLogEntry} from './API';
 
+// to redirect to custom route of offensive image page error and block the IP.
+//import {useHistory} from 'react-router-dom';
 
-// cludinary depedancy
+// cloudinary dependancy
 import {Image} from 'cloudinary-react';
 import axios from 'axios';
 require('dotenv').config();
@@ -22,6 +24,8 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   // useState to handle errors while filling form
   const [error,setError]=useState('');
 
+  // to set the image type offensive and blur
+  const [imageFlag,setImageFlag]=useState(false);
 
 
   const [selectImage,setSelectImage]=useState();
@@ -90,7 +94,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       }
 
       // Transform Images/ Tag,AI recoginition,Moderation to restrict nude/raw/voilent/offensive images
-
+      // written below in the cloudinary axios request upload .then
 
 
        formData.append("upload_preset",process.env.REACT_APP_UPLOAD_PRESET);
@@ -114,20 +118,45 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
        .then((data)=>{
           console.log(data);
           console.log(data.data.secure_url);
-          setSelectImage(data.data.secure_url);
-          sightengine.check(['nudity','wad','properties','celebrities','offensive','faces','scam','text-content','face-attributes','gore','text']).set_url(`${data.data.secure_url}`)
+          sightengine.check(['nudity','wad','offensive','gore']).set_url(`${data.data.secure_url}`)
           .then(function(result) {
             console.log(result.nudity);
+            const flagArray=[];
+            flagArray.push(result.weapon*100);
+            flagArray.push(result.alcohol*100);
+            flagArray.push(result.drugs*100);
+            flagArray.push(result.offensive.prob*100);
+            flagArray.push(result.gore.prob*100);
+            console.log(flagArray);
+            for(let i=0;i<flagArray.length;i++){
+              if(flagArray[i]>=10){
+                alert(`Buzzzzz ${flagArray[i]}%\n weapon/alcohol/drugs/offensive/gore Detected`);
+                window.location.reload();
+                return;
+                // redirect to different page response with error message and record the IP of the user and block them
+              }
+            }
             const safeIndex=result.nudity.safe*100;
-            if(result.nudity.safe<90){
-              console.log('Buzzzzzzz Wrong Image Dont allow it!');
-              return;
+            if(safeIndex<90){
+              setImageFlag(true);
+              alert('Buzzzzzzz Nudity Detected!');
+              window.location.reload();
+              // redirect to a Image offensive html page repsonse, store their IP and block them from making any further request
+              //return;
             }
           })
           .catch(function(err) {
             console.log(err);
           });
-          setUploadLoading(false);
+          if(imageFlag===true){
+            alert('the selectImage use state hook has been set to null!');
+            setSelectImage(null);
+            //return
+          }
+          if(imageFlag===false){
+            setSelectImage(data.data.secure_url);
+            setUploadLoading(false);
+          }
         })
         .catch((err)=>{
           console.log(err);
@@ -221,7 +250,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       </select>
       <label hmtlFor="comments"><b>Comments</b></label>
       <textarea  placeholder="How did you feel about the trip?" name="comments" rows={3} {...register('comments')}></textarea>
-      {progressbar?<ProgressBar animated now={progressbar} label={`${progressbar}%`} />:null}
+      {progressbar?<ProgressBar animated now={progressbar} label={`Moderating....${progressbar}%`} />:null}
       {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} style={{ width:"300px",crop:"scale" }} />:null}
       {!selectImage?<label htmlFor="image"><b>Image</b></label>:null}
       {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" accept="image/*" onChange={fileSelectHandler} disabled={uploadloading}/>:null}

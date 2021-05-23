@@ -22,13 +22,13 @@ body {
 }
 
 .popup{
-  max-width:30vw;
+  max-width:40vw;
   padding: 1rem;
 }
 
 .popup img{
   height: 8rem;
-  width:auto;
+  width: 60%;
   text-align: center;
   margin: 0 auto;
   display: block;
