@@ -37,6 +37,7 @@
 - [x] refactored css a bit to make the pop ups responsive in mobile view.
 - [x] App icon updated
 - [x] Basic Universal API key for making new travel entries backend verification added
+- [x] Deployed backend at vercel/now.sh with mongoDB.
 ***
 
 ==============================================================================
@@ -93,7 +94,8 @@
 - [x] create form to add a new entry
 - [x] setup map sdk
 - [x] global API access key to make new travel entry established at backend.
-- [ ] Deploy
+- [x] Deploy backend (https://vercel.com/cli)now.sh(backend) & MongoDB(database)
+- [ ] Deploy frontend React
 
 
 > ### For Future Versions
@@ -129,6 +131,7 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 
 ***
 - [ ] Backend Improvements
+   - [ ] Can make use of crypto npm to generate random API keys.
    - [ ] Set up Edit route
       - [ ] Backend only
       - [ ] Integrate with frontend
