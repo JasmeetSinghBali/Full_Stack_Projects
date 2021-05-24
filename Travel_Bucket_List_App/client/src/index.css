@@ -15,6 +15,9 @@ body {
 
 }
 
+.error{
+  color: #f05305;
+}
 
 .notvismark{
   stroke:#FF8C00;

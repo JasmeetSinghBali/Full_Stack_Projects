@@ -57,10 +57,9 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       console.log(created);
       onClose();
 
-    }catch(err){
-      console.log(err);
-      console.error(err);
-      setError(err.message);
+    }catch(error){
+      console.error(error);
+      setError(error.message);
       setLoading(false);// so that when form data new log entry is handled the loading state is disabled.
     }
 
@@ -223,15 +222,12 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="entry-form" encType="multipart/form-data">
-      {/*To show the error message if error occurs while new log entry form submission to backend*/}
-      { error ?
-         <div className="alert alert-danger" role="alert">
-         {error}
-         </div>:null}
       <small className="form-text text-muted">
       <b>💡 Marking...🎯:   {locDivision} , <i>{locCountry}</i>
       </b>
       </small>
+      <label htmlFor="apiKey"><b>API KEY</b></label>
+      <input type="password" required name="apiKey" {...register('apiKey')} />
 
       <label htmlFor="description"><b>Description</b></label>
       <input type="text" readOnly className="form-control-plaintext" value={!locDescription ? '🌎 NA Wiki was not able to find data for these coordinates!' : locDescription} required name="description" rows={3} {...register('description')} />
@@ -280,6 +276,11 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       <small id="ratinghelp" className="form-text text-muted">
       Default NaN for not rated (NR)
       </small>
+      {/*To show the error message if error occurs while new log entry form submission to backend*/}
+      { error ?
+         <h4 className="error">
+         {error}
+         </h4>:null}
       {/*the moment we hit the button mark it the button will be disabled and show loading else it will show mark it*/}
       <button className="btn btn-outline-dark"  disabled={loading} type="submit">{loading? ' Please Wait.. Taking Off🚀 ' : ' Mark It!👍 ' }</button>
     </form>
