@@ -2,6 +2,11 @@ const {Router}=require('express');
 
 const LogEntry=require('../models/Log.js');
 
+// global API key
+const {
+  GLOBAL_API_KEY
+}=process.env;
+
 const router=Router();
 
 // Get all Log entries
@@ -21,6 +26,13 @@ router.get('/',async (req,res,next)=>{
 // Create New Log Entry
 router.post('/',async (req,res,next)=>{
   try{
+
+    // check for header X-GLOBAL-API-KEY
+    if(req.get('X-GLOBAL-API-KEY')!==GLOBAL_API_KEY){
+      //'👻 Access Denied! ☠️';
+      res.status(401).json('👻 Access Denied! Invalid API-key');
+      //throw new Error('Unauthorized');
+    }
 
    // Validating Latitude and longitude
    var lat=req.body.latitude;

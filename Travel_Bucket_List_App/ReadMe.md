@@ -27,6 +27,10 @@ You have to replace all ref={register} with {...register('value_name')}
 >> - [x] Have to Set form attribute enctype="multipart/form-data" in the form to be able to send files via html form like image upload files.
 
 >> - [x] To parse multipart/form-data like image file use multer middleware.
+
+>> - [x] fetch do not automatically throws any error on fail however axios does.
+
+***
 > ## eslint setup
 
 - add a lint script in the package.json and point to the src folder or where your express server is located.
@@ -72,3 +76,9 @@ eslint-config-airbnb-base@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugi
 - longitude - number
 - createdAt - datetime
 - updatedAt - datetime
+
+> ## Deployment
+
+****Some Facts****
+
+- [x]
