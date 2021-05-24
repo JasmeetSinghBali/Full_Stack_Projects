@@ -36,6 +36,7 @@
 - [x] wrong filetype,size image upload check client side validation added.
 - [x] refactored css a bit to make the pop ups responsive in mobile view.
 - [x] App icon updated
+- [x] Basic Universal API key for making new travel entries backend verification added
 ***
 
 ==============================================================================
@@ -91,6 +92,7 @@
 - [x] Setup Double click on any location on map to pop up marker with different color(so that when we actually submit that form that marker changes to normal color) and a form with it in UI for User to just add that log entry instead of specifying latitude & longitude manually via API.
 - [x] create form to add a new entry
 - [x] setup map sdk
+- [x] global API access key to make new travel entry established at backend.
 - [ ] Deploy
 
 
