@@ -1,7 +1,9 @@
 // FUNCTION TO MAKE CALLS TO OUR BACKEND API ROUTES!
 //import axios from 'axios';
 // function for calling our Backend to get all logs
-const API_URL='http://localhost:5000';
+
+// this way when we deploy client side it is going to talk to the backend deployed at vercel/now.sh
+const API_URL= window.location.hostname=== 'localhost' ? 'http://localhost:5000' : 'https://travel-bucket-app.vercel.app';
 
 export async function listLogEntries(){
   const rawData=await fetch(`${API_URL}/api/logs`);

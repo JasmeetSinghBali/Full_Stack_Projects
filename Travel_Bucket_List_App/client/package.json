@@ -11,6 +11,7 @@
     "cloudinary-react": "^1.7.0",
     "dotenv": "^8.2.0",
     "emoji-mart": "^3.0.1",
+    "mapbox-gl": "^2.2.0",
     "multer": "^1.4.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
@@ -21,7 +22,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "sightengine": "^1.3.1",
-    "web-vitals": "^1.1.1"
+    "web-vitals": "^1.1.1",
+    "worker-loader": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +41,9 @@
     "production": [
       ">0.2%",
       "not dead",
+      "not ie 11",
+      "not chrome < 51",
+      "not safari < 10",
       "not op_mini all"
     ],
     "development": [

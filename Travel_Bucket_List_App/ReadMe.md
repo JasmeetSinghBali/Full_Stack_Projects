@@ -79,7 +79,6 @@ eslint-config-airbnb-base@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugi
 
 > ## Deployment vercel/now.sh(backend..express)/frontend(react)
 
-timestamp 48 mark
 ****Some Facts****
 
 - [x] vercel is good tool to deploy backend use npx now-config or other vercel npm to set up a vercel/now.config for deployment.

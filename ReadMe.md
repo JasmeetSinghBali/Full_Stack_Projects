@@ -2,7 +2,7 @@
 
 > ### Status:
 - [x] ****Project-1 Travel Bucket List ---****
-   - [ ] ****Completed --> Not deployed****
+   - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app/****
 - [ ] ****Project-2 Blockchain Currency Exchange App ----****
     - [ ] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
 
@@ -10,7 +10,7 @@
 
 > ### Project-1 : Travel Bucket-list App ‍🧳 ✈️ 🪂 🧗‍♀️ 🎎 🥂
 
-> #### Version-1 First Look
+> #### Version-1 First Look (Development localhost)
 ‍💜🚀------‍💜‍----->🚀
 
 <img src="./project_images/ui_first_look_v1_travelBucketList.png">
@@ -23,13 +23,15 @@
 <img src="./project_images/ui_second_look_v1.2_travelBucketList.png">
 
 ***
-> #### Updates 1.1
+> #### Updates 1.1 (undeployed)
 - [x] dropdown with stars for rating.
 - [x] red alert div message set up if error occurs while new log entry in the DB.
 - [x] automatic description fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-ap
 ***
 
-> #### Updates 1.2
+<img src="./project_images/deployed_v1.2_travelBucketList.png">
+
+> #### Updates 1.2 (deployed)
 - [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed and stored in DB :) !!
 - [x] thumbnail(rounded) modified for pop ups travel log on map
 - [x] added image moderation for offensive/nude/weapon/drugs or other unacceptable content detected client side.
@@ -37,7 +39,8 @@
 - [x] refactored css a bit to make the pop ups responsive in mobile view.
 - [x] App icon updated
 - [x] Basic Universal API key for making new travel entries backend verification added
-- [x] Deployed backend at vercel/now.sh with mongoDB.
+- [x] Deployed backend & frontend at vercel/now.sh with mongoDB.
+
 ***
 
 ==============================================================================
@@ -95,7 +98,7 @@
 - [x] setup map sdk
 - [x] global API access key to make new travel entry established at backend.
 - [x] Deploy backend (https://vercel.com/cli)now.sh(backend) & MongoDB(database)
-- [ ] Deploy frontend React
+- [x] Deploy frontend React to vercel and set up cors origin and access so that backend and fronntend part deployed part can interact.
 
 
 > ### For Future Versions
@@ -157,6 +160,8 @@ react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
 - [ ] when user types long string without spaces in textbox the textbox overflows when we view it in pop up.
 https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [ ] Need to address the situation where user type space, tabs etc in the textbox https://stackoverflow.com/questions/1172206/how-to-check-if-a-text-is-all-white-space-characters-in-client-side/1173854
+- [x] transpilation issue by babel in react with mapboxgl due to incompatibility of react-mab-gl with babel/webpack resolved by explicitly mentioning to not transpile that bundle that caused error and instead use worker loader to transpile that error causing bundle.
+refer:https://github.com/mapbox/mapbox-gl-js/issues/10173
 - [x] Multipart boundry not found while sending image in body to backend. Solved: just remove the headers part where u mention content-type:multipart/formData
 - [x] Getting Default lat long cordinates details via reverse geocoding even after providing the cordinates of the double click location by the user. Solved: had to make a seperate call to the api and then resolve promise for the async call.
 - [x] the textarea Description field is not sending the the autofill data to the DB. solved: passed the location description prop directly to the data that is posted to the DB.

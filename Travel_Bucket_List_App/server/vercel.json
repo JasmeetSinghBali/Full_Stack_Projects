@@ -20,7 +20,7 @@
     "NODE_ENV" : "production",
     "PORT" : "5000",
     "DB_URL" : "@db_url",
-    "CORS_ORIGIN" : "*",
+    "CORS_ORIGIN" : "https://travel-bucket-jassi.vercel.app",
     "GLOBAL_API_KEY": "@travel-bucket-api-key"
   }
 }

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState,useEffect } from 'react';
 import ReactMapGL,{ Marker,Popup } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
 import Image from 'react-bootstrap/Image';
 // backend API fetch function
 import {listLogEntries} from './API';
@@ -10,6 +11,9 @@ import {listLogEntries} from './API';
 import LogEntryForm from './LogEntryForm';
 
 import {getLocation} from './API';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass=require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 require('dotenv').config();
 //console.log(process.env.REACT_APP_MAPBOX_ACCESS_TOKEN);
