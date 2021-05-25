@@ -32,7 +32,7 @@ const App=() => {
     height: '100vh',
     latitude: 20.5937,
     longitude: 78.9629,
-    zoom: 2
+    zoom: 1.5
   });
 
   const [loc,setLoc]=useState();
@@ -149,8 +149,8 @@ const App=() => {
 
              anchor="top"
              sortByDepth={true} >
-             <div className="popup">
-               {!entry.image ? <Image src="../public/newlog.gif" alt="No Image was Uploaded for this entry!" rounded/>:<Image src={entry.image} alt={entry.title} rounded />}
+             <div className="popupmarked">
+               {!entry.image ? <Image src="http://anokha.world/images/not-found.png" alt="No Image was Uploaded for this entry!" rounded/>:<Image src={entry.image} alt={entry.title} rounded />}
                <hr />
                <h3>🎯Location Description: </h3><p>{entry.description}</p>
                <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
@@ -206,7 +206,7 @@ const App=() => {
         dynamicPosition={true}
         onClose={()=>setAddEntryLocation(null)}
         anchor="top"
-        tipSize={16} >
+        tipSize={5} >
          <div className="popup">
            <h3> New Log ✏️ 📑</h3>
            <LogEntryForm

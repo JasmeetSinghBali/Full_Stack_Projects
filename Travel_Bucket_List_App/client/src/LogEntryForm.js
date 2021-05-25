@@ -227,8 +227,10 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       </b>
       </small>
       <label htmlFor="apiKey"><b>API KEY</b></label>
-      <input type="password" required name="apiKey" {...register('apiKey')} />
-
+      <input aria-describedby="apikeyhelp" type="password" required name="apiKey" {...register('apiKey')} />
+      <small id="apikeyhelp" className="form-text text-muted">
+      <b>Contact devs.us.1984@gmail.com for API-key</b>
+      </small>
       <label htmlFor="description"><b>Description</b></label>
       <input type="text" readOnly className="form-control-plaintext" value={!locDescription ? '🌎 NA Wiki was not able to find data for these coordinates!' : locDescription} required name="description" rows={3} {...register('description')} />
       <label htmlFor="title"><b>Select Type of Travel</b></label>
@@ -249,10 +251,11 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       {progressbar?<ProgressBar animated now={progressbar} label={`Moderating....${progressbar}%`} />:null}
       {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} style={{ width:"300px",crop:"scale" }} />:null}
       {!selectImage?<label htmlFor="image"><b>Image</b></label>:null}
-      {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" accept="image/*" onChange={fileSelectHandler} disabled={uploadloading}/>:null}
       {progressbar?<small id="imageHelpBlock" className="form-text text-muted">
-      'Say Cheese! 📷 Please Wait....'
+      'Uploading Your 📷 Please Wait....'
       </small>:null}
+      {!selectImage?<input aria-describedby="imageHelpBlock" type="file" required name="image" accept="image/*" onChange={fileSelectHandler} disabled={uploadloading}/>:null}
+
 
       {/*<label htmlFor="image"><b>Image</b></label>
       <input aria-describedby="imageHelpBlock" type="file" required name="image" onChange={fileSelectHandler} disabled={uploadloading} multiple />
@@ -274,7 +277,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
         <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
       </select>
       <small id="ratinghelp" className="form-text text-muted">
-      Default NaN for not rated (NR)
+      default NaN for not rated (NR)
       </small>
       {/*To show the error message if error occurs while new log entry form submission to backend*/}
       { error ?

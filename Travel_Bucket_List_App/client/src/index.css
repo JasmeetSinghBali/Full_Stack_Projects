@@ -9,6 +9,7 @@ body {
 
 }
 
+
 .marker{
   stroke:#FFD700;
   transform: translate(-50%,-100%);
@@ -29,12 +30,78 @@ body {
   padding: 1rem;
 }
 
+@media only screen and (max-width:600px){
+  .popup{
+    max-width:60vw;
+  }
+  .popup h3{
+    font-size:1.3rem;
+  }
+  .popup b{
+    font-size:0.5rem;
+  }
+}
+
+.popupmarked{
+  max-width:30vw;
+  padding: 0.6rem;
+
+}
+
+.popupmarked h3{
+  font-size:1.5rem;
+}
+.popupmarked h5{
+  font-size:1.2rem;
+}
+.popupmarked small{
+  font-size:0.7rem;
+}
+.popupmarked p{
+  font-size:0.8rem;
+}
+
+@media only screen and (max-width:600px){
+  .popupmarked{
+    height : 20%;
+    max-width:55vw;
+  }
+  .popupmarked h3{
+    font-size:0.8rem;
+  }
+  .popupmarked h5{
+    font-size:0.8rem;
+  }
+  .popupmarked small{
+    font-size:0.4rem;
+  }
+  .popupmarked p{
+    font-size:0.6rem;
+  }
+}
+
 .popup img{
   height: 8rem;
   width: 60%;
   text-align: center;
   margin: 0 auto;
   display: block;
+}
+
+.popupmarked img{
+  height: 12rem;
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+@media only screen and (max-width:600px){
+  .popupmarked img{
+    width:100%;
+    height:7rem;
+    display: over;
+  }
 }
 
 .entry-form #title{
@@ -46,14 +113,31 @@ body {
   margin: 0 0 30px;
 }
 
+
+
 .entry-form label,
 .entry-form input,
 .entry-form textarea,
 .entry-form button,
-.entry-form select{
-  font-size:1rem;
-  margin: 0.5rem 0;
+.entry-form select
+.entry-form small{
+  font-size:0.8rem;
+  margin: 0.1rem 0;
   display: block;
   width: 100%;
 
+}
+
+@media only screen and (max-width:600px){
+  .entry-form label,
+  .entry-form input,
+  .entry-form textarea,
+  .entry-form button,
+  .entry-form select,
+  .entry-form small{
+    font-size: 0.5rem;
+    margin: 0.1rem 0;
+    display: block;
+    width: 100%;
+  }
 }

@@ -32,13 +32,13 @@
 <img src="./project_images/deployed_v1.2_travelBucketList.png">
 
 > #### Updates 1.2 (deployed)
-- [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed and stored in DB :) !!
+- [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed and stored in DB :)
 - [x] thumbnail(rounded) modified for pop ups travel log on map
 - [x] added image moderation for offensive/nude/weapon/drugs or other unacceptable content detected client side.
 - [x] wrong filetype,size image upload check client side validation added.
-- [x] refactored css a bit to make the pop ups responsive in mobile view.
 - [x] App icon updated
 - [x] Basic Universal API key for making new travel entries backend verification added
+- [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop.
 - [x] Deployed backend & frontend at vercel/now.sh with mongoDB.
 
 ***
@@ -104,18 +104,19 @@
 > ### For Future Versions
 > #### Not Implemented Yet , For Version 2 & Extra's that can be added
 refer-https://react-hook-form.com/
-react-hook form + material ui- https://www.youtube.com/watch?v=PquWexbGcVc
+
 
 
 - [ ] UI Improvements
 
     - [ ] Create & style a nav bar uptop like the firetracker api for starters. https://codepen.io/katydecorah/pen/HEgwl
-    - [ ] Text moderation first convert to english then moderate for comments section.
+    - [ ] Work on style and colors for popup and entry form heading and params.
+    - [ ] Text moderation and Limit comments character limit, first convert to english then moderate for comments section.
     - [ ] upon moderation fail case of image or text redirect the user to a image offensive page message and block the IP OF the user to restrict accessing the site.
     - [ ] Tag and additional cloudinary functionalities image recoginition https://cloudinary.com/documentation/additional_upload_api_options
     - [ ] Need to reconfigure the upload image routes to cloudinary at backend, currently the upload images via upload preset is successfull on client side.
     - [ ] Starability rating dynamic star selection rather than select.
-    - [ ] style the form with bootstrap
+    - [ ] Make the form responsive for mobile view
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
     - [x] image moderation for no nude/voilence/disturbing/raw content.
