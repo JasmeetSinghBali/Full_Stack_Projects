@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState,useEffect } from 'react';
-import ReactMapGL,{ Marker,Popup } from 'react-map-gl';
+import ReactMapGL,{ Marker,Popup,GeolocateControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
 import Image from 'react-bootstrap/Image';
@@ -93,6 +93,8 @@ const App=() => {
    );
 
  }
+
+
 
 
 
@@ -223,6 +225,14 @@ const App=() => {
        </>
      ):null
    }
+   <GeolocateControl
+        style={{position:'absolute',right:10,top:10}}
+        positionOptions={{enableHighAccuracy: true}}
+        trackUserLocation={true}
+        label='Locate Me On the Map'
+        fitBoundsOptions={{maxZoom:2}}
+        auto
+      />
     </ReactMapGL>
   );
 }

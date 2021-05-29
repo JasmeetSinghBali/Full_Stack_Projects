@@ -39,6 +39,7 @@
 - [x] App icon updated
 - [x] Basic Universal API key for making new travel entries backend verification added
 - [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop.
+- [x] Added mark my location on map feature with toggle via mapbox api component through docs.
 - [x] Deployed backend & frontend at vercel/now.sh with mongoDB.
 
 ***
@@ -70,6 +71,7 @@
 - [x] react-map-gl (to use mapbox maps via accesstoken in react)
 - [x] react-hook-form https://react-hook-form.com/
 - [ ] multer & multer storage cloudinary to handle multipart/form-data and upload images to cloudinary (backend).
+
 
 > #### Dev dependancies
 

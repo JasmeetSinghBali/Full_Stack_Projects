@@ -26,7 +26,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
   // to set the image type offensive and blur
   const [imageFlag,setImageFlag]=useState(false);
-
+  const [ipUser,setIpUser]=useState('');
 
   const [selectImage,setSelectImage]=useState();
   const [progressbar,setProgressBar]=useState();
@@ -45,6 +45,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       // so to specify a loading state i.e the form data is processing
       setLoading(true);
 
+      // IP lookup
 
       // passing data from front end as prop location and adding to  data JSON which will be post to database.
       data.latitude=location.latitude;
@@ -130,8 +131,8 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
             for(let i=0;i<flagArray.length;i++){
               if(flagArray[i]>=10){
                 alert(`Buzzzzz ${flagArray[i]}%\n weapon/alcohol/drugs/offensive/gore Detected`);
-                window.location.reload();
-                return;
+                //window.location.reload();
+                //return;
                 // redirect to different page response with error message and record the IP of the user and block them
               }
             }
@@ -249,7 +250,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       <label hmtlFor="comments"><b>Comments</b></label>
       <textarea  placeholder="How did you feel about the trip?" name="comments" rows={3} {...register('comments')}></textarea>
       {progressbar?<ProgressBar animated now={progressbar} label={`Moderating....${progressbar}%`} />:null}
-      {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} style={{ width:"300px",crop:"scale" }} />:null}
+      {selectImage?<Image cloudName={process.env.REACT_APP_CLOUDINARY_NAME} publicId={selectImage} />:null}
       {!selectImage?<label htmlFor="image"><b>Image</b></label>:null}
       {progressbar?<small id="imageHelpBlock" className="form-text text-muted">
       'Uploading Your 📷 Please Wait....'

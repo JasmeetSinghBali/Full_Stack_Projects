@@ -62,6 +62,9 @@ export async function getLocation(latitude,longitude){
 
 }
 
+
+
+
 // // ==========BACKEND VERSION THE IMAGE STRING,ARRAY,BASE^$ ENCODED STRINGIFIED OBJECT GETs DESTROYED REACHING AT BACKEND Function to upload the Image to cloudinary
 // export async function uploadImageToCloudinary(imagesStringArray){
 //     try{

@@ -119,13 +119,17 @@ body {
 .entry-form input,
 .entry-form textarea,
 .entry-form button,
-.entry-form select
+.entry-form select,
 .entry-form small{
   font-size:0.8rem;
   margin: 0.1rem 0;
   display: block;
   width: 100%;
 
+}
+.entry-form Image{
+  width:300px;
+  crop: scale;
 }
 
 @media only screen and (max-width:600px){
@@ -137,7 +141,11 @@ body {
   .entry-form small{
     font-size: 0.5rem;
     margin: 0.1rem 0;
-    display: block;
+    display: over;
     width: 100%;
+  },
+  .entry-form Image{
+    width:300px;
+    crop: scale;
   }
 }
