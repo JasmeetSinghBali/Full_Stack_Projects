@@ -1,5 +1,5 @@
 // FUNCTION TO MAKE CALLS TO OUR BACKEND API ROUTES!
-//import axios from 'axios';
+import axios from 'axios';
 // function for calling our Backend to get all logs
 
 // this way when we deploy client side it is going to talk to the backend deployed at vercel/now.sh
@@ -60,6 +60,28 @@ export async function getLocation(latitude,longitude){
   //const result=locs.map(el=>[el.countryName]);
 
 
+}
+
+// function to store the flagged User Ip and info at backend
+export async function addFlaggedUser(){
+  try{
+    const response=await axios.get('https://api.bigdatacloud.net/data/ip-geolocation-full?localityLanguage=en&key=49be126a76104adf88862171845e2c99');
+    const data = response.data;
+    console.log(data);
+    console.log('sending user data to backend!');
+    const result=await fetch(`${API_URL}/api/add/flaggedUser`,{
+      method:'POST',
+      headers:{
+        'Content-type':'application/json'
+      },
+      body:JSON.stringify(data)
+    })
+    return result.json();
+
+  }catch(err){
+    //console.log(err);
+    return 'Flagged User Undetected! Could not store the flagged user in DB.';
+  }
 }
 
 

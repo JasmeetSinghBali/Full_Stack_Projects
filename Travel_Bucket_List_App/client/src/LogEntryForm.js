@@ -4,6 +4,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 
 // importing API endpoint to post new log entry to database via api
 import {createLogEntry} from './API';
+import {addFlaggedUser} from './API';
 
 // to redirect to custom route of offensive image page error and block the IP.
 //import {useHistory} from 'react-router-dom';
@@ -26,7 +27,6 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
   // to set the image type offensive and blur
   const [imageFlag,setImageFlag]=useState(false);
-  const [ipUser,setIpUser]=useState('');
 
   const [selectImage,setSelectImage]=useState();
   const [progressbar,setProgressBar]=useState();
@@ -45,7 +45,6 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
       // so to specify a loading state i.e the form data is processing
       setLoading(true);
 
-      // IP lookup
 
       // passing data from front end as prop location and adding to  data JSON which will be post to database.
       data.latitude=location.latitude;
@@ -70,6 +69,9 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
   const fileSelectHandler=(e)=>{
 
     // ============= CLIENT SIDE Single IMAGE UPLOAD VERSION ==================
+
+
+
        setUploadLoading(true);
        const imagesArray=e.target.files[0];
        const formData=new FormData();
@@ -131,6 +133,15 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
             for(let i=0;i<flagArray.length;i++){
               if(flagArray[i]>=10){
                 alert(`Buzzzzz ${flagArray[i]}%\n weapon/alcohol/drugs/offensive/gore Detected`);
+
+                // Save this user Ip address and other info  to the backend
+                addFlaggedUser()
+                .then((resp)=>{
+                  console.log(resp)
+                })
+                .catch((err)=>{
+                  console.log('Not Able to send IP address and info of the user to the backend:(');
+                });
                 //window.location.reload();
                 //return;
                 // redirect to different page response with error message and record the IP of the user and block them

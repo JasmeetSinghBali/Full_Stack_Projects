@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 // Routes
 const Logs=require('./api/logs');
+const FlaggedUser=require('./api/flaggedUser');
 // const UploadImage=require('../cloudinary/uploadimage');
 
 
@@ -59,6 +60,7 @@ app.get('/',(req,res)=>{
 
 // Routes
 app.use('/api/logs',Logs);
+app.use('/api/add',FlaggedUser);
 
 
 // not found middleware if the route requested by the user do not exist.

@@ -40,6 +40,7 @@
 - [x] Basic Universal API key for making new travel entries backend verification added
 - [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop.
 - [x] Added mark my location on map feature with toggle via mapbox api component through docs.
+- [x] Added IP tracking for flagged users via https://www.bigdatacloud.com/ip-geolocation-apis
 - [x] Deployed backend & frontend at vercel/now.sh with mongoDB.
 
 ***
@@ -147,9 +148,9 @@ refer-https://react-hook-form.com/
    - [ ] Add New User Signup/Login and Email verification.(via backend)
       - [ ] User Profile /pic upload https://stackabuse.com/handling-file-uploads-in-node-js-with-expres-and-multer/
    - [ ] Protect the map displaying routes only show it to the logged in user and only allow the user to make a marker if he/she verifies email.
-   - [ ] capture IP's of the request made can be done via morgan or refer react-mapbox docs Geolocate control in the API refferences. https://visgl.github.io/react-map-gl/docs/api-reference/geolocate-control
    - [ ] save the morgan generated logs in database or local storage to know who visited kinda security/debugging.
  refer https://www.npmjs.com/package/morgan dual logging in apache format and uuid to each request section.
+  - [x] capture IP's of the flagged user and store in DB. via bigdata cloud Ip geolocation API.
 ***
 
 > #### Refactoring  Options
