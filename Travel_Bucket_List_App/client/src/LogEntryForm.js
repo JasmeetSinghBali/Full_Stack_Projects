@@ -42,6 +42,12 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
     //console.log(data);
     try{
 
+      //console.log(imageFlag);
+      if(imageFlag){
+        window.location.reload();
+        return;
+      }
+
       // so to specify a loading state i.e the form data is processing
       setLoading(true);
 
@@ -65,6 +71,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
   }
 
+
   // to handle choose file area when a new Image file is selected
   const fileSelectHandler=(e)=>{
 
@@ -75,7 +82,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
        setUploadLoading(true);
        const imagesArray=e.target.files[0];
        const formData=new FormData();
-       console.log(imagesArray);
+       //console.log(imagesArray);
 
        formData.append("file",imagesArray);
 
@@ -105,11 +112,11 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
 
        // make the post request
        const uploadUrl=`${process.env.REACT_APP_CLOUDINARY_URL}/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`;
-       console.log(uploadUrl);
+       //console.log(uploadUrl);
 
        axios.post(uploadUrl,formData,{
          onUploadProgress:progressEvent=>{
-           console.log('Upload Progress: '+ Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
+           //console.log('Upload Progress: '+ Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
            var progress=Math.round(progressEvent.loaded/progressEvent.total*100);
            setProgressBar(progress);
            if(progress===100){
@@ -118,21 +125,22 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
          }
        })
        .then((data)=>{
-          console.log(data);
-          console.log(data.data.secure_url);
+          //console.log(data);
+          //console.log(data.data.secure_url);
           sightengine.check(['nudity','wad','offensive','gore']).set_url(`${data.data.secure_url}`)
           .then(function(result) {
-            console.log(result.nudity);
+            //console.log(result.nudity);
             const flagArray=[];
             flagArray.push(result.weapon*100);
             flagArray.push(result.alcohol*100);
             flagArray.push(result.drugs*100);
             flagArray.push(result.offensive.prob*100);
             flagArray.push(result.gore.prob*100);
-            console.log(flagArray);
+            //console.log(flagArray);
             for(let i=0;i<flagArray.length;i++){
               if(flagArray[i]>=10){
-                alert(`Buzzzzz ${flagArray[i]}%\n weapon/alcohol/drugs/offensive/gore Detected`);
+                setImageFlag(true);
+                alert(`${flagArray[i]}%\n weapon/alcohol/drugs/offensive/gore Detected`);
 
                 // Save this user Ip address and other info  to the backend
                 addFlaggedUser()
@@ -142,6 +150,7 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
                 .catch((err)=>{
                   console.log('Not Able to send IP address and info of the user to the backend:(');
                 });
+
                 //window.location.reload();
                 //return;
                 // redirect to different page response with error message and record the IP of the user and block them
@@ -150,8 +159,16 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
             const safeIndex=result.nudity.safe*100;
             if(safeIndex<90){
               setImageFlag(true);
-              alert('Buzzzzzzz Nudity Detected!');
-              window.location.reload();
+              alert(`${safeIndex}% Nudity Detected`);
+              addFlaggedUser()
+              .then((resp)=>{
+                console.log(resp)
+              })
+              .catch((err)=>{
+                console.log('Not Able to send IP address and info of the user to the backend:(');
+              });
+
+              //window.location.reload();
               // redirect to a Image offensive html page repsonse, store their IP and block them from making any further request
               //return;
             }
@@ -297,7 +314,9 @@ const LogEntryForm=({location,onClose,locCountry,locDivision,locDescription})=>{
          {error}
          </h4>:null}
       {/*the moment we hit the button mark it the button will be disabled and show loading else it will show mark it*/}
-      <button className="btn btn-outline-dark"  disabled={loading} type="submit">{loading? ' Please Wait.. Taking Off🚀 ' : ' Mark It!👍 ' }</button>
+      {imageFlag===false?<button className="btn btn-outline-dark"  disabled={loading} type="submit">{loading? ' Please Wait.. Taking Off🚀 ' : ' Mark It!👍 ' }</button>: <div class="alert alert-danger" role="alert">
+  Unacceptable Image 💩💩
+</div>}
     </form>
   )
 };

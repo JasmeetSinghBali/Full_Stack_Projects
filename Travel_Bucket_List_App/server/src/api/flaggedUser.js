@@ -33,7 +33,9 @@ router.post('/flaggedUser',async (req,res,next)=>{
     if(!newUser){
       return res.status(424).send('Failed ! flaggedUser was not added to the database')
     }
-    return res.status(200).json(newUser);
+    return res.status(200).json({
+      message:'Your IP has now been compromised!'
+    });
 
   }catch(err){
     // res.json({message:'🤞🏼'});

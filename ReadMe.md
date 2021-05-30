@@ -39,7 +39,7 @@
 - [x] App icon updated
 - [x] Basic Universal API key for making new travel entries backend verification added
 - [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop.
-- [x] Added mark my location on map feature with toggle via mapbox api component through docs.
+- [x] Added mark my location on map feature with toggle via mapbox api component GeolocateControl.
 - [x] Added IP tracking for flagged users via https://www.bigdatacloud.com/ip-geolocation-apis
 - [x] Deployed backend & frontend at vercel/now.sh with mongoDB.
 
@@ -61,6 +61,7 @@
 - [x] Cloudinary
 - [x] sightengine
 
+
 > #### Core dependancies
 
 - [x] express
@@ -71,6 +72,7 @@
 - [x] body-parser (middleware to parse the request body)
 - [x] react-map-gl (to use mapbox maps via accesstoken in react)
 - [x] react-hook-form https://react-hook-form.com/
+- [x] bigdatacloud API https://www.bigdatacloud.com/
 - [ ] multer & multer storage cloudinary to handle multipart/form-data and upload images to cloudinary (backend).
 
 
@@ -101,7 +103,7 @@
 - [x] setup map sdk
 - [x] global API access key to make new travel entry established at backend.
 - [x] Deploy backend (https://vercel.com/cli)now.sh(backend) & MongoDB(database)
-- [x] Deploy frontend React to vercel and set up cors origin and access so that backend and fronntend part deployed part can interact.
+- [x] Deploy frontend React to vercel and set up cors origin and access so that backend and frontend part deployed can interact.
 
 
 > ### For Future Versions
@@ -124,6 +126,7 @@ refer-https://react-hook-form.com/
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
     - [x] image moderation for no nude/voilence/disturbing/raw content.
     https://dashboard.sightengine.com/getstarted
+    - [x] added danger message when image is flagged and automatic removal of submit button.
     - [x] wrong filetype/size restrictions client side check done etc.
     - [x] thumbnail via react-bootstrap images rounded.
     - [x] update the favicon icon use a custom or your own icon for page rather than default react app
@@ -150,7 +153,7 @@ refer-https://react-hook-form.com/
    - [ ] Protect the map displaying routes only show it to the logged in user and only allow the user to make a marker if he/she verifies email.
    - [ ] save the morgan generated logs in database or local storage to know who visited kinda security/debugging.
  refer https://www.npmjs.com/package/morgan dual logging in apache format and uuid to each request section.
-  - [x] capture IP's of the flagged user and store in DB. via bigdata cloud Ip geolocation API.
+   - [x] capture IP's of the flagged user and store in DB. via bigdata cloud Ip geolocation API.
 ***
 
 > #### Refactoring  Options

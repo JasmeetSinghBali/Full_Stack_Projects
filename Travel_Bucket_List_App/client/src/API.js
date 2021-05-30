@@ -68,7 +68,7 @@ export async function addFlaggedUser(){
     const response=await axios.get('https://api.bigdatacloud.net/data/ip-geolocation-full?localityLanguage=en&key=49be126a76104adf88862171845e2c99');
     const data = response.data;
     console.log(data);
-    console.log('sending user data to backend!');
+    console.log('Flagging Your IP 👻👻');
     const result=await fetch(`${API_URL}/api/add/flaggedUser`,{
       method:'POST',
       headers:{
