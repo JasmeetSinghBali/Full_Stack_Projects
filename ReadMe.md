@@ -4,7 +4,7 @@
 - [x] ****Project-1 Travel Bucket List ---****
    - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app/****
 - [ ] ****Project-2 Blockchain Currency Exchange App ----****
-    - [ ] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
+    - [x] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
 
 ***
 
@@ -178,10 +178,12 @@ refer:https://github.com/mapbox/mapbox-gl-js/issues/10173
 
 > ## Project - 2 Blockchain buy/sell tokens Smart Contract with Client Side Application
 
-Prerequisites:
-  - [ ] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
+https://www.youtube.com/watch?v=99pYGpTWcXM
 
-timestamp - 27 SC for your own cryptocurrency
+Prerequisites:
+  - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
+
+timestamp - 31 bibaToken contract testing at truffle console.
 ===========================================================
 > ### First Look
 > ### Features
