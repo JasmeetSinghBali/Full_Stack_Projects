@@ -183,7 +183,7 @@ https://www.youtube.com/watch?v=99pYGpTWcXM
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
 
-timestamp - 31 bibaToken contract testing at truffle console.
+timestamp - 38 bibaToken to code out the buy token functionality
 ===========================================================
 > ### First Look
 > ### Features
@@ -226,10 +226,10 @@ timestamp - 31 bibaToken contract testing at truffle console.
                                   (html+css+js)
 
 - [x] Set up basic boilerplate, project folders, Install dependencies
-- [ ] Set Up a Blockchain.
+- [x] Set Up a Blockchain.
 - [ ] Write 2 Smart Contracts
+   - [x] Creating our own token / cryptocurrency
    - [ ] For swapping tokens/exchange
-   - [ ] Creating our own token / cryptocurrency
 - [ ] Write Tests for Smart Contracts
    - [ ] test for Buy tokens SC
    - [ ] test for Sell tokens SC
