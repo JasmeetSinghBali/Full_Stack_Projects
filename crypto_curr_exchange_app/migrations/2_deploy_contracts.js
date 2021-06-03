@@ -7,7 +7,7 @@ module.exports = async function(deployer) {
   const token=await bibaToken.deployed();
 
   // Deploy ethswap
-  await deployer.deploy(ethSwap);
+  await deployer.deploy(ethSwap,token.address);
   const EthSwap=await ethSwap.deployed();
 
   // transfer all tokens to eth swap contract from default account[0] on blockchain via transfer function in our bibaToken

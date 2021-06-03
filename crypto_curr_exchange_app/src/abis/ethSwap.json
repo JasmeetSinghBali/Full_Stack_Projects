@@ -2,6 +2,18 @@
   "contractName": "ethSwap",
   "abi": [
     {
+      "inputs": [
+        {
+          "internalType": "contract bibaToken",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
       "constant": true,
       "inputs": [],
       "name": "name",
@@ -15,23 +27,38 @@
       "payable": false,
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract bibaToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/ethSwap.sol\":\"ethSwap\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/ethSwap.sol\":{\"keccak256\":\"0x8d0605ce6f36699bcd8a7f5a3691b2acfe41fab6c97fb6c4657d904a606b2d41\",\"urls\":[\"bzz-raw://5dfe452c12ca0f6503358de57f11bb879f8fccb5dce3c34dbe8b610d0cbccff7\",\"dweb:/ipfs/QmS6MpAYvNTkuhpc3ZuXzaYvTvoDfHeKyZLk7LydmMg4iU\"]}},\"version\":1}",
-  "bytecode": "0x60806040526040518060400160405280601781526020017f657468205377617020546f6b656e2045786368616e67650000000000000000008152506000908051906020019061004f929190610062565b5034801561005c57600080fd5b50610107565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100a357805160ff19168380011785556100d1565b828001600101855582156100d1579182015b828111156100d05782518255916020019190600101906100b5565b5b5090506100de91906100e2565b5090565b61010491905b808211156101005760008160009055506001016100e8565b5090565b90565b610186806101166000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c806306fdde0314610030575b600080fd5b6100386100b3565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561007857808201518184015260208101905061005d565b50505050905090810190601f1680156100a55780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101495780601f1061011e57610100808354040283529160200191610149565b820191906000526020600020905b81548152906001019060200180831161012c57829003601f168201915b50505050508156fea265627a7a7231582028f34fd4275386f29f3140434e1b843c2f7e6acba39edd2ee4a6ee37214b421e64736f6c63430005100032",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c806306fdde0314610030575b600080fd5b6100386100b3565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561007857808201518184015260208101905061005d565b50505050905090810190601f1680156100a55780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101495780601f1061011e57610100808354040283529160200191610149565b820191906000526020600020905b81548152906001019060200180831161012c57829003601f168201915b50505050508156fea265627a7a7231582028f34fd4275386f29f3140434e1b843c2f7e6acba39edd2ee4a6ee37214b421e64736f6c63430005100032",
-  "sourceMap": "27:72:2:-;;;50:45;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;27:72;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:72:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
-  "deployedSourceMap": "27:72:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:72:2;;;;;;;;;;;;;;;;;;;50:45;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;50:45:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract ethSwap {\r\n   string public name= \"eth Swap Token Exchange\";\r\n}\r\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract bibaToken\",\"name\":\"_token\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract bibaToken\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/ethSwap.sol\":\"ethSwap\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/bibaToken.sol\":{\"keccak256\":\"0x3a5c937b4f9738cb0def5c0c22df08470978a848c48484c065ff1e16b2238093\",\"urls\":[\"bzz-raw://75df68168ce8f85444e7bf72dd829fe3ecf1c4bdab30717b346580daeec7f07e\",\"dweb:/ipfs/QmQXnDaJKaBMTc7zTTFFtzwiYuPgK9XrfgQUZneYgmbrwB\"]},\"/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/ethSwap.sol\":{\"keccak256\":\"0x89995003f7b80e2fb84c98c0e3a2cfbf73bec22cc8d4f95bfa57ccaa44bd0e5c\",\"urls\":[\"bzz-raw://051d51b6b09f144f715abeb9ece87216bd4b29ad3ccb02e9ed9112d038173175\",\"dweb:/ipfs/QmXDNafP6ohGGMfKt6pRio8RAvxpzbKbD4DhNRsQrw8n4i\"]}},\"version\":1}",
+  "bytecode": "0x60806040526040518060400160405280601781526020017f657468205377617020546f6b656e2045786368616e67650000000000000000008152506000908051906020019061004f9291906100d7565b5034801561005c57600080fd5b5060405161038c38038061038c8339818101604052602081101561007f57600080fd5b810190808051906020019092919050505080600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505061017c565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061011857805160ff1916838001178555610146565b82800160010185558215610146579182015b8281111561014557825182559160200191906001019061012a565b5b5090506101539190610157565b5090565b61017991905b8082111561017557600081600090555060010161015d565b5090565b90565b6102018061018b6000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c806306fdde031461003b578063fc0c546a146100be575b600080fd5b610043610108565b6040518080602001828103825283818151815260200191508051906020019080838360005b83811015610083578082015181840152602081019050610068565b50505050905090810190601f1680156100b05780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100c66101a6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561019e5780601f106101735761010080835404028352916020019161019e565b820191906000526020600020905b81548152906001019060200180831161018157829003601f168201915b505050505081565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea265627a7a72315820d8f448450299d09a490fdd891ec750b9ac7fa4ab3f46891737a44530e0e75c5364736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c806306fdde031461003b578063fc0c546a146100be575b600080fd5b610043610108565b6040518080602001828103825283818151815260200191508051906020019080838360005b83811015610083578082015181840152602081019050610068565b50505050905090810190601f1680156100b05780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100c66101a6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561019e5780601f106101735761010080835404028352916020019161019e565b820191906000526020600020905b81548152906001019060200180831161018157829003601f168201915b505050505081565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea265627a7a72315820d8f448450299d09a490fdd891ec750b9ac7fa4ab3f46891737a44530e0e75c5364736f6c63430005100032",
+  "sourceMap": "56:277:2:-;;;79:45;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;265:65;8:9:-1;5:2;;;30:1;27;20:12;5:2;265:65:2;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;265:65:2;;;;;;;;;;;;;;;;317:6;309:5;;:14;;;;;;;;;;;;;;;;;;265:65;56:277;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "56:277:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;56:277:2;;;;;;;;;;;;;;;;;;;;;;;;79:45;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;79:45:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;235:22;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;79:45;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;235:22::-;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\nimport \"./bibaToken.sol\";\r\n\r\ncontract ethSwap {\r\n   string public name= \"eth Swap Token Exchange\";\r\n   // creates a instance of bibaToken smart contract as token on which we can call methods of bibaToken\r\n   bibaToken public token;\r\n\r\n   constructor(bibaToken _token) public{\r\n     token = _token;\r\n   }\r\n}\r\n",
   "sourcePath": "C:\\Users\\devsu\\Desktop\\Full_Stack_Projects\\Full_Stack_Projects\\crypto_curr_exchange_app\\src\\contracts\\ethSwap.sol",
   "ast": {
     "absolutePath": "/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/ethSwap.sol",
     "exportedSymbols": {
       "ethSwap": [
-        243
+        256
       ]
     },
-    "id": 244,
+    "id": 257,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -46,25 +73,36 @@
         "src": "0:23:2"
       },
       {
+        "absolutePath": "/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/bibaToken.sol",
+        "file": "./bibaToken.sol",
+        "id": 240,
+        "nodeType": "ImportDirective",
+        "scope": 257,
+        "sourceUnit": 238,
+        "src": "27:25:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 243,
+        "id": 256,
         "linearizedBaseContracts": [
-          243
+          256
         ],
         "name": "ethSwap",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 242,
+            "id": 243,
             "name": "name",
             "nodeType": "VariableDeclaration",
-            "scope": 243,
-            "src": "50:45:2",
+            "scope": 256,
+            "src": "79:45:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -72,10 +110,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 240,
+              "id": 241,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "50:6:2",
+              "src": "79:6:2",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -84,14 +122,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "657468205377617020546f6b656e2045786368616e6765",
-              "id": 241,
+              "id": 242,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "70:25:2",
+              "src": "99:25:2",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_a6de79d358c072283253253e51844a46609c054accd972f207a33f43a6e62dd7",
@@ -100,22 +138,158 @@
               "value": "eth Swap Token Exchange"
             },
             "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 245,
+            "name": "token",
+            "nodeType": "VariableDeclaration",
+            "scope": 256,
+            "src": "235:22:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_bibaToken_$237",
+              "typeString": "contract bibaToken"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 244,
+              "name": "bibaToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 237,
+              "src": "235:9:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_bibaToken_$237",
+                "typeString": "contract bibaToken"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 254,
+              "nodeType": "Block",
+              "src": "301:29:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 252,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 250,
+                      "name": "token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 245,
+                      "src": "309:5:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_bibaToken_$237",
+                        "typeString": "contract bibaToken"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 251,
+                      "name": "_token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 247,
+                      "src": "317:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_bibaToken_$237",
+                        "typeString": "contract bibaToken"
+                      }
+                    },
+                    "src": "309:14:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_bibaToken_$237",
+                      "typeString": "contract bibaToken"
+                    }
+                  },
+                  "id": 253,
+                  "nodeType": "ExpressionStatement",
+                  "src": "309:14:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 255,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 248,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 247,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 255,
+                  "src": "277:16:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_bibaToken_$237",
+                    "typeString": "contract bibaToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 246,
+                    "name": "bibaToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 237,
+                    "src": "277:9:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_bibaToken_$237",
+                      "typeString": "contract bibaToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "276:18:2"
+            },
+            "returnParameters": {
+              "id": 249,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "301:0:2"
+            },
+            "scope": 256,
+            "src": "265:65:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
           }
         ],
-        "scope": 244,
-        "src": "27:72:2"
+        "scope": 257,
+        "src": "56:277:2"
       }
     ],
-    "src": "0:101:2"
+    "src": "0:335:2"
   },
   "legacyAST": {
     "absolutePath": "/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/ethSwap.sol",
     "exportedSymbols": {
       "ethSwap": [
-        243
+        256
       ]
     },
-    "id": 244,
+    "id": 257,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -130,25 +304,36 @@
         "src": "0:23:2"
       },
       {
+        "absolutePath": "/C/Users/devsu/Desktop/Full_Stack_Projects/Full_Stack_Projects/crypto_curr_exchange_app/src/contracts/bibaToken.sol",
+        "file": "./bibaToken.sol",
+        "id": 240,
+        "nodeType": "ImportDirective",
+        "scope": 257,
+        "sourceUnit": 238,
+        "src": "27:25:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 243,
+        "id": 256,
         "linearizedBaseContracts": [
-          243
+          256
         ],
         "name": "ethSwap",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 242,
+            "id": 243,
             "name": "name",
             "nodeType": "VariableDeclaration",
-            "scope": 243,
-            "src": "50:45:2",
+            "scope": 256,
+            "src": "79:45:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -156,10 +341,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 240,
+              "id": 241,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "50:6:2",
+              "src": "79:6:2",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -168,14 +353,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "657468205377617020546f6b656e2045786368616e6765",
-              "id": 241,
+              "id": 242,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "string",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "70:25:2",
+              "src": "99:25:2",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_stringliteral_a6de79d358c072283253253e51844a46609c054accd972f207a33f43a6e62dd7",
@@ -184,13 +369,149 @@
               "value": "eth Swap Token Exchange"
             },
             "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 245,
+            "name": "token",
+            "nodeType": "VariableDeclaration",
+            "scope": 256,
+            "src": "235:22:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_bibaToken_$237",
+              "typeString": "contract bibaToken"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 244,
+              "name": "bibaToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 237,
+              "src": "235:9:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_bibaToken_$237",
+                "typeString": "contract bibaToken"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 254,
+              "nodeType": "Block",
+              "src": "301:29:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 252,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 250,
+                      "name": "token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 245,
+                      "src": "309:5:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_bibaToken_$237",
+                        "typeString": "contract bibaToken"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 251,
+                      "name": "_token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 247,
+                      "src": "317:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_bibaToken_$237",
+                        "typeString": "contract bibaToken"
+                      }
+                    },
+                    "src": "309:14:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_bibaToken_$237",
+                      "typeString": "contract bibaToken"
+                    }
+                  },
+                  "id": 253,
+                  "nodeType": "ExpressionStatement",
+                  "src": "309:14:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 255,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 248,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 247,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 255,
+                  "src": "277:16:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_bibaToken_$237",
+                    "typeString": "contract bibaToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 246,
+                    "name": "bibaToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 237,
+                    "src": "277:9:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_bibaToken_$237",
+                      "typeString": "contract bibaToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "276:18:2"
+            },
+            "returnParameters": {
+              "id": 249,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "301:0:2"
+            },
+            "scope": 256,
+            "src": "265:65:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
           }
         ],
-        "scope": 244,
-        "src": "27:72:2"
+        "scope": 257,
+        "src": "56:277:2"
       }
     ],
-    "src": "0:101:2"
+    "src": "0:335:2"
   },
   "compiler": {
     "name": "solc",
@@ -200,12 +521,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x9c2B8A61887B73AF2c81fd2C5D0B5C7fBdf5D125",
-      "transactionHash": "0xc8bf5a67c41af4e2fd91cc6e4970982bb88586ffff5187674f88ece5981a2684"
+      "address": "0xfEaEd1CC20Bf3b15e5D66Df273C10aCc507D10d0",
+      "transactionHash": "0x592903d7606bef4d50ec52f2001939efefea10cd98ae6682998e8483c5584e44"
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2021-06-02T07:29:27.435Z",
+  "updatedAt": "2021-06-03T07:40:36.554Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

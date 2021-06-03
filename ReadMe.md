@@ -183,7 +183,7 @@ https://www.youtube.com/watch?v=99pYGpTWcXM
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
 
-timestamp - 38 bibaToken to code out the buy token functionality
+timestamp - 102 buy token in ethSwap
 ===========================================================
 > ### First Look
 > ### Features

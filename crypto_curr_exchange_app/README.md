@@ -17,7 +17,8 @@
   - [x] each migrations have artifacts these artifacts are basically javascript version of the smart contract.
 - [x] Ethereum allows to create our own cryptocurrency without creating blockchain i.e we can write a SC to govern our own cryptocurrency via ERC 20 token. https://ethereum.org/en/developers/docs/standards/tokens/erc-20/
 - [x] Sources for cryptocurrency https://coinmarketcap.com/ , https://etherscan.io/
-
+- [x] the blockchain and solidity their are two type of variables state variables(defined as public) which are technically stored on the blockchain and gives us a automatic caller function to access them and local variable _ starting with underscore that does not get stored on the blockchain.
+- [x] constructor is automatically called when we migrate contract.
 
 ***
 > ### NOTE'S FROM DEVELOPER END's Here

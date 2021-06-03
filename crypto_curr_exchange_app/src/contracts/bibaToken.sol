@@ -4,7 +4,7 @@ contract bibaToken {
     string  public name = "biba Token";
     string  public symbol = "BBT";
     uint256 public totalSupply = 1000000000000000000000000; // 1 million tokens
-    uint8   public decimals = 18;
+    uint8   public decimals = 18; // to express in the smallest subdivisions i.e 18 zeros after decimals
 
     event Transfer(
         address indexed _from,
