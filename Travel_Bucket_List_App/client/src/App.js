@@ -39,6 +39,37 @@ const App=() => {
   const [subDivision,setsubDivision]=useState();
   const [locDescription,setlocDescription]=useState();
 
+  // function to handle marker drag
+  const dragEnd=async(e)=>{
+    //console.log('Ended dragging the marker at');
+    //console.log(e.lngLat[0]);
+    // update the marker latitude longitude props via useState
+    const [longitude,latitude]=e.lngLat;
+    setAddEntryLocation({
+      latitude,
+      longitude
+    });
+    getLocation(latitude,longitude)
+    .then(
+      (data)=>{
+        const locDetails={
+          continent:data.continent,
+          country:data.countryName,
+          subdivision:data.principalSubdivision,
+          locdescription:data.localityInfo
+        }
+        //console.log(data);
+        //console.log(locDetails.locdescription.informative[1].name+','+locDetails.locdescription.informative[1].description+','+locDetails.locdescription.administrative[1].description+','+locDetails.locdescription.administrative[2].name);
+        setLoc(locDetails.country);
+        setsubDivision(locDetails.subdivision);
+        setlocDescription(locDetails.locdescription.informative[1].name+','+locDetails.locdescription.informative[1].description+','+locDetails.locdescription.administrative[1].description+','+locDetails.locdescription.administrative[2].name);
+      }
+    )
+    .catch(
+      (err)=>{console.log(err)}
+    );
+  }
+
   // function to refresh all the map component on the map after new marker by user via form is added on the map.
   const getEntries=async()=>{
     const logEntries=await listLogEntries();
@@ -179,6 +210,8 @@ const App=() => {
        <Marker
         latitude={addEntryLocation.latitude}
         longitude={addEntryLocation.longitude}
+        draggable={true}
+        onDragEnd={dragEnd}
         >
         <div>
 

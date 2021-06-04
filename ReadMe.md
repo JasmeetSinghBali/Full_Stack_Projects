@@ -34,14 +34,16 @@
 > #### Updates 1.2 (deployed)
 - [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed and stored in DB :)
 - [x] thumbnail(rounded) modified for pop ups travel log on map
-- [x] added image moderation for offensive/nude/weapon/drugs or other unacceptable content detected client side.
+- [x] added image moderation for offensive/nude/weapon/drugs or other unacceptable content detected client side
 - [x] wrong filetype,size image upload check client side validation added.
 - [x] App icon updated
 - [x] Basic Universal API key for making new travel entries backend verification added
-- [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop.
-- [x] Added mark my location on map feature with toggle via mapbox api component GeolocateControl.
+- [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop
+- [x] Added mark my location on map feature with toggle via mapbox api component GeolocateControl
 - [x] Added IP tracking for flagged users via https://www.bigdatacloud.com/ip-geolocation-apis
-- [x] Deployed backend & frontend at vercel/now.sh with mongoDB.
+- [x] Added Draggable Marker
+- [x] now duplicated type of travel allowed removed restrictions on title/type of travel at backend.
+- [x] Deployed backend & frontend at vercel/now.sh with mongoDB
 
 ***
 
@@ -73,6 +75,7 @@
 - [x] react-map-gl (to use mapbox maps via accesstoken in react)
 - [x] react-hook-form https://react-hook-form.com/
 - [x] bigdatacloud API https://www.bigdatacloud.com/
+- [x] express-rate-limiter , rate-limit-mongo (API rate limiters)
 - [ ] multer & multer storage cloudinary to handle multipart/form-data and upload images to cloudinary (backend).
 
 
@@ -124,6 +127,7 @@ refer-https://react-hook-form.com/
     - [ ] Make the form responsive for mobile view
     - [ ] flash messages for the UI/UX Logging in ,Signing Up,Log entry created success or error occured. refer books api
     - [ ] set up proper validation with JOI for inputs and all routes edit,delete,signup,login to avoid dummy data,foul language data.
+    - [x] Added Draggable marker.
     - [x] image moderation for no nude/voilence/disturbing/raw content.
     https://dashboard.sightengine.com/getstarted
     - [x] added danger message when image is flagged and automatic removal of submit button.
@@ -153,6 +157,7 @@ refer-https://react-hook-form.com/
    - [ ] Protect the map displaying routes only show it to the logged in user and only allow the user to make a marker if he/she verifies email.
    - [ ] save the morgan generated logs in database or local storage to know who visited kinda security/debugging.
  refer https://www.npmjs.com/package/morgan dual logging in apache format and uuid to each request section.
+   - [x] Added Rate Limiters for Mongo and Post new travel entry.
    - [x] capture IP's of the flagged user and store in DB. via bigdata cloud Ip geolocation API.
 ***
 
@@ -163,10 +168,10 @@ refer-https://react-hook-form.com/
 
 > #### Issues !!
 - [ ] image upload via backend not completed yet , the object imagesStringArray gets destroyed when it reaches backend.
-- [ ] logentries.map, Operation `logsentries.find()` buffering timed out after 10000ms is not a function sometimes Mongoose throws error buffering timed out need to handle the error to avoid the breaking of the entire application.
 - [ ] when user types long string without spaces in textbox the textbox overflows when we view it in pop up.
 https://stackoverflow.com/questions/1731190/check-if-a-string-has-white-space
 - [ ] Need to address the situation where user type space, tabs etc in the textbox https://stackoverflow.com/questions/1172206/how-to-check-if-a-text-is-all-white-space-characters-in-client-side/1173854
+- [x] logentries.map, Operation `logsentries.find()` buffering timed out after 10000ms is not a function sometimes Mongoose throws error buffering timed out need to handle the error to avoid the breaking of the entire application.Solution applied rate limiter for the post request of new travel entry via express-rate-limiter per IP can now request after 10 seconds delay only once.
 - [x] transpilation issue by babel in react with mapboxgl due to incompatibility of react-mab-gl with babel/webpack resolved by explicitly mentioning to not transpile that bundle that caused error and instead use worker loader to transpile that error causing bundle.
 refer:https://github.com/mapbox/mapbox-gl-js/issues/10173
 - [x] Multipart boundry not found while sending image in body to backend. Solved: just remove the headers part where u mention content-type:multipart/formData
