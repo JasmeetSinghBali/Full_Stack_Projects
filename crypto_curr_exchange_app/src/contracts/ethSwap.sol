@@ -9,12 +9,20 @@ contract ethSwap {
    uint public rate = 100;
 
    // event tokenPurchased
-   event TokenPurchased(
+   event TokensPurchased(
      address account,
      address token,
      uint amount,
      uint rate
      );
+
+    // event tokensSold
+    event TokensSold(
+      address account,
+      address token,
+      uint amount,
+      uint rate
+      );
 
    constructor(bibaToken _token) public{
      token = _token;
@@ -34,6 +42,29 @@ contract ethSwap {
     token.transfer(msg.sender,tokenAmount);
 
     // Emit an event that token was purchase
-    emit TokenPurchased(msg.sender, address(token),tokenAmount,rate);
+    emit TokensPurchased(msg.sender, address(token),tokenAmount,rate);
+   }
+
+   // when this function executes ether is send to the msg.sender i.e the account which calls this function
+   function sellTokens(uint _amount) public{
+
+     // Explicit requirement User cannot sell more token that they have
+     // however ERC-20 token automatically does us for that this is optional
+     require(token.balanceOf(msg.sender)>=_amount);
+
+     // Calculate the amount of ether to redeem
+     uint etherAmount = _amount / rate;
+
+     // make sure EthSwap has enough Ether
+     require(address(this).balance>=etherAmount);
+
+     // Perform Sale
+     // spend tokens on behalf of a account we use ERC-20 transferFrom function and approve
+     token.transferFrom(msg.sender,address(this),_amount);
+     // msg.sender is the person or account calling this sellTokens function
+     msg.sender.transfer(etherAmount);
+
+     // emit soldtoken event
+     emit TokensSold(msg.sender,address(token),_amount,rate);
    }
 }

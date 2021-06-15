@@ -51,8 +51,8 @@ contract('ethSwap',([deployer,investor])=>{
       assert.equal(balance.toString(),tokens('1000000'));
     })
   })
-
-  describe('buytokens',async()=>{
+  // test cases for buytokens
+  describe('buyTokens()',async()=>{
     let result;
 
     before(async()=>{
@@ -77,12 +77,53 @@ contract('ethSwap',([deployer,investor])=>{
       // history of the buytoken() function execution
       console.log(result.logs[0].args);
 
+      // event check for tokenPurchase
       const event=result.logs[0].args;
       assert.equal(event.account,investor);
       assert.equal(event.token,token.address);
       assert.equal(event.amount.toString(),tokens('100').toString());
       assert.equal(event.rate.toString(),'100');
 
+    })
+  })
+
+  // test for sell tokens
+  describe('sellTokens()',async()=>{
+    let result;
+
+    before(async()=>{
+      // the investor must approve the purchase
+      await token.approve(EthSwap.address,tokens('100'),{ from:investor })
+      //investor sell the tokens
+      result=await EthSwap.sellTokens(tokens('100'),{from:investor});
+    })
+    it('allows user to sell tokens to EthSwap for a fixed price',async()=>{
+      // check investor reveives token after purchase
+      let investorBalance=await token.balanceOf(investor);
+      console.log(`Investor Account i.e account[1] 2nd account in Ganache has:${investorBalance.toString()}`);
+      assert.equal(investorBalance.toString(), tokens('0'));
+
+      // check ethswapbalance after sell for the account[0] admin account
+      let ethSwapBalance;
+      ethSwapBalance=await token.balanceOf(EthSwap.address);
+      console.log(`Now Deployer account[0] admin first account of ganache has ${ethSwapBalance.toString()}`)
+      assert.equal(ethSwapBalance.toString(),tokens('1000000'));
+      ethSwapBalance=await web3.eth.getBalance(EthSwap.address);
+      console.log(`Eth Swap Exchange made was of:${ethSwapBalance} Ether`);
+      assert.equal(ethSwapBalance.toString(),web3.utils.toWei('0','Ether'));
+
+      // history of the buytoken() function execution
+      console.log(result.logs[0].args);
+
+      // event check for tokenSold
+      const event=result.logs[0].args;
+      assert.equal(event.account,investor);
+      assert.equal(event.token,token.address);
+      assert.equal(event.amount.toString(),tokens('100').toString());
+      assert.equal(event.rate.toString(),'100');
+
+      // FAILURE TEST: investor cannot sell more token than they have
+      await EthSwap.sellTokens(tokens('500'), {from:investor}).should.be.rejected;
     })
   })
 

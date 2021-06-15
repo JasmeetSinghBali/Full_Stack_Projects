@@ -19,8 +19,13 @@
 - [x] Sources for cryptocurrency https://coinmarketcap.com/ , https://etherscan.io/
 - [x] the blockchain and solidity their are two type of variables state variables(defined as public) which are technically stored on the blockchain and gives us a automatic caller function to access them and local variable _ starting with underscore that does not get stored on the blockchain.
 - [x] constructor is automatically called when we migrate contract.
-
+- [x] require() in solidity makes sure that the function keeps on executing if and only if the value inside require is evaluated to true otherwise stop the execution of the current function.
+- [x] note that approve() has to be called upon token before executing the sellToken function a/c  to ERC-20 Token Standards.
+- [x] Invalid opcode go to truffle-config.js and add evmVersion:"petersburg"
+- [x] make sure to truffle migrate --reset before proceeding with the frontend part of the application.
 ***
+- [x] to make use componentWillMount and other class based methods react hooks provide a way to do this via ComponentOne()
+refer https://www.geeksforgeeks.org/how-to-use-componentwillmount-in-react-hooks/#:~:text=in%20a%20hook%20based%20component,in%20the%20official%20React%20Docs.
 > ### NOTE'S FROM DEVELOPER END's Here
 ***
 

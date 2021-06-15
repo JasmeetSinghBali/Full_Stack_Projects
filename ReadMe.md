@@ -188,7 +188,8 @@ https://www.youtube.com/watch?v=99pYGpTWcXM
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
 
-timestamp - 127  sell token
+timestamp - 202  load blockchain data in app react & store in react state(temorary objects acting like database)
+
 ===========================================================
 > ### First Look
 > ### Features
@@ -232,20 +233,20 @@ timestamp - 127  sell token
 
 - [x] Set up basic boilerplate, project folders, Install dependencies
 - [x] Set Up a Blockchain.
-- [ ] Write 2 Smart Contracts
+- [x] Write 2 Smart Contracts
    - [x] Creating our own token / cryptocurrency
-   - [ ] For swapping tokens/exchange
-- [ ] Write Tests for Smart Contracts
-   - [ ] test for Buy tokens SC
-   - [ ] test for Sell tokens SC
+   - [x] For swapping tokens/exchange
+- [x] Write Tests for Smart Contracts
+   - [x] test for Buy tokens SC
+   - [x] test for Sell tokens SC
 - [ ] Build Client Side Appplication/website/webApp
+   - [x] Connect Browser to Blockchain via Metamask with Ethereum Wallets by setting up Custom RPC.
+   - [ ] Connect App to Blockchain via web3.js by connecting to the expose etherium provider exposed by metamask when metamask connects to blockchain.
 - [ ] Deploy
 
 ***
 > ### Future Improvements in UI or backend
 
 ***
-> ### Some Important Facts
-- [x] require() in solidity makes sure that the function keeps on executing if and only if the value inside require is evaluated to true otherwise stop the execution of the current function.
 
 > ### Issues !!
