@@ -188,7 +188,7 @@ https://www.youtube.com/watch?v=99pYGpTWcXM
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
 
-timestamp - 202  load blockchain data in app react & store in react state(temorary objects acting like database)
+timestamp - 226  store the token and implement buy token
 
 ===========================================================
 > ### First Look
@@ -241,7 +241,10 @@ timestamp - 202  load blockchain data in app react & store in react state(temora
    - [x] test for Sell tokens SC
 - [ ] Build Client Side Appplication/website/webApp
    - [x] Connect Browser to Blockchain via Metamask with Ethereum Wallets by setting up Custom RPC.
-   - [ ] Connect App to Blockchain via web3.js by connecting to the expose etherium provider exposed by metamask when metamask connects to blockchain.
+   - [x] Connect App to Blockchain via web3.js by connecting to the expose etherium provider exposed by metamask when metamask connects to blockchain.
+   - [ ] build buy token and sell token frontends by importing the abis ethswap.json directly to frontend.
+      - [x] what are abis - The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification.
+      - [x] abi helps to make javascript function of the smart contract.
 - [ ] Deploy
 
 ***

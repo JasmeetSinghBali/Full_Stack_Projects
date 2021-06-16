@@ -1,9 +1,13 @@
 //import logo from './logo.svg';
 import React,{Component} from 'react';
 import Web3 from 'web3';
+import Nav from './Nav';
 import './App.css';
-import Navbar from 'react-bootstrap/Navbar';
-//import logo from '../eth.jpg';
+
+// importing abis from smart contracts
+import bibaToken from '../abis/bibaToken.json'
+import ethSwap from '../abis/ethSwap.json'
+
 
 
 class App extends Component {
@@ -20,7 +24,35 @@ class App extends Component {
      const web3 =window.web3;
      // fetch the account to which metamask is connected to
      const accounts=await web3.eth.getAccounts();
-     console.log(accounts[0]);
+     //console.log(accounts[0]);
+     //set the account state to first account of ganache
+     this.setState({account:accounts[0]});
+     //console.log(this.state.account);
+
+     const ethBalance = await web3.eth.getBalance(this.state.account);
+     // if same name and value then only name is enoguh
+     this.setState({ethBalance});
+
+     // Load Token
+     // import the smart contracts and make their function accessible
+     //new web3.eth.Contract(jsonInterface,address,options);
+     //const abi = bibaToken.abi;
+     // get network id via metamask dynamically
+     const networkId = await web3.eth.net.getId();// returns 5777 automatically for ganache
+     const tokenData=bibaToken.networks[networkId];
+     // it would be in networks->ganache network id->address from bibaToken.json
+     //const address= bibaToken.networks[networkId].address;
+     // token has the javascript version of smart contract
+     //const token = new web3.eth.Contract(abi,address);
+     //console.log(token);
+     if(tokenData){
+       const token = new web3.eth.Contract(bibaToken.abi,tokenData.address);
+       //console.log(token);
+       this.setState({token});
+     }else{
+       window.alert('bibaToken contract is not deployed to the detected network.');
+     }
+
    }
 
 
@@ -40,18 +72,20 @@ class App extends Component {
       window.alert('Non-Ethereum browser detected.You Should consider trying MetaMask!');
     }
   }
+  // react state management
+  constructor(props){
+    super(props);
+    this.state={
+      account: '',
+      token: {},
+      ethBalance: '0'
+    };
+  }
+
   render(){
     return (
       <div className="App">
-      <Navbar>
-        <Navbar.Brand href="#homelandingpage">💰 Crypto ₿ay</Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-          Signed in as: <a href="#userpage">Mark Otto</a>
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Navbar>
+        <Nav account={this.state.account}/>
         <h1>Welcome to Crypto ₿ay 🏦 </h1>
         <br />
 
