@@ -1,7 +1,12 @@
-//import logo from './logo.svg';
 import React,{Component} from 'react';
 import Web3 from 'web3';
+
+// importing React Components
 import Nav from './Nav';
+import Main from './Main';
+import Loader from './Loader';
+
+// importing styles
 import './App.css';
 
 // importing abis from smart contracts
@@ -33,7 +38,7 @@ class App extends Component {
      // if same name and value then only name is enoguh
      this.setState({ethBalance});
 
-     // Load Token
+     // Load bibaToken SC
      // import the smart contracts and make their function accessible
      //new web3.eth.Contract(jsonInterface,address,options);
      //const abi = bibaToken.abi;
@@ -49,10 +54,24 @@ class App extends Component {
        const token = new web3.eth.Contract(bibaToken.abi,tokenData.address);
        //console.log(token);
        this.setState({token});
+       let tokenBalance = await token.methods.balanceOf(this.state.account).call();
+       //console.log("Token Balance:",tokenBalance.toString());
+       this.setState({tokenBalance:tokenBalance.toString()});
      }else{
        window.alert('bibaToken contract is not deployed to the detected network.');
      }
 
+     // Load ethSwap SC
+     const ethSwapData = ethSwap.networks[networkId];
+     if(ethSwapData){
+       const EthSwap = new web3.eth.Contract(ethSwap.abi,ethSwapData.address);
+       this.setState({EthSwap});
+     }else{
+       window.alert('ethSwap contract is not deployed to the detected network.');
+     }
+     //console.log(this.state.EthSwap);
+     // once all the smart contract are loaded then setloading state to false to remove the loader.
+     this.setState({loading:false});
    }
 
 
@@ -78,7 +97,10 @@ class App extends Component {
     this.state={
       account: '',
       token: {},
-      ethBalance: '0'
+      EthSwap:{},
+      ethBalance: '0',
+      tokenBalance: '0',
+      loading:true
     };
   }
 
@@ -86,9 +108,8 @@ class App extends Component {
     return (
       <div className="App">
         <Nav account={this.state.account}/>
-        <h1>Welcome to Crypto ₿ay 🏦 </h1>
-        <br />
-
+        <br/>
+        {this.state.loading?<Loader />:<Main />}
       </div>
     );
   }

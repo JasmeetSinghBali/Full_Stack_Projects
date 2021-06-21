@@ -27,6 +27,7 @@
 - [x] to make use componentWillMount and other class based methods react hooks provide a way to do this via ComponentOne()
 refer https://www.geeksforgeeks.org/how-to-use-componentwillmount-in-react-hooks/#:~:text=in%20a%20hook%20based%20component,in%20the%20official%20React%20Docs.
 - [x] Note the state is only managed for a single component it  cannot presist between different component on its own we have to pass down the state of one component like <Nav account={this.state.account}/> and in Nav component we can use this.props.account to access the state of App.js inside Nav.js.
+- [x] .call method via web3js is used to load data from blockchain and .send() to send data i.e load data to the blockchain.
 
 > ### NOTE'S FROM DEVELOPER END's Here
 ***
