@@ -1,10 +1,16 @@
 # Full Stack Projects Collection
-
+1-32
 > ### Status:
+****Working on Project 1 Version 1.3.0 & Project 2 version 1.0.0****
+
+> ### TO DO
 - [x] ****Project-1 Travel Bucket List ---****
    - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app/****
+   - [ ] ****Set Up Full Auth with reset password , verify email functionality.****
 - [ ] ****Project-2 Blockchain Currency Exchange App ----****
     - [x] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
+    - [x] ****Work on Smart Contracts ethSwap and bibaToken.****
+    - [ ] ****Build User Interface for Buy & Sell Token****
 
 ***
 
@@ -108,6 +114,10 @@
 - [x] Deploy backend (https://vercel.com/cli)now.sh(backend) & MongoDB(database)
 - [x] Deploy frontend React to vercel and set up cors origin and access so that backend and frontend part deployed can interact.
 
+- [ ] Version 1.3
+  - [ ] Auth setup full.
+  - [ ] Make the main home page auth protected.
+  - [ ] Register,login & verification via email
 
 > ### For Future Versions
 > #### Not Implemented Yet , For Version 2 & Extra's that can be added

@@ -1,40 +1,40 @@
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
+
 const { Schema } = mongoose;
 
-const requiredNumber={
+const requiredNumber = {
   type: Number,
-  required:true
-}
-
+  required: true,
+};
 
 const logSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: String,
   comments: String,
   rating: {
     type: String,
-    default: 'NaN'
+    default: 'NaN',
   },
   image: String,
-  latitude:{
+  latitude: {
     ...requiredNumber,
-    min:-90,
-    max:90
+    min: -90,
+    max: 90,
   },
-  longitude:{
+  longitude: {
     ...requiredNumber,
-    min:-180,
-    max:180
+    min: -180,
+    max: 180,
   },
-  visitDate:{
-    required:true,
-    type:Date,
-  }
-},{timestamps:true});
+  visitDate: {
+    required: true,
+    type: Date,
+  },
+}, { timestamps: true });
 
-const LogsEntry=mongoose.model('LogsEntry',logSchema);
+const LogsEntry = mongoose.model('LogsEntry', logSchema);
 
-module.exports=LogsEntry;
+module.exports = LogsEntry;
