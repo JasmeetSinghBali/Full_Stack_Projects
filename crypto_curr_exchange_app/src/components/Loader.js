@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import spinner from './spinner.gif'
+import spinner from './spinner.gif';
 
 class Loader extends Component {
 

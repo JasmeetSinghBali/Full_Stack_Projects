@@ -1,4 +1,3 @@
-//import logo from './logo.svg';
 import React,{Component} from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Identicon from 'identicon.js';
@@ -9,7 +8,7 @@ class Nav extends Component {
   render(){
     return (
       <div className="App">
-      <Navbar bg="dark" variant="dark">
+      <Navbar fixed="top" bg="light" variant="light">
         <Navbar.Brand href="#homelandingpage">💰 Crypto ₿ay</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">

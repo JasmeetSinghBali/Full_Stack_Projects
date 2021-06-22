@@ -3,8 +3,11 @@ import Web3 from 'web3';
 
 // importing React Components
 import Nav from './Nav';
-import Main from './Main';
 import Loader from './Loader';
+import Main from './Main';
+// import chart component that visualizes exchange rates from nomics api
+import Chart from './Chart';
+
 
 // importing styles
 import './App.css';
@@ -106,14 +109,39 @@ class App extends Component {
 
   render(){
     return (
-      <div className="App">
+      <div>
         <Nav account={this.state.account}/>
-        <br/>
-        {this.state.loading?<Loader />:<Main />}
+        <div className="container-fluid mt-5">
+          <div className="row">
+            <main role="main" className="col-lg-12 d-flex text-center" style={{maxWidth:'600px'}}>
+              <div className="content mr-auto ml-auto">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                </a>
+                <br/>
+                <br/>
+                {this.state.loading?<Loader />:
+                  <Main
+                   ethBalance={this.state.ethBalance}
+                   tokenBalance={this.state.tokenBalance} />
+                 }
+              </div>
+            </main>
+             {/*========== Fetch Data From Nomics API and showing the exchange rates ==========
+             <chart role="chart" className="col-lg-12 ml-auto" style={{maxWidth:'600px'}}>
+              <br/>
+              <br/>
+              {this.state.loading?<Loader />:<Chart />}
+             </chart>
+             */}
+          </div>
+        </div>
       </div>
     );
   }
-
 }
 
 export default App;

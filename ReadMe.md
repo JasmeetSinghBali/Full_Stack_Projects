@@ -198,7 +198,7 @@ https://www.youtube.com/watch?v=99pYGpTWcXM
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
 
-timestamp - 235  work on User Interface
+timestamp - 240  work on User Interface
 
 ===========================================================
 > ### First Look
