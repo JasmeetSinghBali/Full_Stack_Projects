@@ -1,12 +1,12 @@
 # Full Stack Projects Collection
-1-32
+1-43
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & Project 2 version 1.0.0****
 
 > ### TO DO
 - [x] ****Project-1 Travel Bucket List ---****
    - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app/****
-   - [ ] ****Set Up Full Auth with reset password , verify email functionality.****
+   - [ ] ****Version 1.3 Set Up Full Auth with reset password , verify email functionality.****
 - [ ] ****Project-2 Blockchain Currency Exchange App ----****
     - [x] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
     - [x] ****Work on Smart Contracts ethSwap and bibaToken.****
@@ -68,7 +68,7 @@
 - [x] Mapbox
 - [x] Cloudinary
 - [x] sightengine
-
+- [x] sendgrid
 
 > #### Core dependancies
 
@@ -118,6 +118,7 @@
   - [ ] Auth setup full.
   - [ ] Make the main home page auth protected.
   - [ ] Register,login & verification via email
+     - [x] set up sendgrid config and get api key
 
 > ### For Future Versions
 > #### Not Implemented Yet , For Version 2 & Extra's that can be added
