@@ -1,5 +1,6 @@
 # Full Stack Projects Collection
-1-43
+1-103(need to set up oauth for google sign in )
+1036(to style the sign up page)
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & Project 2 version 1.0.0****
 
