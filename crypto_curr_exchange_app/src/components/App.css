@@ -21,3 +21,8 @@
   position: relative;
   background-attachment: fixed;
 }
+
+.dev{
+  font-family: 'Lobster', cursive;
+  color: purple;
+}

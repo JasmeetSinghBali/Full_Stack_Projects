@@ -115,11 +115,13 @@ class App extends Component {
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center" style={{maxWidth:'600px'}}>
               <div className="content mr-auto ml-auto">
+                <br/>
+                <h3 className="dev">developed by</h3>
                 <a
-                  href="#"
+                  href="https://github.com/Jasmeet-1998"
                   target="_blank"
                   rel="noopener noreferrer"
-                >
+                >🐱‍🚀JassiBali
                 </a>
                 <br/>
                 <br/>
@@ -130,13 +132,22 @@ class App extends Component {
                  }
               </div>
             </main>
-             {/*========== Fetch Data From Nomics API and showing the exchange rates ==========
+             {/*========== Fetch Data From Nomics API and showing the exchange rates ==========*/}
+
              <chart role="chart" className="col-lg-12 ml-auto" style={{maxWidth:'600px'}}>
+             <br/>
+             <h3 className="dev">powered by</h3>
+             <a
+               href="https://p.nomics.com/cryptocurrency-bitcoin-api"
+               target="_blank"
+               rel="noopener noreferrer"
+             >🐱Nomics API
+             </a>
               <br/>
               <br/>
               {this.state.loading?<Loader />:<Chart />}
              </chart>
-             */}
+
           </div>
         </div>
       </div>

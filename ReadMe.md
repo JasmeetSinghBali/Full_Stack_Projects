@@ -194,12 +194,16 @@ refer:https://github.com/mapbox/mapbox-gl-js/issues/10173
 
 > ## Project - 2 Blockchain buy/sell tokens Smart Contract with Client Side Application
 
+> #### Pending:
+****Need to handle cors error from nomics api****
+**** https://stackoverflow.com/questions/63081183/handling-cors-from-a-thirdparty-api****
+
 https://www.youtube.com/watch?v=99pYGpTWcXM
 
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
 
-timestamp - 240  work on User Interface
+timestamp - 242  Wire up the User Interface to make the exchange.
 
 ===========================================================
 > ### First Look

@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import ethLogo from '../eth-logo.png';
 import tokenLogo from '../token-logo.png';
+import Button from 'react-bootstrap/Button';
 
 //import BuyForm from './BuyForm';
 //import SellForm from './SellForm';
@@ -11,7 +12,7 @@ import tokenLogo from '../token-logo.png';
 
 class Main extends Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state={
       currentForm:'buy'
     }
@@ -30,7 +31,7 @@ class Main extends Component {
           <div>
             <label className="float-left"><b>Input</b></label>
             <span className="float-right text-muted">
-              Balance: 0
+              Balance: {window.web3.utils.fromWei(this.props.ethBalance, 'Ether')}
             </span>
           </div>
           <div className="input-group mb-4">
@@ -49,7 +50,7 @@ class Main extends Component {
           <div>
             <label className="float-left"><b>Output</b></label>
             <span className="float-right text-muted">
-              Balance: 0
+              Balance: {window.web3.utils.fromWei(this.props.tokenBalance, 'Ether')}
             </span>
           </div>
           <div className="input-group mb-2">
@@ -71,7 +72,7 @@ class Main extends Component {
             <span className="float-left text-muted">Exchange Rate</span>
             <span className="float-right text-muted">1 ETH = 100 BIBT</span>
           </div>
-          <button type="submit" className="btn btn-primary btn-block btn-lg">SWAP!</button>
+          <Button type="submit" variant="outline-dark" block size="lg" >✨Trade✨</Button>
         </form>
         </div>
       </div>
