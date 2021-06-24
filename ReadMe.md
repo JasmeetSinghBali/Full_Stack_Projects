@@ -195,7 +195,7 @@ refer:https://github.com/mapbox/mapbox-gl-js/issues/10173
 
 > ## Project - 2 Blockchain buy/sell tokens Smart Contract with Client Side Application
 
-> #### Pending:
+Pending:
 ****Need to handle cors error from nomics api****
 **** https://stackoverflow.com/questions/63081183/handling-cors-from-a-thirdparty-api****
 
@@ -204,7 +204,7 @@ https://www.youtube.com/watch?v=99pYGpTWcXM
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
 
-timestamp - 242  Wire up the User Interface to make the exchange.
+
 
 ===========================================================
 > ### First Look
@@ -258,9 +258,12 @@ timestamp - 242  Wire up the User Interface to make the exchange.
 - [ ] Build Client Side Appplication/website/webApp
    - [x] Connect Browser to Blockchain via Metamask with Ethereum Wallets by setting up Custom RPC.
    - [x] Connect App to Blockchain via web3.js by connecting to the expose etherium provider exposed by metamask when metamask connects to blockchain.
-   - [ ] build buy token and sell token frontends by importing the abis ethswap.json directly to frontend.
+   - [x] build buy token and sell token frontends by importing the abis ethswap.json directly to frontend.
       - [x] what are abis - The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification.
       - [x] abi helps to make javascript function of the smart contract.
+- [ ] Work on nomics api key integeration.
+  - [ ] Work on cors localhost issue https://forums.nomics.com/t/localhost-cors-error/708.
+  - [ ] render a chart with exchange rates vs year data fetched from nomics.
 - [ ] Deploy
 
 ***

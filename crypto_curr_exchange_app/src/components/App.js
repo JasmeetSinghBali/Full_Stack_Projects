@@ -15,7 +15,7 @@ import './App.css';
 // importing abis from smart contracts
 import bibaToken from '../abis/bibaToken.json'
 import ethSwap from '../abis/ethSwap.json'
-
+import {ToastContainer,toast} from 'react-toastify';
 
 
 class App extends Component {
@@ -59,9 +59,14 @@ class App extends Component {
        this.setState({token});
        let tokenBalance = await token.methods.balanceOf(this.state.account).call();
        //console.log("Token Balance:",tokenBalance.toString());
+       if(!tokenBalance){
+         toast.error('The Smart Contracts are not migrated properly...');
+         return;
+       }
        this.setState({tokenBalance:tokenBalance.toString()});
      }else{
-       window.alert('bibaToken contract is not deployed to the detected network.');
+       toast.error('bibaToken contract is not deployed to the detected network.');
+       return;
      }
 
      // Load ethSwap SC
@@ -70,7 +75,7 @@ class App extends Component {
        const EthSwap = new web3.eth.Contract(ethSwap.abi,ethSwapData.address);
        this.setState({EthSwap});
      }else{
-       window.alert('ethSwap contract is not deployed to the detected network.');
+       toast.error('ethSwap contract is not deployed to the detected network.');
      }
      //console.log(this.state.EthSwap);
      // once all the smart contract are loaded then setloading state to false to remove the loader.
@@ -91,9 +96,30 @@ class App extends Component {
     }
     // if no metamask then give an alert
     else{
-      window.alert('Non-Ethereum browser detected.You Should consider trying MetaMask!');
+      toast.error('Non-Ethereum browser detected.You Should consider trying MetaMask!');
+      return;
     }
   }
+
+  // handle the smart contract to buy tokens
+  buyTokens=(etherAmount)=>{
+    // grabbing the instance for ethSwap Buy
+    this.setState({loading:true});
+    this.state.EthSwap.methods.buyTokens().send({value:etherAmount ,from:this.state.account}).on('transactionHash',(hash)=>{
+      this.setState({loading:false})
+    });
+  }
+  // handle the smart contract to sell tokens
+  sellTokens=(tokenAmount)=>{
+    // grabbing the instance for ethSwap Sell
+    this.setState({loading:true});
+    this.state.token.methods.approve(this.state.EthSwap.address,tokenAmount).send({ from:this.state.account }).on('transactionHash',(hash)=>{
+      this.state.EthSwap.methods.sellTokens(tokenAmount).send({ from:this.state.account }).on('transactionHash',(hash)=>{
+      this.setState({loading:false});
+      });
+    });
+  }
+
   // react state management
   constructor(props){
     super(props);
@@ -110,25 +136,22 @@ class App extends Component {
   render(){
     return (
       <div>
+        <ToastContainer />
         <Nav account={this.state.account}/>
         <div className="container-fluid mt-5">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center" style={{maxWidth:'600px'}}>
               <div className="content mr-auto ml-auto">
                 <br/>
-                <h3 className="dev">developed by</h3>
-                <a
-                  href="https://github.com/Jasmeet-1998"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >🐱‍🚀JassiBali
-                </a>
-                <br/>
-                <br/>
+                <h3 className="dev">✨NERS✨</h3>
+                <h4 className="dev">Node,Ethereum,React,Solidity</h4>
                 {this.state.loading?<Loader />:
                   <Main
                    ethBalance={this.state.ethBalance}
-                   tokenBalance={this.state.tokenBalance} />
+                   tokenBalance={this.state.tokenBalance}
+                   buyTokens={this.buyTokens}
+                   sellTokens={this.sellTokens}
+                   />
                  }
               </div>
             </main>
@@ -136,14 +159,13 @@ class App extends Component {
 
              <chart role="chart" className="col-lg-12 ml-auto" style={{maxWidth:'600px'}}>
              <br/>
-             <h3 className="dev">powered by</h3>
+             <h3 className="dev">🔧Under Construction🔧</h3>
              <a
                href="https://p.nomics.com/cryptocurrency-bitcoin-api"
                target="_blank"
                rel="noopener noreferrer"
-             >🐱Nomics API
+             >🐱Integration with Nomics API
              </a>
-              <br/>
               <br/>
               {this.state.loading?<Loader />:<Chart />}
              </chart>

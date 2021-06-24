@@ -4,12 +4,11 @@ import {getExchangeRates} from '../API.js';
 import {useForm} from 'react-hook-form';
 import {Alert,Card,Button} from 'react-bootstrap';
 import Loader from './Loader';
+import {ToastContainer,toast} from 'react-toastify';
 
 const Chart=() => {
 
   const [loading,setLoading]=useState(false);
-  const [errorMessage,setErrorMessage]=useState('');
-  const [show,setShow] = useState(true);
   const { register, handleSubmit } = useForm();
 
 
@@ -23,14 +22,17 @@ const Chart=() => {
       console.log('This is response from nomics');
       console.log(result);
     }catch(err){
-      setErrorMessage(`👻 Not able to fetch data from nomics please try again later..\n${err}`);
+      toast.error(`😕 Oh snap! 👻 Not able to fetch data from nomics please try again later..\n${err}`);
       console.log('Not able to fetch data from nomics,something Went Wrong...');
+      setLoading(false);
+      return;
     }
     setLoading(false);
   }
 
   return (
     <div>
+      <ToastContainer />
       {/*Ask for nomics key
       call the API endpoint
       display the response from nomics via chart*/}
@@ -47,7 +49,6 @@ const Chart=() => {
               <br/>
               <Button input type="submit" variant="outline-dark" block>Inspect Exchange Rates!</Button>
             </form>
-            {errorMessage?<Alert variant="danger" onClose={()=>setShow(false)} dismissible><Alert.Heading>😕 Oh snap!</Alert.Heading><p>{errorMessage}</p></Alert>:null}
           </Card.Text>
         </Card.Body>
       </Card>
