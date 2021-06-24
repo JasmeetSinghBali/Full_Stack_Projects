@@ -11,6 +11,7 @@ const errorHandler = (error, req, res, next) => {
 
   res.json(
     {
+      status: 'You have reached a dead end...💀',
       message: error.message,
       stack: process.env.NODE_ENV === 'production' ? '👻' : error.stack, // dont do this in production only for debugging purposes as in production a hacker may take advantage of the stack trace.
     },

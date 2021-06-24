@@ -51,7 +51,7 @@ app.use(cors({
 app.get('/api/docs', (req, res) => {
   res.json(
     {
-      success: true,
+      status: '🐱‍🚀 Good',
       message: 'Hello Sweety! ️✨✨',
       module: 'Backend API 🖥',
     },

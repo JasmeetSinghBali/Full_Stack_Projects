@@ -4,7 +4,7 @@ import {BrowserRouter,Route,Redirect,Switch} from'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Register from './Screens/Register.jsx';
+import Register from './Screens/Register.js';
 import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(

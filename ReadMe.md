@@ -11,7 +11,8 @@
 - [ ] ****Project-2 Blockchain Currency Exchange App ----****
     - [x] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
     - [x] ****Work on Smart Contracts ethSwap and bibaToken.****
-    - [ ] ****Build User Interface for Buy & Sell Token****
+    - [x] ****Build User Interface for Buy & Sell Token****
+    - [ ] Integrate nomics and deploy V1.0.0
 
 ***
 
