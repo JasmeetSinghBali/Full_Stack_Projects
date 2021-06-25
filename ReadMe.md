@@ -196,11 +196,9 @@ refer:https://github.com/mapbox/mapbox-gl-js/issues/10173
 
 > ## Project - 2 Blockchain buy/sell tokens Smart Contract with Client Side Application
 
-Pending:
-****Need to handle cors error from nomics api****
-**** https://stackoverflow.com/questions/63081183/handling-cors-from-a-thirdparty-api****
 
-https://www.youtube.com/watch?v=99pYGpTWcXM
+****Pending: To organize data from nomics  as visualization chart timestamp(x-axis) vs exchange rates(y-axis) and display it in my app.****
+
 
 Prerequisites:
   - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
@@ -209,8 +207,26 @@ Prerequisites:
 
 ===========================================================
 > ### First Look
+
+> #### CryptoBay Version 1.0.0 Token Buy/Sell Done
+
+****Nomics API Integration & chart under development****
+
+<img src="./project_images/first_look_cryptobay.png">
+
 > ### Features
+
+- [x] Exchange/Swap BIBT(biba token) an ERC-20 based crypto currency at a fixed rate
+with Ether.
+  - [x] Full test cases mocha and chai
+  - [x] Smart Contract Eth Swap to swap tokens
+  - [x] Smart Contract biba token to create my own crypto currency on basis of ERC-20 token standard.
+- [ ] Integeration with Nomics API to have analysis on exchange rates over time.
+  - [x] Fetch Nomics Exchange Rates
+  - [ ] Visualize & render them via a chart at frontend.
+
 > ### Updates/Versions
+- [ ] Version 1.0.0 Done & Deployed
 
 ============================================================
 
@@ -241,6 +257,10 @@ Prerequisites:
 - [x] babel https://babeljs.io/(Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.)
 - [x] react-bootstrap (for styles/UI/UX)
 
+> ### Other Dependencies
+
+- [x] Nomics API
+
 ***
 > ### Blueprint
 
@@ -256,14 +276,14 @@ Prerequisites:
 - [x] Write Tests for Smart Contracts
    - [x] test for Buy tokens SC
    - [x] test for Sell tokens SC
-- [ ] Build Client Side Appplication/website/webApp
+- [x] Build Client Side Appplication/website/webApp
    - [x] Connect Browser to Blockchain via Metamask with Ethereum Wallets by setting up Custom RPC.
    - [x] Connect App to Blockchain via web3.js by connecting to the expose etherium provider exposed by metamask when metamask connects to blockchain.
    - [x] build buy token and sell token frontends by importing the abis ethswap.json directly to frontend.
       - [x] what are abis - The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification.
       - [x] abi helps to make javascript function of the smart contract.
 - [ ] Work on nomics api key integeration.
-  - [ ] Work on cors localhost issue https://forums.nomics.com/t/localhost-cors-error/708.
+  - [x] Work on cors localhost issue https://forums.nomics.com/t/localhost-cors-error/708. just set &cors=true in the api request.
   - [ ] render a chart with exchange rates vs year data fetched from nomics.
 - [ ] Deploy
 
@@ -273,3 +293,4 @@ Prerequisites:
 ***
 
 > ### Issues !!
+- [x] Page do not reloads after successfull Buy/Sell transaction automatically,have to manually reload to see the changes in the Balance.
