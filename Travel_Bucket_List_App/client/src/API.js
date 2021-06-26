@@ -69,7 +69,7 @@ export async function addFlaggedUser(){
     const data = response.data;
     console.log(data);
     console.log('Flagging Your IP 👻👻');
-    const result=await fetch(`${API_URL}/api/add/flaggedUser`,{
+    const result=await fetch(`${API_URL}/api/tracked/flaggedUser`,{
       method:'POST',
       headers:{
         'Content-type':'application/json'

@@ -12,6 +12,13 @@ import LogEntryForm from './LogEntryForm';
 
 import {getLocation} from './API';
 
+// like,delete,tripledot for update
+import {Button} from '@material-ui/core';
+import Skeleton from '@material-ui/lab/Skeleton';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass=require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
@@ -183,7 +190,25 @@ const App=() => {
              anchor="top"
              sortByDepth={true} >
              <div className="popupmarked">
-               {!entry.image ? <Image src="http://anokha.world/images/not-found.png" alt="No Image was Uploaded for this entry!" rounded/>:<Image src={entry.image} alt={entry.title} rounded />}
+               <Button style={{color:'blue'}} size="small" onClick={()=>{}}>
+                <ThumbUpAltIcon fontSize="small" />
+                  Like
+                {/*a variable having like count*/}
+               </Button>
+               <Button
+                style={{color:'green'}}
+                size="small"
+                onClick={()=>{
+                  
+                }}>
+                <MoreHorizIcon fontSize="default" />
+               </Button>
+               <Button style={{color:'red'}} size="small" onClick={()=>{}}>
+                <DeleteIcon fontSize="small" />
+                  Delete
+               </Button>
+               <hr />
+               {entry.image ? <Image src={entry.image} alt={entry.title} rounded /> : <Skeleton variant="rect" width={210} height={118} />}
                <hr />
                <h3>🎯Location Description: </h3><p>{entry.description}</p>
                <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>

@@ -1,14 +1,14 @@
 # Full Stack Projects Collection
-1-55(need to set up oauth for google sign in )
-3:13(to style the sign up page)
+
+17 to make the edit button functional to make request to backend api.
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & Project 2 version 1.0.0****
 
 > ### TO DO
 - [x] ****Project-1 Travel Bucket List ---****
-   - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app/****
-   - [ ] ****Version 1.3 Set Up Full Auth with reset password , verify email functionality.****
-- [ ] ****Project-2 Blockchain Currency Exchange App ----****
+   - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app****
+   - [ ] ****Version 1.3 Update,Delete and Like functionality with Full Auth****
+- [ ] ****Project-2 Blockchain Currency Exchange App****
     - [x] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
     - [x] ****Work on Smart Contracts ethSwap and bibaToken.****
     - [x] ****Build User Interface for Buy & Sell Token****
@@ -70,7 +70,7 @@
 - [x] Mapbox
 - [x] Cloudinary
 - [x] sightengine
-- [x] sendgrid
+
 
 > #### Core dependancies
 

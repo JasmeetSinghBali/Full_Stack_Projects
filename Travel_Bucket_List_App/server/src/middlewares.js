@@ -6,7 +6,10 @@ const notFound = (req, res, next) => {
 
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (error, req, res, next) => {
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;// in case this route has been reached because the user made a valid request and response was 200 but then eventually it resulted in error due to some reason then we return with code 500
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  // in case this route has been reached because the user made a valid request
+  // and response was 200 but then eventually it resulted in error
+  // due to some reason then we return with code 500
   res.status(statusCode);
 
   res.json(

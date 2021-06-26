@@ -39,7 +39,7 @@ router.post('/flaggedUser', async (req, res, next) => {
     if (err.name === 'ValidationError') {
       res.status(422).send(`${err.name} ☠️ ${err.message}`);
     }
-    next(err.message); // passed to error handler route in index.js
+    return next(err.message); // passed to error handler route in index.js
   }
 });
 
