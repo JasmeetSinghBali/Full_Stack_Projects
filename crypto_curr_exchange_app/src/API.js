@@ -22,7 +22,7 @@ export async function getExchangeRates(api_key){
   endDate=yyyy+'-'+mm+'-'+dd;
   console.log(endDate);
 
-  const response=await axios.get(`${API_URL}?key=${api_key.Nomics_API_Key}&currency=ETH&start=2019-04-14T00%3A00%3A00Z&end=${endDate}T00%3A00%3A00Z&cors=true`);
+  const response=await axios.get(`${API_URL}?key=${api_key.Nomics_API_Key}&currency=ETH&start=2015-04-14T00%3A00%3A00Z&end=${endDate}T00%3A00%3A00Z&cors=true`);
 
   return response;
 }

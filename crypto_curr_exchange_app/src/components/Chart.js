@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {getExchangeRates} from '../API.js';
 import {useForm} from 'react-hook-form';
 import {Alert,Card,Button} from 'react-bootstrap';
@@ -10,13 +10,19 @@ import {Line} from 'react-chartjs-2';
 
 const Chart=() => {
 
-  const [successAPI,SetSuccessAPI]=useState(false);
-  const [timestamp,SetTimestamps]=useState();
-  const [rates,SetRates]=useState();
+
+  const [successAPI,setSuccessAPI]=useState(false);
+  const [plotdata,setPlotData]=useState('something initially');
   const [loading,setLoading]=useState(false);
   const { register, handleSubmit } = useForm();
 
+  useEffect(()=>{
+    setPlotData('datachanged');
+  }
+  ,[])
 
+  console.log('=====After useEffect execution====');
+  console.log(plotdata);
 
   const onSubmit=async(data)=>{
     setLoading(true);
@@ -29,23 +35,41 @@ const Chart=() => {
       }
       if(result){
         toast.success(`🐱‍🚀 Data fetch from Nomics API was successfull!!`);
-        SetSuccessAPI(true);
+        setSuccessAPI(true);
       }
 
       // Grabbing & organizing data for data visualization
-      let Timestamps=[];
-      let Rates=[];
-      for (let item of result.data){
-        Timestamps.push(item.timestamp)
-        Rates.push(item.rate);
+      // [
+      //    {
+      //      {key}timestamp:(value)rate
+      //    }
+      //  ]
+      console.log(result);
+      console.log("===============Computing=============");
+      let rawData={};
 
-      }
-      console.log('==============TIMESTAMPS==========');
-      console.log(Timestamps);
-      SetTimestamps(Timestamps);
-      console.log('==============RATES==========');
-      console.log(Rates);
-      SetRates(Rates);
+      // only take out the year
+      let getdate=result.data[0].timestamp;
+      let year=getdate.substring(0,4);
+
+
+      rawData[year]=result.data[0].rate;
+      let cleanData=[];
+
+
+
+      for (let i=1;i<result.data.length;i++){
+         let getDate=result.data[i].timestamp;
+         let newYear=getDate.substring(0,4);
+         rawData[newYear]=result.data[i].rate;
+         cleanData.push(rawData);
+       }
+      console.log(cleanData[0]);
+
+
+      // setPlotData(cleanData[0]);
+      // console.log(plotdata);
+
 
 
     }catch(err){
