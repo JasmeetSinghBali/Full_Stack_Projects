@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import {getExchangeRates} from '../API.js';
 import {useForm} from 'react-hook-form';
 import {Alert,Card,Button} from 'react-bootstrap';
@@ -12,21 +12,18 @@ const Chart=() => {
 
 
   const [successAPI,setSuccessAPI]=useState(false);
-  const [plotdata,setPlotData]=useState('something initially');
+  const [plotdata,setPlotData]=useState({});
   const [loading,setLoading]=useState(false);
   const { register, handleSubmit } = useForm();
 
-  useEffect(()=>{
-    setPlotData('datachanged');
-  }
-  ,[])
 
-  console.log('=====After useEffect execution====');
-  console.log(plotdata);
+
+
 
   const onSubmit=async(data)=>{
     setLoading(true);
     try{
+      console.log(data);
       // pass the api key to API component to make the nomics api call
       const result=await getExchangeRates(data);
       if(!result){
@@ -34,7 +31,7 @@ const Chart=() => {
         return;
       }
       if(result){
-        toast.success(`🐱‍🚀 Data fetch from Nomics API was successfull!!`);
+        toast.success(`🐱‍🚀 Data was was successfully fetched from Nomics API !!`);
         setSuccessAPI(true);
       }
 
@@ -64,10 +61,11 @@ const Chart=() => {
          rawData[newYear]=result.data[i].rate;
          cleanData.push(rawData);
        }
-      console.log(cleanData[0]);
+      //console.log(cleanData[0]);
 
 
-      // setPlotData(cleanData[0]);
+      setPlotData(cleanData[0]);
+      toast.success('🐱‍🚀Data plotted successfully !!')
       // console.log(plotdata);
 
 
@@ -83,18 +81,23 @@ const Chart=() => {
     return;
   }
 
+  // final data for plotting
+  const plotThisData = plotdata;
+  const chartLabels = Object.keys(plotThisData);
+  const chartOrganizedData = Object.values(plotThisData);
+
+
   const chartData = {
-    labels: ['January', 'February', 'March',
-             'April', 'May'],//year timestamps
+    labels: chartLabels,//year timestamps
     datasets: [
       {
         label: 'Exchange Rates',
-        fill: false,
-        lineTension: 0.5,
-        backgroundColor: 'rgba(75,192,192,1)',
+        fill: true,
+        lineTension: 1,
+        backgroundColor: 'rgba(255,99,71,0.5)',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 2,
-        data: [65, 59, 80, 81, 56]//rates
+        data: chartOrganizedData//rates
       }
     ]
   }
@@ -108,16 +111,34 @@ const Chart=() => {
       {!successAPI?
       <Card style={{ width: '18rem' }}>
         {loading?<Loader />:
-          <Alert variant="success"><Alert.Heading>Get insights on exchange rates history via Nomics API</Alert.Heading><p>Real-time crypto market cap rankings, historical prices, charts, all-time highs, supply data & more.<a href="https://p.nomics.com/cryptocurrency-bitcoin-api" target="_blank" rel="noreferrer">Get My Nomics API Key</a></p></Alert>
+          <Alert variant="success"><Alert.Heading>Get insights on exchange rates history via Nomics API</Alert.Heading><p><a href="https://p.nomics.com/cryptocurrency-bitcoin-api" target="_blank" rel="noreferrer">Get Your Nomics API Key Here</a></p></Alert>
          }
         <Card.Body>
-          <Card.Title>Enter Your Nomics API Key</Card.Title>
+          <h6>Enter Your Nomics API Key</h6>
           <Card.Text>
             <form onSubmit={handleSubmit(onSubmit)}>
               <input type="text" required placeholder="API Key" name="Nomics_API_Key" {...register("Nomics_API_Key", {})} />
               <br/>
               <br/>
-              <Button input type="submit" variant="outline-dark" block>Inspect Exchange Rates!</Button>
+              <h6>
+                Currency
+              </h6>
+              <select name="supported_currency" {...register("supported_currency", {})} required>
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+                <option value="USDT">USDT</option>
+                <option value="BNB">BNB</option>
+                <option value="USDC">USDC</option>
+              </select>
+              <br/>
+              <br/>
+              <h6>
+                Select from date
+              </h6>
+              <input type="datetime-local" placeholder="From Date" name="start_date" {...register("start_date", {})} required/>
+              <br/>
+              <br/>
+              <Button input type="submit" variant="outline-dark" block>👀 Inspect Exchange Rates Till Today</Button>
             </form>
           </Card.Text>
         </Card.Body>
@@ -133,8 +154,8 @@ const Chart=() => {
                 options={{
                   title:{
                     display:true,
-                    text:'Average Rainfall per month',
-                    fontSize:20
+                    text:'Exchange Rates History',
+                    fontSize:40
                   },
                   legend:{
                     display:true,
@@ -146,7 +167,7 @@ const Chart=() => {
           </Card.Text>
         </Card.Body>
         {loading?<Loader />:
-          <Alert variant="success"><Alert.Heading>Get insights on exchange rates history via Nomics API</Alert.Heading><p>Real-time crypto market cap rankings, historical prices, charts, all-time highs, supply data & more.<a href="https://p.nomics.com/cryptocurrency-bitcoin-api" target="_blank" rel="noreferrer">Get My Nomics API Key</a></p></Alert>
+          <Alert variant="success"><Alert.Heading>Get insights on exchange rates history via Nomics API</Alert.Heading><p>Real-time crypto market cap rankings, historical prices, all-time highs, supply data & more.<a href="https://p.nomics.com/cryptocurrency-bitcoin-api" target="_blank" rel="noreferrer">Get My Nomics API Key</a></p></Alert>
          }
       </Card>
     }

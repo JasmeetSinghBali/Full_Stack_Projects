@@ -143,8 +143,8 @@ class App extends Component {
             <main role="main" className="col-lg-12 d-flex text-center" style={{maxWidth:'600px'}}>
               <div className="content mr-auto ml-auto">
                 <br/>
-                <h3 className="dev">✨NERS✨</h3>
-                <h4 className="dev">Node,Ethereum,React,Solidity</h4>
+                <h3 className="dev">✨NEWTRS✨</h3>
+                <h4 className="dev">Node,Ethereum,Web3,Truffle,React,Solidity</h4>
                 {this.state.loading?<Loader />:
                   <Main
                    ethBalance={this.state.ethBalance}
@@ -159,12 +159,12 @@ class App extends Component {
 
              <chart role="chart" className="col-lg-12 ml-auto" style={{maxWidth:'600px'}}>
              <br/>
-             <h3 className="dev">🔧Under Construction🔧</h3>
+             <h3 className="dev">Exchange Rate History Nomics</h3>
              <a
                href="https://p.nomics.com/cryptocurrency-bitcoin-api"
                target="_blank"
                rel="noopener noreferrer"
-             >🐱Integration with Nomics API
+             >🐱Exchange rates in USD 💲
              </a>
               <br/>
               {this.state.loading?<Loader />:<Chart />}

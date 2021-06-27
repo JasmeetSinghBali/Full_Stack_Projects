@@ -1,4 +1,131 @@
-> ## Blockchain cryptocurrency exchange App
+> ## Project - Blockchain buy/sell tokens smart contract with client side application and exchange rate history data visualization powered by Nomics API.
+
+
+****Status: DONE V1.0.0****
+
+
+****Prerequisites:****
+  - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency.
+
+
+
+===========================================================
+> ### Crypto Bay UI Images
+
+> #### CryptoBay Version 1.0.0 Token Buy/Sell Done
+
+****Nomics API Integration & chart under development****
+
+<img src="../project_images/first_look_cryptobay.png">
+
+***
+
+****Completed(Buy/Sell Token + Data Visualization of cryptocurrency exchange rates history via Nomics) V1.0.0 ✨✨****
+
+<img src="../project_images/complete_crypto_exchange.png">
+
+***
+
+> ### Features
+
+- [x] Exchange/Swap BIBT(biba token) an ERC-20 based crypto currency at a fixed rate
+with Ether.
+  - [x] Full test cases mocha and chai
+  - [x] Smart Contract Eth Swap to swap tokens
+  - [x] Smart Contract biba token to create my own crypto currency on basis of ERC-20 token standard.
+- [x] Integeration with Nomics API to have analysis on exchange rates over time.
+  - [x] Fetch Nomics Exchange Rates
+  - [x] Data Visualizion for different Cryptocurrency Exchange Rates & render them via a chart at frontend.
+
+***
+
+> ### Run in localhost environment
+  - [x] clone this repo
+  - [x] install dependencies (npm install)
+  - [x] truffle migrate(first time) or truffle migrate --reset(for subsequent times)
+  - [x] npm run start
+  - [x] make sure ganache is runnning
+  - [x] import ganache first account via metamask
+  - [x] connect to localhost:3000
+  - [x] develop, test & enjoy Crypo Bay App✨✨
+
+============================================================
+
+> ##               DEVELOPER SECTION
+
+============================================================
+
+
+
+> ### Updates/Versions
+- [x] V1.0.0 Done
+- [ ] V1.0.0 Deployed
+- [ ] For V1.2.0
+  - [ ] can make another ui section in middle to show payment receipt and transaction history.
+  - [ ] integrate other api's.
+  - [ ] add new functionalities need to give a thought on this.
+
+
+> ### Tech Stack (NEWTRS)
+
+- [x] Node.js
+- [x] Ethereum
+- [x] Web3
+- [x] Truffle
+- [x] React.js
+- [x] Solidity
+
+
+> ### Token Standard
+
+- [x] ERC-20 TOKEN STANDARD
+- [x] SRC : https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
+
+***
+> ### Core Dependencies
+
+- [x] Ganache
+- [x] truffle@5.1.14 https://www.npmjs.com/package/truffle
+- [x] web3
+- [x] Metamask (Browser extension)
+- [x] mocha, chai (Testing)
+- [x] babel https://babeljs.io/(Babel is a toolchain that is mainly used to convert ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers or environments.)
+- [x] react-bootstrap (for styles/UI/UX)
+
+> ### Other Dependencies
+
+- [x] Nomics API
+  - [x] integrated exchange rates history api endpoint.
+***
+> ### Blueprint
+
+               Browser ----->   FrontendApp/website------> Blockchain          
+                                                      (Nodes,transactions,Data)<----> Smart Contracts/Code(Solidity)
+                                  (html+css+js)
+
+- [x] Set up basic boilerplate, project folders, Install dependencies
+- [x] Set Up a Blockchain.
+- [x] Write 2 Smart Contracts
+   - [x] Creating our own token / cryptocurrency
+   - [x] For swapping tokens/exchange
+- [x] Write Tests for Smart Contracts
+   - [x] test for Buy tokens SC
+   - [x] test for Sell tokens SC
+- [x] Build Client Side Appplication/website/webApp
+   - [x] Connect Browser to Blockchain via Metamask with Ethereum Wallets by setting up Custom RPC.
+   - [x] Connect App to Blockchain via web3.js by connecting to the expose etherium provider exposed by metamask when metamask connects to blockchain.
+   - [x] build buy token and sell token frontends by importing the abis ethswap.json directly to frontend.
+      - [x] what are abis - The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification.
+      - [x] abi helps to make javascript function of the smart contract.
+- [x] Work on nomics api key integeration.
+  - [x] Work on cors localhost issue https://forums.nomics.com/t/localhost-cors-error/708. just set &cors=true in the api request.
+  - [x] render a chart with exchange rates vs year data fetched from nomics.
+- [ ] Deploy
+
+
+> ### Issues !!
+- [x] Page do not reloads after successfull Buy/Sell transaction automatically,have to manually reload to see the changes in the Balance.
+
 
 > ### Some Facts/basicSetup/bugs/solution I came across while development
 - [x] truffle-config.js main entry point for the application
@@ -28,7 +155,7 @@
 refer https://www.geeksforgeeks.org/how-to-use-componentwillmount-in-react-hooks/#:~:text=in%20a%20hook%20based%20component,in%20the%20official%20React%20Docs.
 - [x] Note the state is only managed for a single component it  cannot presist between different component on its own we have to pass down the state of one component like <Nav account={this.state.account}/> and in Nav component we can use this.props.account to access the state of App.js inside Nav.js.
 - [x] .call method via web3js is used to load data from blockchain and .send() to send data i.e load data to the blockchain.
-
+- [x] The react useState hooks do not update the state variable immediately as they implement queues for optimization to tackle this either a waiting time must be present either by delay or another function exection so that by that time the useState variable has now the latest value.
 > ### NOTE'S FROM DEVELOPER END's Here
 ***
 

@@ -2,7 +2,7 @@
 
 17 to make the edit button functional to make request to backend api.
 > ### Status:
-****Working on Project 1 Version 1.3.0 & Project 2 version 1.0.0****
+****Working on Project 1 Version 1.3.0 & to deploy Project 2 version 1.0.0****
 
 > ### TO DO
 - [x] ****Project-1 Travel Bucket List ---****
@@ -12,7 +12,8 @@
     - [x] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
     - [x] ****Work on Smart Contracts ethSwap and bibaToken.****
     - [x] ****Build User Interface for Buy & Sell Token****
-    - [ ] Integrate nomics and deploy V1.0.0
+    - [x] Integrate nomics
+    - [ ] deploy V1.0.0
 
 ***
 
@@ -197,22 +198,28 @@ refer:https://github.com/mapbox/mapbox-gl-js/issues/10173
 > ## Project - 2 Blockchain buy/sell tokens Smart Contract with Client Side Application
 
 
-****Pending: To organize data from nomics  as visualization chart timestamp(x-axis) vs exchange rates(y-axis) and display it in my app.****
+****Status: DONE V1.0.0****
 
 
-Prerequisites:
-  - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency for tutorials/help refer : https://www.dappuniversity.com/articles/code-your-own-cryptocurrency-on-ethereum
+****Prerequisites:****
+  - [x] Must know About ERC-20 token standard and how to code your own cryptocurrency.
 
 
 
 ===========================================================
-> ### First Look
+> ### Crypto Bay UI Images
 
 > #### CryptoBay Version 1.0.0 Token Buy/Sell Done
 
 ****Nomics API Integration & chart under development****
 
 <img src="./project_images/first_look_cryptobay.png">
+
+***
+
+****Completed V1.0.0 ✨✨****
+
+<img src="./project_images/complete_crypto_exchange.png">
 
 > ### Features
 
@@ -221,12 +228,9 @@ with Ether.
   - [x] Full test cases mocha and chai
   - [x] Smart Contract Eth Swap to swap tokens
   - [x] Smart Contract biba token to create my own crypto currency on basis of ERC-20 token standard.
-- [ ] Integeration with Nomics API to have analysis on exchange rates over time.
+- [x] Integeration with Nomics API to have analysis on exchange rates over time.
   - [x] Fetch Nomics Exchange Rates
-  - [ ] Visualize & render them via a chart at frontend.
-
-> ### Updates/Versions
-- [ ] Version 1.0.0 Done & Deployed
+  - [x] Data Visualizion for different Cryptocurrency Exchange Rates & render them via a chart at frontend.
 
 ============================================================
 
@@ -234,12 +238,35 @@ with Ether.
 
 ============================================================
 
-> ### Tech Stack (NERS)
+> ### Run in localhost environment
+- [x] clone this repo
+- [x] install dependencies (npm install)
+- [x] truffle migrate(first time) or truffle migrate --reset(for subsequent times)
+- [x] npm run start
+- [x] make sure ganache is runnning
+- [x] import ganache first account via metamask
+- [x] connect to localhost:3000
+- [x] develop, test & enjoy Crypo Bay App✨✨
+
+> ### Updates/Versions
+- [x] V1.0.0 Done
+- [ ] V1.0.0 Deployed
+- [ ] For V1.2.0
+  - [ ] can make another ui section in middle to show payment receipt and transaction history.
+  - [ ] can add seperate react routes for user page and home page
+  - [ ] integrate other api's.
+  - [ ] add new functionalities need to have a thought on this first.
+
+
+> ### Tech Stack (NEWTRS)
 
 - [x] Node.js
 - [x] Ethereum
+- [x] Web3
+- [x] Truffle
 - [x] React.js
 - [x] Solidity
+
 
 > ### Token Standard
 
@@ -260,7 +287,7 @@ with Ether.
 > ### Other Dependencies
 
 - [x] Nomics API
-
+  - [x] integrated exchange rates history api endpoint.
 ***
 > ### Blueprint
 
@@ -282,15 +309,11 @@ with Ether.
    - [x] build buy token and sell token frontends by importing the abis ethswap.json directly to frontend.
       - [x] what are abis - The Contract Application Binary Interface (ABI) is the standard way to interact with contracts in the Ethereum ecosystem, both from outside the blockchain and for contract-to-contract interaction. Data is encoded according to its type, as described in this specification.
       - [x] abi helps to make javascript function of the smart contract.
-- [ ] Work on nomics api key integeration.
+- [x] Work on nomics api key integeration.
   - [x] Work on cors localhost issue https://forums.nomics.com/t/localhost-cors-error/708. just set &cors=true in the api request.
-  - [ ] render a chart with exchange rates vs year data fetched from nomics.
+  - [x] render a chart with exchange rates vs year data fetched from nomics.
 - [ ] Deploy
 
-***
-> ### Future Improvements in UI or backend
-
-***
 
 > ### Issues !!
 - [x] Page do not reloads after successfull Buy/Sell transaction automatically,have to manually reload to see the changes in the Balance.
