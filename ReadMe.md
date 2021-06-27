@@ -1,10 +1,12 @@
 # Full Stack Projects Collection
 
-17 to make the edit button functional to make request to backend api.
+****Ticket 21,845 - To Work on updateEntryForm component in TBL****
+
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & to deploy Project 2 version 1.0.0****
 
 > ### TO DO
+- [ ] ****Research on Project 3 related to Web dev + ML/AI VA****
 - [x] ****Project-1 Travel Bucket List ---****
    - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app****
    - [ ] ****Version 1.3 Update,Delete and Like functionality with Full Auth****
@@ -118,10 +120,14 @@
 - [x] Deploy frontend React to vercel and set up cors origin and access so that backend and frontend part deployed can interact.
 
 - [ ] Version 1.3
+  - [ ] Edit Travel entry
+    - [ ] render seperate component as edit form with already filled values using useEffect as it triggers every time render takes place.
+    - [ ] make sure to make the updateprocess state variable false to render the map component once update process is complete.
   - [ ] Auth setup full.
-  - [ ] Make the main home page auth protected.
-  - [ ] Register,login & verification via email
-     - [x] set up sendgrid config and get api key
+  - [ ] Make the landing page
+  - [ ] Map page auth protected.
+  - [ ] Register,login JWT & google sign in
+
 
 > ### For Future Versions
 > #### Not Implemented Yet , For Version 2 & Extra's that can be added

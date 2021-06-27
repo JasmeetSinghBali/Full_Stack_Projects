@@ -12,6 +12,9 @@ import LogEntryForm from './LogEntryForm';
 
 import {getLocation} from './API';
 
+// importing the Update travel entry form component
+import LogUpdateEntryForm from './LogUpdateEntryForm';
+
 // like,delete,tripledot for update
 import {Button} from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
@@ -45,6 +48,9 @@ const App=() => {
   const [loc,setLoc]=useState();
   const [subDivision,setsubDivision]=useState();
   const [locDescription,setlocDescription]=useState();
+
+  // Edit Travel entry
+  const [updateprocess,setUpdateProcess]=useState(false);
 
   // function to handle marker drag
   const dragEnd=async(e)=>{
@@ -83,6 +89,7 @@ const App=() => {
     setLogEntries(logEntries);
   };
 
+  //console.log(logEntries);
   // useEffect function that will run only once when the Map component is Mounted
   useEffect(()=>{
 
@@ -132,33 +139,124 @@ const App=() => {
 
  }
 
+ // ===================== Version 1.3.0 ============================
+ // ==================UNDER CONSTRUCTION ===========================
+ const showUpdateMarkerPopup=(event)=>{
+   setUpdateProcess(true);
+
+ }
+
 
 
 
 
   return (
-    <ReactMapGL
-    {...viewport}
-    mapStyle="mapbox://styles/alpacinoj/ckobddu730zzo17o2nejdttvs"
-    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
-    onViewportChange={nextViewport => setViewport(nextViewport)}
-    onDblClick={showAddMarkerPopup}
-    >
+    <>
+      {updateprocess?<LogUpdateEntryForm logEntries/>:
+      <ReactMapGL
+      {...viewport}
+      mapStyle="mapbox://styles/alpacinoj/ckobddu730zzo17o2nejdttvs"
+      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+      onViewportChange={nextViewport => setViewport(nextViewport)}
+      onDblClick={showAddMarkerPopup}
+      >
+
+       {
+         logEntries.map(entry=>(
+           <React.Fragment key={entry._id}>
+           <Marker
+            latitude={entry.latitude}
+            longitude={entry.longitude}
+            >
+            <div onClick={()=>setShowPopup(
+              { // commented the spreading out for each click pop up so that only 1 pop up appears at a time.
+                //...showPopup,
+              [entry._id]:true}
+            )}>
+
+              <svg
+              className="marker"
+              style={{
+                width:`${6*viewport.zoom}`,
+                height:`${6*viewport.zoom}`
+              }}
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+
+           </Marker>
+           {
+             showPopup[entry._id] ? (
+             <Popup
+               latitude={entry.latitude}
+               longitude={entry.longitude}
+               closeButton={true}
+               closeOnClick={false}
+               dynamicPosition={true}
+               onClose={()=>setShowPopup({})}
+                  // commented this line so that only one pop up appears at a time on map
+                 //{...showPopup,[entry._id]:false}
+
+               anchor="top"
+               sortByDepth={true} >
+               <div className="popupmarked">
+                 <Button
+                  style={{color:'green'}}
+                  size="small"
+                  onClick={showUpdateMarkerPopup}>
+                  <MoreHorizIcon fontSize="default" />
+                 </Button>
+                 <Button style={{color:'blue'}} size="small" onClick={()=>{}}>
+                  <ThumbUpAltIcon fontSize="small" />
+                    Like
+                  {/*a variable having like count*/}
+                 </Button>
+                 <Button style={{color:'red'}} size="small" onClick={()=>{}}>
+                  <DeleteIcon fontSize="small" />
+                    Delete
+                 </Button>
+                 <hr />
+                 {entry.image ? <Image src={entry.image} alt={entry.title} rounded /> : <Skeleton variant="rect" width={210} height={118} />}
+                 <hr />
+                 <h3>🎯Location Description: </h3><p>{entry.description}</p>
+                 <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
+                 <hr/>
+                 <h5>🧳 Comments: </h5><p>  {entry.comments} </p>
+                 <hr />
+                 <h5>🏷️ Tag: {entry.title} </h5>
+                 <h5>😍 Rating: {entry.rating==='NaN'?'Not Rated 😶':entry.rating}</h5>
+                 <hr />
+                 <small className="devmes"><b>Emoji Cipher:
+                     ✌️ + 🖱️ + 🗺️ + ✍️ = ❌  </b></small>
+               </div>
+             </Popup>
+           ):null
+         }
+         </React.Fragment>
+       ))
+     }
+
+     {/*to show  a marker with pop up form for new log entry when use double clicks on location on map.*/}
      {
-       logEntries.map(entry=>(
-         <React.Fragment key={entry._id}>
+       addEntryLocation ? (
+         <>
          <Marker
-          latitude={entry.latitude}
-          longitude={entry.longitude}
+          latitude={addEntryLocation.latitude}
+          longitude={addEntryLocation.longitude}
+          draggable={true}
+          onDragEnd={dragEnd}
           >
-          <div onClick={()=>setShowPopup(
-            { // commented the spreading out for each click pop up so that only 1 pop up appears at a time.
-              //...showPopup,
-            [entry._id]:true}
-          )}>
+          <div>
 
             <svg
-            className="marker"
+            className="notvismark"
             style={{
               width:`${6*viewport.zoom}`,
               height:`${6*viewport.zoom}`
@@ -175,123 +273,43 @@ const App=() => {
           </div>
 
          </Marker>
-         {
-           showPopup[entry._id] ? (
-           <Popup
-             latitude={entry.latitude}
-             longitude={entry.longitude}
-             closeButton={true}
-             closeOnClick={false}
-             dynamicPosition={true}
-             onClose={()=>setShowPopup({})}
-                // commented this line so that only one pop up appears at a time on map
-               //{...showPopup,[entry._id]:false}
+          <Popup
+          latitude={addEntryLocation.latitude}
+          longitude={addEntryLocation.longitude}
+          closeButton={true}
+          closeOnClick={false}
+          dynamicPosition={true}
+          onClose={()=>setAddEntryLocation(null)}
+          anchor="top"
+          tipSize={5} >
+           <div className="popup">
+             <h3> New Log ✏️ 📑</h3>
+             <LogEntryForm
+              onClose={()=>{
+               setAddEntryLocation(null);
+               getEntries();
+             }}
+              location={addEntryLocation}
+              locCountry={loc}
+              locDivision={subDivision}
+              locDescription={locDescription}/>
+           </div>
+         </Popup>
+         </>
+       ):null
+     }
+     <GeolocateControl
+          style={{position:'absolute',right:10,top:10}}
+          positionOptions={{enableHighAccuracy: true}}
+          trackUserLocation={true}
+          label='Locate Me On the Map'
+          fitBoundsOptions={{maxZoom:2}}
+          auto
+        />
+      </ReactMapGL>
+    }
+    </>
 
-             anchor="top"
-             sortByDepth={true} >
-             <div className="popupmarked">
-               <Button style={{color:'blue'}} size="small" onClick={()=>{}}>
-                <ThumbUpAltIcon fontSize="small" />
-                  Like
-                {/*a variable having like count*/}
-               </Button>
-               <Button
-                style={{color:'green'}}
-                size="small"
-                onClick={()=>{
-                  
-                }}>
-                <MoreHorizIcon fontSize="default" />
-               </Button>
-               <Button style={{color:'red'}} size="small" onClick={()=>{}}>
-                <DeleteIcon fontSize="small" />
-                  Delete
-               </Button>
-               <hr />
-               {entry.image ? <Image src={entry.image} alt={entry.title} rounded /> : <Skeleton variant="rect" width={210} height={118} />}
-               <hr />
-               <h3>🎯Location Description: </h3><p>{entry.description}</p>
-               <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>
-               <hr/>
-               <h5>🧳 Comments: </h5><p>  {entry.comments} </p>
-               <hr />
-               <h5>🏷️ Tag: {entry.title} </h5>
-               <h5>😍 Rating: {entry.rating==='NaN'?'Not Rated 😶':entry.rating}</h5>
-               <hr />
-               <small className="devmes"><b>Emoji Cipher:
-                   ✌️ + 🖱️ + 🗺️ + ✍️ = ❌  </b></small>
-             </div>
-           </Popup>
-         ):null
-       }
-       </React.Fragment>
-     ))
-   }
-
-   {/*to show  a marker with pop up form for new log entry when use double clicks on location on map.*/}
-   {
-     addEntryLocation ? (
-       <>
-       <Marker
-        latitude={addEntryLocation.latitude}
-        longitude={addEntryLocation.longitude}
-        draggable={true}
-        onDragEnd={dragEnd}
-        >
-        <div>
-
-          <svg
-          className="notvismark"
-          style={{
-            width:`${6*viewport.zoom}`,
-            height:`${6*viewport.zoom}`
-          }}
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          >
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-          <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-        </div>
-
-       </Marker>
-        <Popup
-        latitude={addEntryLocation.latitude}
-        longitude={addEntryLocation.longitude}
-        closeButton={true}
-        closeOnClick={false}
-        dynamicPosition={true}
-        onClose={()=>setAddEntryLocation(null)}
-        anchor="top"
-        tipSize={5} >
-         <div className="popup">
-           <h3> New Log ✏️ 📑</h3>
-           <LogEntryForm
-            onClose={()=>{
-             setAddEntryLocation(null);
-             getEntries();
-           }}
-            location={addEntryLocation}
-            locCountry={loc}
-            locDivision={subDivision}
-            locDescription={locDescription}/>
-         </div>
-       </Popup>
-       </>
-     ):null
-   }
-   <GeolocateControl
-        style={{position:'absolute',right:10,top:10}}
-        positionOptions={{enableHighAccuracy: true}}
-        trackUserLocation={true}
-        label='Locate Me On the Map'
-        fitBoundsOptions={{maxZoom:2}}
-        auto
-      />
-    </ReactMapGL>
   );
 }
 
