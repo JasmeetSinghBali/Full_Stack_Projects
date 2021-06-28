@@ -51,6 +51,7 @@ const App=() => {
 
   // Edit Travel entry
   const [updateprocess,setUpdateProcess]=useState(false);
+  const [travelentryid,setTravelEntryID]=useState();
 
   // function to handle marker drag
   const dragEnd=async(e)=>{
@@ -141,8 +142,9 @@ const App=() => {
 
  // ===================== Version 1.3.0 ============================
  // ==================UNDER CONSTRUCTION ===========================
- const showUpdateMarkerPopup=(event)=>{
+ const showUpdateMarkerPopup=(e,travelEntryToUpdate)=>{
    setUpdateProcess(true);
+   setTravelEntryID(travelEntryToUpdate);
 
  }
 
@@ -152,7 +154,7 @@ const App=() => {
 
   return (
     <>
-      {updateprocess?<LogUpdateEntryForm logEntries/>:
+      {updateprocess?<LogUpdateEntryForm travelentryid={travelentryid} />:
       <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/alpacinoj/ckobddu730zzo17o2nejdttvs"
@@ -208,9 +210,11 @@ const App=() => {
                sortByDepth={true} >
                <div className="popupmarked">
                  <Button
+                  type= "submit"
                   style={{color:'green'}}
                   size="small"
-                  onClick={showUpdateMarkerPopup}>
+                  onClick={e=>showUpdateMarkerPopup(e,entry)}
+                  >
                   <MoreHorizIcon fontSize="default" />
                  </Button>
                  <Button style={{color:'blue'}} size="small" onClick={()=>{}}>

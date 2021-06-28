@@ -1,6 +1,6 @@
 # Full Stack Projects Collection
 
-****Ticket 21,845 - To Work on updateEntryForm component in TBL****
+****Ticket 21,17 - To Work on updateEntryForm API call for update title,comments & rating in TBL****
 
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & to deploy Project 2 version 1.0.0****
