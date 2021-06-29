@@ -84,6 +84,46 @@ export async function addFlaggedUser(){
   }
 }
 
+// ====================== Version 1.3.0====================
+// Update Travel entry at backend
+export async function updateLogEntry(updateEntry){
+
+    console.log('=======INSIDE API Frontend=======');
+
+
+    let apiKey=updateEntry.tblapikey;
+
+    // to delete the api key from the body of the request
+    delete updateEntry.tblapikey;
+    let updateID=updateEntry.updateid;
+    let data={
+      title:updateEntry.tagupdate,
+      comments:updateEntry.commentupdate,
+      rating:updateEntry.ratingupdate
+    };
+
+    const bodyData = JSON.stringify(data);
+    const config = {
+      method: 'patch',
+      url: `${API_URL}/api/logs/update/${updateID}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-GLOBAL-API-KEY': apiKey
+      },
+      data : bodyData
+    };
+
+    axios(config)
+    .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        const result=JSON.stringify(response.data);
+        return result;
+      })
+    .catch(function (error) {
+        console.log(error);
+        return error;
+      });
+}
 
 
 

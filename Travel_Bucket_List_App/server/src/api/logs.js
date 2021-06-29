@@ -90,10 +90,13 @@ router.post('/', limiter, async (req, res, next) => {
 
 // Travel Entry Update Route
 // api/logs/update/id:1764
-router.patch('/update/:id', async (req, res, next) => {
+router.patch('/update/:id',limiter, async (req, res, next) => {
   try {
     // api key check
     // check for header X-GLOBAL-API-KEY
+    console.log('======HITTING BACKEND=======');
+    console.log(req.headers);
+
     if (req.get('X-GLOBAL-API-KEY') !== GLOBAL_API_KEY) {
       // '👻 Access Denied! ☠️';
       return res.status(401).json('👻 Access Denied! Invalid API-key');
@@ -103,8 +106,13 @@ router.patch('/update/:id', async (req, res, next) => {
     // rename id to _id to match to _id of mongoDB
     const { id: _id } = req.params;
     // grab data from frontend
-    const { title, comments } = req.body;
+    const { title, comments, rating } = req.body;
 
+    if(!title || !comments || !rating ){
+      return res.status(500).json({
+        message: '☠️ title, comments and rating are required ☠️'
+      });
+    }
     // id check
     if (!mongoose.Types.ObjectId.isValid(_id)) {
       return res.status(404).json({
@@ -112,7 +120,7 @@ router.patch('/update/:id', async (req, res, next) => {
       });
     }
 
-    const updatedEntry = await LogEntry.findByIdAndUpdate(_id, { title, comments }, { new: true });
+    const updatedEntry = await LogEntry.findByIdAndUpdate(_id, { title, comments, rating }, { new: true });
 
     if (!updatedEntry) {
       return res.status(500).json({

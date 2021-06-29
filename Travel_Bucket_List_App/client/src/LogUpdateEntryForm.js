@@ -1,8 +1,23 @@
 import React,{useState} from 'react';
+
+// core styles
 import { makeStyles } from '@material-ui/core/styles';
+
+// page header
 import PageHeader from './PageHeader';
+
+// core elements
+import {Button,Grid,TextField,Typography,ButtonBase,Paper,CssBaseline,MenuItem} from '@material-ui/core';
+
+// Icons
 import EditLocationIcon from '@material-ui/icons/EditLocation';
-import {Grid,TextField,Divider,Typography,ButtonBase,Paper,CssBaseline,MenuItem} from '@material-ui/core';
+import SaveIcon from '@material-ui/icons/Save';
+
+
+// toastify for custom messages
+import {ToastContainer,toast} from 'react-toastify';
+
+import {updateLogEntry} from './API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1
     }
 
+  },
+  button: {
+    margin: theme.spacing(1)
   },
   paper: {
     padding: theme.spacing(2),
@@ -111,29 +129,95 @@ const LogUpdateEntryForm=({travelentryid})=>{
   const [tagupdate,setTagUpdate]=useState();
   const [ratingupdate,setRatingUpdate]=useState();
   const [commentupdate,setCommentUpdate]=useState();
+  const [loading,setLoading]=useState(false);
+  const [tblapikey,setKEYTBL]=useState();
 
   const handleTagChange= e =>{
     setTagUpdate(e.target.value);
-    console.log(e.target.value);
+    //console.log(e.target.value);
   }
   const handleRatingChange= e =>{
     setRatingUpdate(e.target.value);
-    console.log(e.target.value);
+    //console.log(e.target.value);
   }
   const handleCommentChange= e =>{
     setCommentUpdate(e.target.value);
-    console.log(e.target.value);
+    //console.log(e.target.value);
+  }
+
+  const handleapikey= e =>{
+    setKEYTBL(e.target.value);
+    //console.log(e.target.value);
+  }
+
+
+  // Sending Updated Data to Backend
+  const handleSubmit=async(e)=>{
+
+    try{
+      e.preventDefault();
+      setLoading(true);
+      const sendData={ratingupdate,commentupdate,tagupdate,tblapikey,updateid:travelentryid._id};
+      if(!tblapikey){
+        toast.error('🐱‍🚀401 Unauthorized!! Invalid API Key');
+        setTimeout(()=>{setLoading(false);},2000);
+        return console.error('Update Failed!!');
+      }
+      if(!ratingupdate || !commentupdate || !tagupdate){
+        toast.error('🐱‍🚀Tag, Rating, Comments Field Cannot Be Empty!!');
+        setTimeout(()=>{setLoading(false);},2000);
+        return console.error('Update Failed!!');
+      }
+      if(commentupdate.length>40){
+        toast.error('🐱‍🚀Comments Max Limit is 40 Characters!!');
+        setTimeout(()=>{setLoading(false);},2000);
+        return console.error('Update Failed!!');
+      }
+      console.log('=========INSIDE frontend==========')
+      console.log(sendData);
+
+      //call the backend api with the updated data
+      const response=await updateLogEntry(sendData);
+      console.log(response);
+
+
+      setLoading(false);
+      toast.success('✔ Success!!');
+
+
+
+      //to reload the App component
+      // set here some smooth transition like the cat giphy
+      setTimeout(()=>{window.location.reload();},2000);
+
+
+    }catch(error){
+      console.error(error);
+      toast.error('💀 Update Failed!!')
+    }
+    setLoading(false);
+    return;
   }
 
 
   return(
     <>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={6000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <PageHeader
         title="Updating Travel Entry ID"
         subTitle={travelentryid._id}
         icon={<EditLocationIcon fontSize="large" />}
       />
-      <Divider />
       <br />
       <div className={classes.root}>
         <Grid container>
@@ -187,7 +271,7 @@ const LogUpdateEntryForm=({travelentryid})=>{
           <Grid item xs= {6}>
             <CssBaseline />
             {/*================ ACTUAL UPDATE FORM GOES HERE==================*/}
-            <form>
+            <form onSubmit={handleSubmit}>
               <Paper>
                 <TextField
                   select
@@ -220,14 +304,44 @@ const LogUpdateEntryForm=({travelentryid})=>{
                 <TextField
                   variant="filled"
                   helperText="Hint: If you are a Window user then press Windows logo key + . (period) on your keyboard for emojis..."
-                  label="Your comments"
+                  label="Your comments max limit 40 characters.."
                   placeholder={travelentryid.comments}
                   onChange={handleCommentChange}
                   value={commentupdate}
                   row={10}
                   multiline
-                  maxlength={10}
                 />
+                <TextField
+                  type="password"
+                  variant="filled"
+                  label="Enter Travel Bucket List API Key"
+                  helperText="Contact devs.us.1984@gmail.com for API KEY"
+                  onChange={handleapikey}
+                  value={tblapikey}
+                />
+                <Paper>
+                  {!loading?<Button
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    className={classes.button}
+                    startIcon={<SaveIcon />}
+                  >
+                    Save
+                  </Button>
+                  :
+                  <Button
+                    disabled
+                    variant="outlined"
+                    color="primary"
+                    size="large"
+                    className={classes.button}
+                  >
+                    🥜 🦨Updating..
+                  </Button>
+                }
+                </Paper>
               </Paper>
             </form>
             <CssBaseline />

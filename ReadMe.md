@@ -1,9 +1,9 @@
 # Full Stack Projects Collection
 
-****Ticket 21,17 - To Work on updateEntryForm API call for update title,comments & rating in TBL****
+****Ticket 21,17 - Update route Wired backend+frontend Done,next to work on media queries for mobile display problems & show hide password functionality, and error message if the API key is wrong for the frontend part only****
 
 > ### Status:
-****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 on test network****
+****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 Completed to test it on a test network like tron ,Initiated Project 3 🛸****
 
 > ### TO DO
 - [x] ****Project-1 Travel Bucket List ---****
