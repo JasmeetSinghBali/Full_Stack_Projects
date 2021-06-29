@@ -3,10 +3,9 @@
 ****Ticket 21,17 - To Work on updateEntryForm API call for update title,comments & rating in TBL****
 
 > ### Status:
-****Working on Project 1 Version 1.3.0 & to deploy Project 2 version 1.0.0****
+****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 on test network****
 
 > ### TO DO
-- [ ] ****Research on Project 3 related to Web dev + ML/AI VA****
 - [x] ****Project-1 Travel Bucket List ---****
    - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app****
    - [ ] ****Version 1.3 Update,Delete and Like functionality with Full Auth****
@@ -16,6 +15,10 @@
     - [x] ****Build User Interface for Buy & Sell Token****
     - [x] Integrate nomics
     - [ ] deploy V1.0.0
+- [ ] ****Research on Project 3 related to Web dev + ML/AI****
+  - [ ] V1.0.0
+    - [ ] backend
+    - [ ] frontend
 
 ***
 
@@ -323,3 +326,37 @@ with Ether.
 
 > ### Issues !!
 - [x] Page do not reloads after successfull Buy/Sell transaction automatically,have to manually reload to see the changes in the Balance.
+
+***
+=====================================================================
+
+> ## Project 3 VAB-DVApp
+
+****Status: Started (In Initial Research Phase)****
+
+Ticket 1930 train it on intents
+
+> ### First Look
+> ### Features
+
+
+=====================================================================
+
+> ### Developer Section
+
+=====================================================================
+
+> ### Tech Stack/Core dependencies
+
+> ### Updates/Versions
+
+> ### Blueprint
+- [ ] Test External API's Endpoints
+  - [ ] Test Rapid API
+- [ ] Set Up Backend
+- [ ] Set Up Frontend
+- [ ] Deploy
+
+
+
+> ### Issues
