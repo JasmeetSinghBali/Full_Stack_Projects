@@ -209,25 +209,27 @@ const App=() => {
                anchor="top"
                sortByDepth={true} >
                <div className="popupmarked">
-                 <Button
-                  type= "submit"
-                  style={{color:'green'}}
-                  size="small"
-                  onClick={e=>showUpdateMarkerPopup(e,entry)}
-                  >
-                  <MoreHorizIcon fontSize="default" />
-                 </Button>
-                 <Button style={{color:'blue'}} size="small" onClick={()=>{}}>
-                  <ThumbUpAltIcon fontSize="small" />
-                    Like
-                  {/*a variable having like count*/}
-                 </Button>
-                 <Button style={{color:'red'}} size="small" onClick={()=>{}}>
-                  <DeleteIcon fontSize="small" />
-                    Delete
-                 </Button>
-                 <hr />
                  {entry.image ? <Image src={entry.image} alt={entry.title} rounded /> : <Skeleton variant="rect" width={210} height={118} />}
+                 <hr />
+                 <small className="utilsIcons">
+                   <Button
+                    type= "submit"
+                    style={{color:'green'}}
+                    size="small"
+                    onClick={e=>showUpdateMarkerPopup(e,entry)}
+                    >
+                    <MoreHorizIcon fontSize="default" />
+                   </Button>
+                   <Button style={{color:'blue'}} size="small" onClick={()=>{}}>
+                    <ThumbUpAltIcon fontSize="small" />
+                      Like
+                    {/*a variable having like count*/}
+                   </Button>
+                   <Button style={{color:'red'}} size="small" onClick={()=>{}}>
+                    <DeleteIcon fontSize="small" />
+                      Delete
+                   </Button>
+                 </small>
                  <hr />
                  <h3>🎯Location Description: </h3><p>{entry.description}</p>
                  <small><b>Visited On: {new Date(entry.visitDate).toLocaleDateString()}</b></small>

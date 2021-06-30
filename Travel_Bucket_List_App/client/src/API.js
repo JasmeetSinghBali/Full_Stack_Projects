@@ -115,7 +115,7 @@ export async function updateLogEntry(updateEntry){
 
     axios(config)
     .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        //console.log(JSON.stringify(response.data));
         const result=JSON.stringify(response.data);
         return result;
       })

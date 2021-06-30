@@ -149,3 +149,10 @@ body {
     crop: scale;
   }
 }
+
+@media only screen and (max-width:600px){
+  .utilsIcon Button{
+    width: 50px;
+    height: 25px;
+  }
+}

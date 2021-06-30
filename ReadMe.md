@@ -1,6 +1,6 @@
 # Full Stack Projects Collection
 
-****Ticket 21,17 - Update route Wired backend+frontend Done,next to work on media queries for mobile display problems & show hide password functionality, and error message if the API key is wrong for the frontend part only****
+****Ticket 21,17 - Need to implement breakpoints   media queries for mobile display problems in material ui, need to learn first how to do them aghhhhh!!!🐱‍👤****
 
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 Completed to test it on a test network like tron ,Initiated Project 3 🛸****
@@ -15,7 +15,7 @@
     - [x] ****Build User Interface for Buy & Sell Token****
     - [x] Integrate nomics
     - [ ] deploy V1.0.0
-- [ ] ****Research on Project 3 related to Web dev + ML/AI****
+- [ ] ****Research on Project 3 related to Web dev + ML/AI + DV****
   - [ ] V1.0.0
     - [ ] backend
     - [ ] frontend

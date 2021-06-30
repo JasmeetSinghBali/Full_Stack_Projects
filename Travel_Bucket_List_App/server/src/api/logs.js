@@ -90,7 +90,7 @@ router.post('/', limiter, async (req, res, next) => {
 
 // Travel Entry Update Route
 // api/logs/update/id:1764
-router.patch('/update/:id',limiter, async (req, res, next) => {
+router.patch('/update/:id', limiter, async (req, res, next) => {
   try {
     // api key check
     // check for header X-GLOBAL-API-KEY
@@ -108,9 +108,9 @@ router.patch('/update/:id',limiter, async (req, res, next) => {
     // grab data from frontend
     const { title, comments, rating } = req.body;
 
-    if(!title || !comments || !rating ){
+    if (!title || !comments || !rating) {
       return res.status(500).json({
-        message: '☠️ title, comments and rating are required ☠️'
+        message: '☠️ title, comments and rating are required ☠️',
       });
     }
     // id check
@@ -119,7 +119,7 @@ router.patch('/update/:id',limiter, async (req, res, next) => {
         message: '☠️ Invalid Travel Entry ID ! ☠️',
       });
     }
-
+    // eslint-disable-next-line
     const updatedEntry = await LogEntry.findByIdAndUpdate(_id, { title, comments, rating }, { new: true });
 
     if (!updatedEntry) {
@@ -129,7 +129,7 @@ router.patch('/update/:id',limiter, async (req, res, next) => {
       });
     }
     return res.status(200).json({
-      message: '✔ Update Was Successfull!!',
+      update_status: true,
       updated_data: updatedEntry,
     });
   } catch (err) {

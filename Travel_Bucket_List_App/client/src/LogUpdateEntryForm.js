@@ -35,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: 800,
+    '@media (min-width:600px)':{
+      padding: theme.spacing(0.5),
+      maxWidth:400
+    }
   },
   image: {
     width: 200,
@@ -173,16 +177,14 @@ const LogUpdateEntryForm=({travelentryid})=>{
         setTimeout(()=>{setLoading(false);},2000);
         return console.error('Update Failed!!');
       }
-      console.log('=========INSIDE frontend==========')
-      console.log(sendData);
+
 
       //call the backend api with the updated data
       const response=await updateLogEntry(sendData);
       console.log(response);
 
-
       setLoading(false);
-      toast.success('✔ Success!!');
+      toast.info('🐱‍👤 Redirecting...');
 
 
 
