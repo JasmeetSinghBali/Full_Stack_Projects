@@ -8,9 +8,9 @@ const App=()=>{
   useEffect(()=>{
     alanBtn({
       key: alan_key,
-      onCommand:({command})=>{
-        if(command==='testCommand'){
-          alert('this worked');
+      onCommand:({command,response})=>{
+        if(command==='exchangeRates'){
+          console.log(response);
         }
       }
     })
