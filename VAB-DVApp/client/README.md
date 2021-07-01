@@ -83,7 +83,7 @@ intent('Hi','Hello','Anyone their',
       reply('(Welcome|greetings|hello),this is a Data Visualization App. I am Alan your voice assistant for today,please let me know if i can be helpfull.'));
 
 // API Keys
-const RAPID_API_KEY='46aa5345acmshe462a710100f313p1fca24jsnab4e3ef67623';
+const RAPID_API_KEY='';
 
 // companies data [{company_name(p.source.value):data(object)}]
 let companies_data = [];
