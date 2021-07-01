@@ -334,7 +334,7 @@ with Ether.
 
 ****Status: Started (In Initial Research Phase)****
 
-Ticket 1930 train it on intents
+Ticket 38 design the cards for the company search now
 
 > ### First Look
 > ### Features

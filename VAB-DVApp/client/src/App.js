@@ -1,16 +1,21 @@
-import React,{useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import alanBtn from '@alan-ai/alan-sdk-web';
+
+import CompanyCards from './components/CompanyCards/CompanyCards';
 
 const alan_key='';
 
 const App=()=>{
 
+  const [companiesdata,setCompaniesData] = useState([]);
+
   useEffect(()=>{
     alanBtn({
       key: alan_key,
-      onCommand:({command,response})=>{
-        if(command==='exchangeRates'){
-          console.log(response);
+      onCommand:({command,company_data})=>{
+        if(command==='searchCompany'){
+          setCompaniesData(company_data);
+          console.log(company_data);
         }
       }
     })
@@ -18,7 +23,8 @@ const App=()=>{
 
   return(
     <>
-      <h1>Started.....</h1>
+      <h1>VAB-DVApp</h1>
+      <CompanyCards companydata={companiesdata} />
     </>
   )
 }
