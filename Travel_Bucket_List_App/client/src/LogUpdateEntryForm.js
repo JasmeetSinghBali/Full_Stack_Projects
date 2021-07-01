@@ -24,20 +24,27 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '50ch',
-      flexGrow: 1
+      flexGrow: 1,
+      [theme.breakpoints.down('sm')]:{
+        margin: theme.spacing(1),
+        width: '50ch',
+        flexGrow: 1
+      }
     }
 
   },
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
+    [theme.breakpoints.down('sm')]:{
+      margin: theme.spacing(1)
+    }
   },
   paper: {
     padding: theme.spacing(2),
     margin: 'auto',
     maxWidth: 800,
-    '@media (min-width:600px)':{
-      padding: theme.spacing(0.5),
-      maxWidth:400
+    [theme.breakpoints.down('sm')]:{
+      maxWidth: 200,
     }
   },
   image: {
@@ -48,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     display: 'block',
     maxWidth: '100%',
-    maxHeight: '100%',
+    maxHeight: '100%'
   }
 }));
 
@@ -204,6 +211,19 @@ const LogUpdateEntryForm=({travelentryid})=>{
 
   return(
     <>
+      {window.screen.width<=600||window.screen.height<=1100?
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      :
       <ToastContainer
         position="bottom-center"
         autoClose={6000}
@@ -214,13 +234,126 @@ const LogUpdateEntryForm=({travelentryid})=>{
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
-      <PageHeader
+      />}
+      {window.screen.width<=600||window.screen.height<=1100?null:<PageHeader
         title="Updating Travel Entry ID"
         subTitle={travelentryid._id}
         icon={<EditLocationIcon fontSize="large" />}
-      />
+      />}
       <br />
+      {window.screen.width<=600||window.screen.height<=1100?
+      <div className={classes.root}>
+        <Grid container>
+          <Grid item xs= {0}>
+            {/*================ ACTUAL UPDATE FORM GOES HERE==================*/}
+            <form onSubmit={handleSubmit}>
+              <Paper>
+                <TextField
+                  select
+                  helperText="Please select type of travel"
+                  onChange={handleTagChange}
+                  value={tagupdate}
+                  variant="filled"
+                  label="Tag" >
+
+                  {tagoptions.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+
+                </TextField>
+                <TextField
+                  select
+                  helperText="Please give rating"
+                  onChange={handleRatingChange}
+                  value={ratingupdate}
+                  variant="filled"
+                  label="Rating" >
+                  {ratingoptions.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </ TextField>
+                <TextField
+                  variant="filled"
+                  helperText="Hint: If you are a Window user then press Windows logo key + . (period) on your keyboard for emojis..."
+                  label="Your comments max limit 40 characters.."
+                  placeholder={travelentryid.comments}
+                  onChange={handleCommentChange}
+                  value={commentupdate}
+                  row={10}
+                  multiline
+                />
+                <TextField
+                  type="password"
+                  variant="filled"
+                  label="Enter Travel Bucket List API Key"
+                  helperText="Contact devs.us.1984@gmail.com for API KEY"
+                  onChange={handleapikey}
+                  value={tblapikey}
+                />
+                <Paper>
+                  {!loading?<Button
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    className={classes.button}
+                    startIcon={<SaveIcon />}
+                  >
+                    Save
+                  </Button>
+                  :
+                  <Button
+                    disabled
+                    variant="outlined"
+                    color="primary"
+                    size="large"
+                    className={classes.button}
+                  >
+                    🥜 🦨Updating..
+                  </Button>
+                }
+                </Paper>
+              </Paper>
+            </form>
+            <CssBaseline />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={1}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1">
+                 Updating:
+                </Typography>
+                <hr />
+                <Typography variant="body2" color="gutterBottom">
+                  {!ratingupdate?`${travelentryid.rating}`:`${ratingupdate}`}
+                </Typography>
+                <hr />
+                <Typography variant="body2" color="gutterBottom">
+                 {!tagupdate?`🏷️  ${travelentryid.title}`
+                  :
+                  `🏷️  ${tagupdate}`
+                 }
+                </Typography>
+                <hr />
+                <Typography variant="body2" color="gutterBottom">
+                 {!commentupdate?`✏️ ${travelentryid.comments}`:`✏️ ${commentupdate}`}
+                </Typography>
+                <hr />
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Typography variant="subtitle1">ID:{travelentryid._id}</Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </div>
+      :
       <div className={classes.root}>
         <Grid container>
           <Grid item xs= {6}>
@@ -350,6 +483,8 @@ const LogUpdateEntryForm=({travelentryid})=>{
           </Grid>
         </Grid>
       </div>
+      }
+
 
     </>
   )

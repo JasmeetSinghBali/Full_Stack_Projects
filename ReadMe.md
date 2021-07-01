@@ -1,6 +1,6 @@
 # Full Stack Projects Collection
 
-****Ticket 21,17 - Need to implement breakpoints   media queries for mobile display problems in material ui, need to learn first how to do them aghhhhh!!!🐱‍👤****
+****Ticket 21 next to work on like and delete functionality****
 
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 Completed to test it on a test network like tron ,Initiated Project 3 🛸****
@@ -58,6 +58,18 @@
 - [x] Added Draggable Marker
 - [x] now duplicated type of travel allowed removed restrictions on title/type of travel at backend.
 - [x] Deployed backend & frontend at vercel/now.sh with mongoDB
+
+- [ ] Version 1.3.0
+  - [x] Edit Travel entry
+    - [x] Tweaks for Ipad Mini and small mobile devices breakpoints added.
+  - [ ] Like
+  - [ ] Delete
+  - [ ] Auth setup full.
+  - [ ] Map page auth protected.
+  - [ ] Register,login JWT & google sign in
+
+- [ ] Version 1.3.1
+  - [ ] Make the landing page in next.js
 
 ***
 
@@ -122,14 +134,6 @@
 - [x] Deploy backend (https://vercel.com/cli)now.sh(backend) & MongoDB(database)
 - [x] Deploy frontend React to vercel and set up cors origin and access so that backend and frontend part deployed can interact.
 
-- [ ] Version 1.3
-  - [ ] Edit Travel entry
-    - [ ] render seperate component as edit form with already filled values using useEffect as it triggers every time render takes place.
-    - [ ] make sure to make the updateprocess state variable false to render the map component once update process is complete.
-  - [ ] Auth setup full.
-  - [ ] Make the landing page
-  - [ ] Map page auth protected.
-  - [ ] Register,login JWT & google sign in
 
 
 > ### For Future Versions
