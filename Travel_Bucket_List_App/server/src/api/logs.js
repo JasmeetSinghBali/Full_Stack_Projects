@@ -94,8 +94,6 @@ router.patch('/update/:id', limiter, async (req, res, next) => {
   try {
     // api key check
     // check for header X-GLOBAL-API-KEY
-    console.log('======HITTING BACKEND=======');
-    console.log(req.headers);
 
     if (req.get('X-GLOBAL-API-KEY') !== GLOBAL_API_KEY) {
       // '👻 Access Denied! ☠️';
@@ -113,7 +111,7 @@ router.patch('/update/:id', limiter, async (req, res, next) => {
         message: '☠️ title, comments and rating are required ☠️',
       });
     }
-    // id check
+    // id validity check
     if (!mongoose.Types.ObjectId.isValid(_id)) {
       return res.status(404).json({
         message: '☠️ Invalid Travel Entry ID ! ☠️',
@@ -131,6 +129,38 @@ router.patch('/update/:id', limiter, async (req, res, next) => {
     return res.status(200).json({
       update_status: true,
       updated_data: updatedEntry,
+    });
+  } catch (err) {
+    console.log(err);
+    if (err.name === 'ValidationError') {
+      res.status(422).send(`${err.name} ☠️ ${err.message}`);
+    }
+    return next(err.message); // passed to error handler route in index.js
+  }
+});
+
+// Delete travel entry permanently
+router.delete('/delete/:id', limiter, async (req, res, next) => {
+  try {
+    // check for api key
+    if (req.get('X-GLOBAL-API-KEY') !== GLOBAL_API_KEY) {
+      // '👻 Access Denied! ☠️';
+      return res.status(401).json('👻 Access Denied! Invalid API-key');
+      // throw new Error('Unauthorized');
+    }
+    const { id } = req.params;
+
+    // id validity check
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({
+        message: '☠️ Invalid Travel Entry ID ! ☠️',
+      });
+    }
+
+    // delete the travel entry record
+    await LogEntry.findByIdAndRemove(id);
+    return res.json({
+      message: '✔ Post deleted successfully',
     });
   } catch (err) {
     console.log(err);

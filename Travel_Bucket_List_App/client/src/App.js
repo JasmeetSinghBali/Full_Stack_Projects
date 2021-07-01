@@ -11,16 +11,27 @@ import {listLogEntries} from './API';
 import LogEntryForm from './LogEntryForm';
 
 import {getLocation} from './API';
+import {deleteLogEntry} from './API';
 
 // importing the Update travel entry form component
 import LogUpdateEntryForm from './LogUpdateEntryForm';
 
+import {ToastContainer,toast} from 'react-toastify';
+
+// Delete dialog
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 // like,delete,tripledot for update
-import {Button} from '@material-ui/core';
+import {Button,TextField} from '@material-ui/core';
 import Skeleton from '@material-ui/lab/Skeleton';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass=require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
@@ -52,6 +63,11 @@ const App=() => {
   // Edit Travel entry
   const [updateprocess,setUpdateProcess]=useState(false);
   const [travelentryid,setTravelEntryID]=useState();
+
+  // Delete Travel Entry
+  const [opendialog,setOpenDialog]=useState(false);
+  const [deleteapikey,setDeleteAPIKEY]=useState();
+  const [iddelete,setIdDelete]=useState();
 
   // function to handle marker drag
   const dragEnd=async(e)=>{
@@ -148,12 +164,65 @@ const App=() => {
 
  }
 
+ const showDeleteDialog=(e,entryIdToDelete)=>{
+   console.log(entryIdToDelete);
+   setIdDelete(entryIdToDelete);
+   setOpenDialog(true);
+ }
+ const handleDeleteButton = e => {
+   setDeleteAPIKEY(e.target.value);
+ }
+
+ const handleClose = () => {
+    setOpenDialog(false);
+  };
+
+ const handleDelete = async() => {
+
+   if(!iddelete){
+     toast.error('🤷‍♀️ Something went wrong!!');
+   }
+   if(!deleteapikey){
+     toast.error('🐱‍🚀 API KEY is needed to perform delete operation!!');
+     return;
+   }
+   if(deleteapikey.length<=6){
+     toast.error('🐱‍🚀 API KEY should be more than 6 characters long!!');
+     return;
+   }
+   // grab the entry id and api key from user
+   const deleteEntry={
+     tblapikey:deleteapikey,
+     deleteid: iddelete
+   }
+
+   await deleteLogEntry(deleteEntry);
+
+   toast.info('🐱‍👤 Processing...');
+   setOpenDialog(false);
+
+   setTimeout(()=>{window.location.reload();},3000);
+   // at the end when everyting goes right
+
+
+ }
 
 
 
 
   return (
     <>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       {updateprocess?<LogUpdateEntryForm travelentryid={travelentryid} />:
       <ReactMapGL
       {...viewport}
@@ -225,10 +294,40 @@ const App=() => {
                       Like
                     {/*a variable having like count*/}
                    </Button>
-                   <Button style={{color:'red'}} size="small" onClick={()=>{}}>
+                   <Button
+                      style={{color:'red'}}
+                      size="small"
+                      onClick={e=>showDeleteDialog(e,entry._id)}
+                   >
                     <DeleteIcon fontSize="small" />
                       Delete
                    </Button>
+                   <Dialog open={opendialog} onClose={handleClose} aria-labelledby="form-dialog-title">
+                      <DialogTitle id="form-dialog-title">Confirm</DialogTitle>
+                      <DialogContent>
+                        <DialogContentText>
+                          Confirm deleting this travel-entry by providing TBL API-KEY.
+                        </DialogContentText>
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          id="name"
+                          label="API KEY"
+                          type="password"
+                          fullWidth
+                          onChange={handleDeleteButton}
+                        />
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose} color="secondary">
+                          Cancel
+                        </Button>
+                        <Button onClick={handleDelete} style={{color:'red'}}>
+                          <DeleteIcon fontSize="small" />
+                            Delete
+                        </Button>
+                      </DialogActions>
+                  </Dialog>
                  </small>
                  <hr />
                  <h3>🎯Location Description: </h3><p>{entry.description}</p>

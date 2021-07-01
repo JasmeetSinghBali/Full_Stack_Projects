@@ -85,6 +85,7 @@ export async function addFlaggedUser(){
 }
 
 // ====================== Version 1.3.0====================
+
 // Update Travel entry at backend
 export async function updateLogEntry(updateEntry){
 
@@ -118,6 +119,35 @@ export async function updateLogEntry(updateEntry){
         //console.log(JSON.stringify(response.data));
         const result=JSON.stringify(response.data);
         return result;
+      })
+    .catch(function (error) {
+        console.log(error);
+        return error;
+      });
+}
+
+// Delete Travel entry at backend
+export async function deleteLogEntry(deleteEntry){
+
+
+    let apiKey=deleteEntry.tblapikey;
+
+    // to delete the api key from the body of the request
+    delete deleteEntry.tblapikey;
+    let deleteID=deleteEntry.deleteid;
+
+    const config = {
+      method: 'delete',
+      url: `${API_URL}/api/logs/delete/${deleteID}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'X-GLOBAL-API-KEY': apiKey
+      }
+    };
+
+    axios(config)
+    .then(function (response) {
+        return response;
       })
     .catch(function (error) {
         console.log(error);

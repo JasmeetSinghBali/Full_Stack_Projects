@@ -1,6 +1,6 @@
 # Full Stack Projects Collection
 
-****Ticket 21 next to work on like and delete functionality****
+****Ticket 44 next to work on like  functionality****
 
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 Completed to test it on a test network like tron ,Initiated Project 3 🛸****
@@ -62,8 +62,8 @@
 - [ ] Version 1.3.0
   - [x] Edit Travel entry
     - [x] Tweaks for Ipad Mini and small mobile devices breakpoints added.
+  - [x] Delete
   - [ ] Like
-  - [ ] Delete
   - [ ] Auth setup full.
   - [ ] Map page auth protected.
   - [ ] Register,login JWT & google sign in

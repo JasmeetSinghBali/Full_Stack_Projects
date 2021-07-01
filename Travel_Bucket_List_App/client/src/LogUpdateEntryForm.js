@@ -211,7 +211,7 @@ const LogUpdateEntryForm=({travelentryid})=>{
 
   return(
     <>
-      {window.screen.width<=600||window.screen.height<=1100?
+      {window.screen.width<=600||window.screen.height<=1024?
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -235,13 +235,13 @@ const LogUpdateEntryForm=({travelentryid})=>{
         draggable
         pauseOnHover
       />}
-      {window.screen.width<=600||window.screen.height<=1100?null:<PageHeader
+      {window.screen.width<=600||window.screen.height<=1024?null:<PageHeader
         title="Updating Travel Entry ID"
         subTitle={travelentryid._id}
         icon={<EditLocationIcon fontSize="large" />}
       />}
       <br />
-      {window.screen.width<=600||window.screen.height<=1100?
+      {window.screen.width<=600||window.screen.height<=1024?
       <div className={classes.root}>
         <Grid container>
           <Grid item xs= {0}>
