@@ -5,7 +5,7 @@ import CompanyCards from './components/CompanyCards/CompanyCards';
 
 import useStyles from './styles.js';
 
-const alan_key='';
+const alan_key=process.env.REACT_APP_AI_API_KEY;
 
 const App=()=>{
 

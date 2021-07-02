@@ -336,7 +336,7 @@ with Ether.
 
 ****Status: Started (In Initial Research Phase)****
 
-Ticket 113 work on next endpoints
+Ticket 113 work on CER Realtime no chart endpoints
 
 > ### First Look
 > ### Features

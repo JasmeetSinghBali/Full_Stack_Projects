@@ -8,7 +8,7 @@ export default makeStyles({
     alignItems: 'center',
     width: '100%',
     height: '60vh',
-    padding: '0.1%',
+    padding: '10%',
     borderRadius: 30,
     color: 'white',
   },
