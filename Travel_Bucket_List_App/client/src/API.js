@@ -155,6 +155,25 @@ export async function deleteLogEntry(deleteEntry){
       });
 }
 
+// Like Travel entry at backend
+export async function likeLogEntry(likeEntry){
+
+  const response=await fetch(`${API_URL}/api/logs/like/${likeEntry}`,{
+    method: 'PATCH',
+    redirect: 'follow'
+  });
+
+  // handling if fetch causes error we need to handle explicitely as fetch dont do that where as axios handles the error.
+  let json = await response.json();
+  if (response.ok){
+    return json;
+  }
+  // the below is automatically done by axios on its own unlike fetch
+  const error=new Error(json);
+  error.response = json;
+  throw error;
+}
+
 
 
 // // ==========BACKEND VERSION THE IMAGE STRING,ARRAY,BASE^$ ENCODED STRINGIFIED OBJECT GETs DESTROYED REACHING AT BACKEND Function to upload the Image to cloudinary

@@ -12,6 +12,7 @@ import LogEntryForm from './LogEntryForm';
 
 import {getLocation} from './API';
 import {deleteLogEntry} from './API';
+import {likeLogEntry} from './API';
 
 // importing the Update travel entry form component
 import LogUpdateEntryForm from './LogUpdateEntryForm';
@@ -68,6 +69,10 @@ const App=() => {
   const [opendialog,setOpenDialog]=useState(false);
   const [deleteapikey,setDeleteAPIKEY]=useState();
   const [iddelete,setIdDelete]=useState();
+
+  // Like Travel Entry
+  const [likeupdated,setLikeUpdated] = useState();
+  const [updateinitiated,setUpdateInitiated] = useState(false);
 
   // function to handle marker drag
   const dragEnd=async(e)=>{
@@ -207,6 +212,15 @@ const App=() => {
 
  }
 
+ const likeHandler = async (e,likeid) => {
+
+   setUpdateInitiated(true);
+   const result = await likeLogEntry(likeid);
+   setLikeUpdated(result.updatedData.likeCount);
+   toast.info('🎈 Travel-Location Liked!!');
+   return;
+ }
+
 
 
 
@@ -289,10 +303,13 @@ const App=() => {
                     >
                     <MoreHorizIcon fontSize="default" />
                    </Button>
-                   <Button style={{color:'blue'}} size="small" onClick={()=>{}}>
+                   <Button
+                      style={{color:'blue'}}
+                      size="small"
+                      onClick={e=>likeHandler(e,entry._id)}>
+
                     <ThumbUpAltIcon fontSize="small" />
-                      Like
-                    {/*a variable having like count*/}
+                     {updateinitiated?likeupdated:entry.likeCount} Like
                    </Button>
                    <Button
                       style={{color:'red'}}

@@ -1,6 +1,5 @@
 # Full Stack Projects Collection
 
-****Ticket 44 next to work on like  functionality****
 
 > ### Status:
 ****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 Completed to test it on a test network like tron ,Initiated Project 3 🛸****
@@ -23,6 +22,8 @@
 ***
 
 > ### Project-1 : Travel Bucket-list App ‍🧳 ✈️ 🪂 🧗‍♀️ 🎎 🥂
+
+****Ticket 00 next to work on Auth****
 
 > #### Version-1 First Look (Development localhost)
 ‍💜🚀------‍💜‍----->🚀
@@ -63,13 +64,10 @@
   - [x] Edit Travel entry
     - [x] Tweaks for Ipad Mini and small mobile devices breakpoints added.
   - [x] Delete
-  - [ ] Like
+  - [x] Like
   - [ ] Auth setup full.
   - [ ] Map page auth protected.
   - [ ] Register,login JWT & google sign in
-
-- [ ] Version 1.3.1
-  - [ ] Make the landing page in next.js
 
 ***
 

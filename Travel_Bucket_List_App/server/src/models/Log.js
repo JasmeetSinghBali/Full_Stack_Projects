@@ -18,6 +18,10 @@ const logSchema = new Schema({
     type: String,
     default: 'NaN',
   },
+  likeCount: {
+    type: Number,
+    default: 0,
+  },
   image: String,
   latitude: {
     ...requiredNumber,

@@ -171,4 +171,42 @@ router.delete('/delete/:id', limiter, async (req, res, next) => {
   }
 });
 
+// Like travel entry
+router.patch('/like/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    // valid id check
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({
+        message: '☠️ Invalid Travel Entry ID ! ☠️',
+      });
+    }
+
+    // grab the entry
+    const toLikeEntry = await LogEntry.findById(id);
+    if (!toLikeEntry) {
+      return res.status(404).send('🤷‍♀️This travel entry is not in synch with DB.');
+    }
+
+    // update the like counter
+    // eslint-disable-next-line
+    const updatedEntry = await LogEntry.findByIdAndUpdate(id, { likeCount: toLikeEntry.likeCount + 1 }, { new: true });
+    if (!updatedEntry) {
+      return res.status(500).send('🤷‍♀️Like Update failed!!');
+    }
+
+    return res.json({
+      message: '✔ Like added successfully!!',
+      updatedData: updatedEntry,
+    });
+  } catch (err) {
+    console.log(err);
+    if (err.name === 'ValidationError') {
+      res.status(422).send(`${err.name} ☠️ ${err.message}`);
+    }
+    return next(err.message); // passed to error handler route in index.js
+  }
+});
+
 module.exports = router;
