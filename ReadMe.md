@@ -338,7 +338,7 @@ with Ether.
 
 ****Status: Started (In Initial Research Phase)****
 
-Ticket 38 design the cards for the company search now
+Ticket 113 work on next endpoints
 
 > ### First Look
 > ### Features

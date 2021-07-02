@@ -75,9 +75,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-> ## Scripts for alan ai dated 1 7 2021
+> ## Scripts for alan ai dated 2 7 2021
+
 intent('What does this app do?','What is this app about?','What is this?','Summary?','Brief?',
-      reply('VAB-DV App, is a Voice Controlled Based Data Visualization App developed by Jasmeet Bali in the year 2021.')
+      reply('VCB-DV App, is a Voice Controlled Based Data Visualization App developed by Jasmeet Bali in the year 2021 that can give finance related insights and information')
       );
 intent('Hi','Hello','Anyone their',
       reply('(Welcome|greetings|hello),this is a Data Visualization App. I am Alan your voice assistant for today,please let me know if i can be helpfull.'));
@@ -119,7 +120,7 @@ intent('search for $(source* (.*))',(p)=>{
         companies_data.push(pushData);
 
         p.play({command:'searchCompany',company_data});
-        p.play(`Here is the (Best Search|precise) information regarding ${p.source.value.toUpperCase()}`);
+        p.play(`Here is the (Best Search|precise) results regarding ${p.source.value.toUpperCase()}`);
 
     }).catch(function (error) {
         console.error(error);
