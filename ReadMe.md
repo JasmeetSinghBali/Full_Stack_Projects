@@ -323,7 +323,20 @@ with Ether.
 - [x] Work on nomics api key integeration.
   - [x] Work on cors localhost issue https://forums.nomics.com/t/localhost-cors-error/708. just set &cors=true in the api request.
   - [x] render a chart with exchange rates vs year data fetched from nomics.
-- [ ] Deploy
+- [ ] Deploy(Remember not to use any of this in Mainnet)
+  - [x] Process
+    - [x] Solidity smart contract->EVM bytecode->deployment as transaction->send transaction via node like infura to sign the transaction to cover gas price as it takes gas to deploy the smart contracts.
+  - [x] Tools
+    - [x] Metamask || Remix || truffle
+  - [x] Kovan etherscan https://kovan.etherscan.io/ kovan faucet dont sends any ether for testing.
+  - [ ] delpoying Smart Contract on binance blockchain.
+    - [ ] Ticket 1555 deploy on testnet
+    - [ ] truffle migrate --reset
+    - [ ] https://testnet.binance.org/faucet-smart to get BNB eth to deploy SC on public testnet provide account address where the smart contracts were deployed.
+    - [ ] go to BSC scan to verify https://bscscan.com/
+
+
+
 
 
 > ### Issues !!
