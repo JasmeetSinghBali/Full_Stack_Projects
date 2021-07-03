@@ -327,13 +327,10 @@ with Ether.
   - [x] Process
     - [x] Solidity smart contract->EVM bytecode->deployment as transaction->send transaction via node like infura to sign the transaction to cover gas price as it takes gas to deploy the smart contracts.
   - [x] Tools
-    - [x] Metamask || Remix || truffle
-  - [x] Kovan etherscan https://kovan.etherscan.io/ kovan faucet dont sends any ether for testing.
-  - [ ] delpoying Smart Contract on binance blockchain.
-    - [ ] Ticket 1555 deploy on testnet
-    - [ ] truffle migrate --reset
-    - [ ] https://testnet.binance.org/faucet-smart to get BNB eth to deploy SC on public testnet provide account address where the smart contracts were deployed.
-    - [ ] go to BSC scan to verify https://bscscan.com/
+    - [x] Metamask || Remix || truffle || Infura || HDWalletProvider
+  - [ ] https://medium.com/nerd-for-tech/deploy-your-smart-contracts-to-a-public-testnet-7f9aef3f6039
+
+
 
 
 
@@ -342,6 +339,14 @@ with Ether.
 > ### Issues !!
 - [x] Page do not reloads after successfull Buy/Sell transaction automatically,have to manually reload to see the changes in the Balance.
 
+> ## Deployment attempts that Didn't Work
+
+- [x] Kovan etherscan https://kovan.etherscan.io/ kovan faucet dont sends any ether for testing.
+- [x] BSC FAUCET WONT WORK deploying Smart Contract on binance blockchain.
+  - [x] truffle migrate --reset
+  - [x] https://testnet.binance.org/faucet-smart to get BNB eth to deploy SC on public testnet provide account address where the smart contracts were deployed.
+  - [x] go to BSC scan to verify https://bscscan.com/
+
 ***
 =====================================================================
 
@@ -349,7 +354,7 @@ with Ether.
 
 ****Status: Started (In Initial Research Phase)****
 
-Ticket 113 work on CER Realtime no chart endpoints
+Ticket 113 FX Data find alternatives to candlestick refer https://scanz.com/how-to-use-different-types-of-technical-charts/  draw two line charts instead with open and close values.
 
 > ### First Look
 > ### Features
@@ -363,13 +368,20 @@ Ticket 113 work on CER Realtime no chart endpoints
 
 > ### Tech Stack/Core dependencies
 
+- [x] React
+- [x] Node
+- [x] Alan AI
+- [x] Alpha Vantage API  
+
 > ### Updates/Versions
 
 > ### Blueprint
-- [ ] Test External API's Endpoints
-  - [ ] Test Rapid API
-- [ ] Set Up Backend
-- [ ] Set Up Frontend
+- [x] Test External API's Endpoints
+  - [x] Test Rapid API Alpha Vantage API
+- [ ] Core
+  - [x] Frontend Set Up commands cards layout
+  - [ ] Backend scripts involving intents & fetching of data from API on command.
+    - [x] Search by symbol/company
 - [ ] Deploy
 
 

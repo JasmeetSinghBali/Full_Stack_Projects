@@ -10,8 +10,8 @@ const CompanyCards=({companydata})=>{
   const infoCards=[
     { color: '#00838f', title: '🐱‍🚀 VCB-DV App?', text: 'What does this app do?' },
     { color: '#283593', title: 'Search by Company', info: 'Microsoft,Tracking,\nOregon,Gemini...', text: 'Search for Microsoft' },
+    { color: '#1565c0', title: 'FX Prices Terms', info: 'ILS to USD,\nINR to USD', text: 'FXP from INR to USD' },
     { color: '#A052DD', title: '🧐 What is equity?', text: 'equity' },
-    { color: '#1565c0', title: 'Something by Something', info: 'Business, Science, \nSports, Technology..', text: 'Give me the latest Technology news' },
     { color: '#4527a0', title: 'Something by Something', info: 'Bitcoin, PlayStation 5,\n Smartphones..', text: 'What\'s up with PlayStation 5' }
   ];
 
