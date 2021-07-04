@@ -1,21 +1,23 @@
 # Full Stack Projects Collection
 
 
-> ### Status:
-****Working on Project 1 Version 1.3.0 & to test & deploy Project 2 version 1.0.0 Completed to test it on a test network like tron ,Initiated Project 3 🛸****
+> ### STATUS:
+****Working on Project 3 Version 1.0.0****
 
 > ### TO DO
-- [x] ****Project-1 Travel Bucket List ---****
-   - [x] ****Completed --> deployed at https://travel-bucket-jassi.vercel.app****
-   - [ ] ****Version 1.3 Update,Delete and Like functionality with Full Auth****
-- [ ] ****Project-2 Blockchain Currency Exchange App****
-    - [x] ****To first Understand how to make your own cryptocurrency via ERC-20 token standards.****
-    - [x] ****Work on Smart Contracts ethSwap and bibaToken.****
-    - [x] ****Build User Interface for Buy & Sell Token****
-    - [x] Integrate nomics
-    - [ ] deploy V1.0.0
-- [ ] ****Research on Project 3 related to Web dev + ML/AI + DV****
-  - [ ] V1.0.0
+- [x] ****---Project-1 Travel Bucket List ---****
+   - [x] ****Version 1.2.0 DONE****
+   - [x] ****Version 1.3.1 DONE**** Update,Delete and Like functionality
+   - [ ] ****Version 1.3.2 PENDING**** Full SignUp/Login Functionality
+- [X] ****---Project-2 CryptoBay ---****
+    - [x] ****Version 1.0.0 DONE****
+      - [x] To first Understand how to make your own cryptocurrency via ERC-20 token standards.
+      - [x] Work on Smart Contracts ethSwap and bibaToken.
+      - [x] Build User Interface for Buy & Sell Token
+      - [x] Integrate nomics
+      - [x] config setup  for deploy V1.0.0 on testnet like kovan via infura
+- [ ] ****---Project 3 VCB-DVApp ---****
+  - [ ] ****V1.0.0 WORKING****
     - [ ] backend
     - [ ] frontend
 
@@ -23,51 +25,63 @@
 
 > ### Project-1 : Travel Bucket-list App ‍🧳 ✈️ 🪂 🧗‍♀️ 🎎 🥂
 
-****Ticket 00 next to work on Auth****
+****DEPLOYED AT https://travel-bucket-jassi.vercel.app****
 
-> #### Version-1 First Look (Development localhost)
+
+> #### Travel Bucket Live App Screenshots
 ‍💜🚀------‍💜‍----->🚀
 
+****Version V1.3.1 Deployed****
+<img src="./project_images/tbl_v1.3.1.png">
+
+****V1.3.1 Edit UI for Small and Big Screens****
+<img src="./project_images/tbl_v1.3.1_edit_ui.png">
+
+> #### Updates 1.3 (deployed)
+- [x] Version 1.3.1
+  - [x] Edit Travel entry
+    - [x] Tweaks for Ipad Mini and small mobile devices breakpoints added.
+  - [x] Delete
+  - [x] Like
+- [ ] Version 1.3.2
+  - [ ] Auth setup full.
+  - [ ] Map page auth protected.
+  - [ ] Register,login JWT & google sign in
+
+****Version V1.2.0 Deployed****
+<img src="./project_images/deployed_v1.2_travelBucketList.png">
+
+> #### Updates V1.2.0 Deployed
+  - [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed and stored in DB :)
+  - [x] thumbnail(rounded) modified for pop ups travel log on map
+  - [x] added image moderation for offensive/nude/weapon/drugs or other unacceptable content detected client side
+  - [x] wrong filetype,size image upload check client side validation added.
+  - [x] App icon updated
+  - [x] Basic Universal API key for making new travel entries backend verification added
+  - [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop
+  - [x] Added mark my location on map feature with toggle via mapbox api component GeolocateControl
+  - [x] Added IP tracking for flagged users via https://www.bigdatacloud.com/ip-geolocation-apis
+  - [x] Added Draggable Marker
+  - [x] now duplicated type of travel allowed removed restrictions on title/type of travel at backend.
+  - [x] Deployed backend & frontend at vercel/now.sh with mongoDB
+
+****Version 1.0.0(development localhost)****
 <img src="./project_images/ui_first_look_v1_travelBucketList.png">
 
 
 > #### Features
 - GET,POST Entries in the travel bucket list via backend(api).
 - Create New Travel Entry via double click on map via Front-end UI Form on the custom map from mapbox.
-
-<img src="./project_images/ui_second_look_v1.2_travelBucketList.png">
-
-***
-> #### Updates 1.1 (undeployed)
 - [x] dropdown with stars for rating.
 - [x] red alert div message set up if error occurs while new log entry in the DB.
 - [x] automatic description fill(make it readonly prop) with location corresponding to latitude and longitude Coordinates.https://www.bigdatacloud.com/geocoding-apis/free-reverse-geocode-to-city-ap
+
+
 ***
 
-<img src="./project_images/deployed_v1.2_travelBucketList.png">
 
-> #### Updates 1.2 (deployed)
-- [x] Added Image upload, progress Bar, Image preview client side image upload success and image url grabbed and stored in DB :)
-- [x] thumbnail(rounded) modified for pop ups travel log on map
-- [x] added image moderation for offensive/nude/weapon/drugs or other unacceptable content detected client side
-- [x] wrong filetype,size image upload check client side validation added.
-- [x] App icon updated
-- [x] Basic Universal API key for making new travel entries backend verification added
-- [x] refactored css media queries a bit to make the pop ups responsive in mobile view & Desktop
-- [x] Added mark my location on map feature with toggle via mapbox api component GeolocateControl
-- [x] Added IP tracking for flagged users via https://www.bigdatacloud.com/ip-geolocation-apis
-- [x] Added Draggable Marker
-- [x] now duplicated type of travel allowed removed restrictions on title/type of travel at backend.
-- [x] Deployed backend & frontend at vercel/now.sh with mongoDB
 
-- [ ] Version 1.3.0
-  - [x] Edit Travel entry
-    - [x] Tweaks for Ipad Mini and small mobile devices breakpoints added.
-  - [x] Delete
-  - [x] Like
-  - [ ] Auth setup full.
-  - [ ] Map page auth protected.
-  - [ ] Register,login JWT & google sign in
+
 
 ***
 

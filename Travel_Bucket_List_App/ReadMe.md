@@ -77,6 +77,20 @@ eslint-config-airbnb-base@latest eslint@^5.16.0 || ^6.8.0 || ^7.2.0 eslint-plugi
 - createdAt - datetime
 - updatedAt - datetime
 
+****Travel Entry v1.3 Updated****
+
+- likeCount - number
+- type of travel - text -select
+- description - text - automatically filled
+- comments - text
+- rating - scale of 1-5
+- image - file -upload(client side)
+- latitude - number
+- longitude - number
+- createdAt - datetime
+- updatedAt - datetime
+
+
 > ## Deployment vercel/now.sh(backend..express)/frontend(react)
 
 ****Some Facts****
