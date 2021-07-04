@@ -323,16 +323,39 @@ with Ether.
 - [x] Work on nomics api key integeration.
   - [x] Work on cors localhost issue https://forums.nomics.com/t/localhost-cors-error/708. just set &cors=true in the api request.
   - [x] render a chart with exchange rates vs year data fetched from nomics.
-- [ ] Deploy(Remember not to use any of this in Mainnet)
+- [ ] Deploy(Remember not to use any of this in Mainnet) on testnet
+  - [ ] Best Source for deploy on testnet + development.https://medium.com/swlh/develop-test-and-deploy-your-first-ethereum-smart-contract-with-truffle-14e8956d69fc
   - [x] Process
     - [x] Solidity smart contract->EVM bytecode->deployment as transaction->send transaction via node like infura to sign the transaction to cover gas price as it takes gas to deploy the smart contracts.
   - [x] Tools
     - [x] Metamask || Remix || truffle || Infura || HDWalletProvider
-  - [ ] https://medium.com/nerd-for-tech/deploy-your-smart-contracts-to-a-public-testnet-7f9aef3f6039
+  - [x] https://medium.com/nerd-for-tech/deploy-your-smart-contracts-to-a-public-testnet-7f9aef3f6039
+    - [x] .secrets.json {mnemonic:"",projectId:""} mnemonic from metamask settings, projectId from infura.
+    - [x] NOTE .secrets.json SHOULD NOT BE SHARED WITH ANYONE ADD IT TO .gitignore
+    - [x] npm i @truffle/hdwallet-provider
+    - [x] update the truffle config.js by importing .secrets.json
 
 
+      // inside truffle.config.js
+      const HDWalletProvider = require("@truffle/hdwallet-provider");
+      const fs = require("fs");
+      const secrets = JSON.parse(fs.readFileSync(".secrets.json").toString().trim());
 
 
+      // in the networks section
+      kovan: {
+       networkCheckTimeout: 10000,
+       provider: () => {
+          return new HDWalletProvider(
+            secrets.mnemonic,
+            `wss://kovan.infura.io/ws/v3/${secrets.projectId}`
+          );
+       },
+       network_id: "42",
+    },
+
+    // in terminal deploy the project
+    truffle migrate --network kovan
 
 
 
