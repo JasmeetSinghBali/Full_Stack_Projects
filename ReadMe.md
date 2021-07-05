@@ -389,9 +389,38 @@ with Ether.
 
 > ## Project 3 VAB-DVApp
 
-****Status: Started (In Initial Research Phase)****
+****Status: UI and debugging****
 
-Ticket 113 to work on cleanData & SMA Card   
+Ticket 114 to work on Bug Like app dont navigates to sma if already in tsma
+
+====Works========
+searchCompany -> searchCompany works
+searchCompany->tsma or sma  or fx prices works
+sma->sma works
+sma ->  fx prices works
+sma ->tsma works
+main page->fx works
+fx->fx works
+FX prices -> TSMA works
+
+------Bugs--------
+
+=====SMA=======
+sma->searchCompany do not works
+
+======FX==========
+FX prices-> searchCompany do not works
+fx prices -> SMA dont works
+
+====TSMA======
+tsma->sma do not works
+tsma->searchCompany do not works
+tsma->fx proces dont works
+
+
+
+
+-----------------
 
 > ### First Look
 > ### Features
@@ -416,13 +445,14 @@ Ticket 113 to work on cleanData & SMA Card
 > ### Blueprint
 - [x] Test External API's Endpoints
   - [x] Test Rapid API Alpha Vantage API
-- [ ] Core
+- [x] Core
   - [x] Frontend Set Up commands cards layout
-  - [ ] Backend scripts involving intents & fetching of data from API on command + Frontend Card setups
+  - [x] Backend scripts involving intents & fetching of data from API on command + Frontend Card setups
     - [x] Search by symbol/company non-chart
     - [x] FX prices monthly OHLC candlestick for currency pairs chart
-    - [ ] SMA technical indictator chart
-- [ ] Cleaning, Reformatting & Final Styling for UI
+    - [x] SMA technical indictator chart
+    - [x] TSMA multiline chart + piechart or any other chart
+- [ ] Removing Bugs ,Cleaning, Reformatting & Final Styling for UI
 - [ ] Deploy
 
 

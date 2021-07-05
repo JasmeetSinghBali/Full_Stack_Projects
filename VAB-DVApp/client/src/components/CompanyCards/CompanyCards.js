@@ -9,10 +9,12 @@ const CompanyCards=({companydata})=>{
 
   const infoCards=[
     { color: '#00838f', title: '🐱‍🚀 VCB-DV App?', text: 'What does this app do?' },
-    { color: '#283593', title: 'Search by Company', info: 'Microsoft,Tracking,\nOregon,Gemini...', text: 'Search for Microsoft' },
-    { color: '#1565c0', title: 'FX Prices Terms', info: 'ILS to USD,\nINR to USD', text: 'FXP from INR to USD' },
+    { color: '#283593', title: '🤖 Search by Company', info: 'Microsoft,Tracking,\nOregon,Gemini...', text: 'Search for Microsoft' },
+    { color: '#1565c0', title: '🤖 TSMA by Symbol', info: 'MSFT,USD..', text: 'TSMA for MSFT' },
     { color: '#A052DD', title: '🧐 What is equity?', text: 'equity' },
-    { color: '#4527a0', title: 'SMA by Company', info: 'MSFT,', text: 'SMA for MSFT' }
+    { color: '#4527a0', title: '🤖 SMA by Symbol', info: 'MSFT,USD..', text: 'SMA for MSFT' },
+    { color: '#A052DD', title: '🧐 What is SMA?', text: 'Explain SMA?' },
+    { color: '#00838f', title: '🤖 FX Prices Terms', info: 'ILS to USD,\nINR to USD', text: 'FXP from INR to USD' },
   ];
 
   if(!companydata.length){
@@ -29,7 +31,7 @@ const CompanyCards=({companydata})=>{
                   infoCard.info ?
                     (<Typography variant="h6">
                       <strong>
-                        {infoCard.title.split(' ')[2]};
+                        {infoCard.title.split(' ')[3]};
                       </strong>
                         <br />
                         {infoCard.info}

@@ -2,13 +2,13 @@ import React from 'react';
 import {Grid,Grow} from '@material-ui/core';
 
 import useStyles from './styles.js';
-import FxCard from '../FxCard/FxCard';
+import SMACard from '../SMACard/SMACard';
 
-const FxCards=({fx_data,frmSymbol,toSymbol})=>{
+const SMACards=({sma_data,sma_symbol})=>{
   const classes = useStyles();
 
 
-  if(!fx_data){
+  if(!sma_data){
     return(
       <>
       </>
@@ -18,7 +18,7 @@ const FxCards=({fx_data,frmSymbol,toSymbol})=>{
   return(
     <Grow in>
       <Grid className={classes.container} container alignItems="strech" spacing={3}>
-        <FxCard fx_clean_data={fx_data} frmSymbol={frmSymbol} toSymbol={toSymbol}/>
+        <SMACard sma_clean_data={sma_data} sma_symbol={sma_symbol} />
       </Grid>
     </Grow>
   );
@@ -26,4 +26,4 @@ const FxCards=({fx_data,frmSymbol,toSymbol})=>{
 
 
 
-export default FxCards;
+export default SMACards;

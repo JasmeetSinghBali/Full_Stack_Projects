@@ -68,6 +68,12 @@ const FxCard=({fx_clean_data,frmSymbol,toSymbol})=>{
               candlestick: {
                 fallingColor: { strokeWidth: 0, fill: '#0f9d58' },
                 risingColor: { strokeWidth: 0, fill: '#0f9d58' },
+              },
+              hAxis: {
+                title: 'Year',
+              },
+              vAxis: {
+                title: 'open-high-low-close(OHLC)',
               }
             }}
 
@@ -78,6 +84,7 @@ const FxCard=({fx_clean_data,frmSymbol,toSymbol})=>{
         <Container maxWidth="xl" >
           <Typography component="div" style={{ backgroundColor: 'white', height: '100%' }} >
             <h3>JSON data</h3>
+            <h4>dated: {(new Date()).toDateString()}</h4>
             <div><pre>{JSON.stringify(fx_clean_data,null,2)}</pre></div>
           </Typography>
         </Container>}
