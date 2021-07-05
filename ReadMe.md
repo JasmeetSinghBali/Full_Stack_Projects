@@ -391,7 +391,7 @@ with Ether.
 
 ****Status: Started (In Initial Research Phase)****
 
-Ticket 113 FX Data find alternatives to candlestick refer https://scanz.com/how-to-use-different-types-of-technical-charts/  draw two line charts instead with open and close values.
+Ticket 113 to work on cleanData & SMA Card   
 
 > ### First Look
 > ### Features
@@ -409,6 +409,7 @@ Ticket 113 FX Data find alternatives to candlestick refer https://scanz.com/how-
 - [x] Node
 - [x] Alan AI
 - [x] Alpha Vantage API  
+- [x] react-google-charts
 
 > ### Updates/Versions
 
@@ -417,8 +418,11 @@ Ticket 113 FX Data find alternatives to candlestick refer https://scanz.com/how-
   - [x] Test Rapid API Alpha Vantage API
 - [ ] Core
   - [x] Frontend Set Up commands cards layout
-  - [ ] Backend scripts involving intents & fetching of data from API on command.
-    - [x] Search by symbol/company
+  - [ ] Backend scripts involving intents & fetching of data from API on command + Frontend Card setups
+    - [x] Search by symbol/company non-chart
+    - [x] FX prices monthly OHLC candlestick for currency pairs chart
+    - [ ] SMA technical indictator chart
+- [ ] Cleaning, Reformatting & Final Styling for UI
 - [ ] Deploy
 
 
