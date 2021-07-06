@@ -2,13 +2,13 @@
 
 
 > ### STATUS:
-****Working on Project 3 Version 1.0.0****
+****To Deploy VCB-DV App Version 1.0.0****
 
 > ### TO DO
 - [x] ****---Project-1 Travel Bucket List ---****
    - [x] ****Version 1.2.0 DONE****
    - [x] ****Version 1.3.1 DONE**** Update,Delete and Like functionality
-   - [ ] ****Version 1.3.2 PENDING**** Full SignUp/Login Functionality
+   - [ ] ****Version 1.3.2 TO-DO**** Full SignUp/Login Functionality
 - [X] ****---Project-2 CryptoBay ---****
     - [x] ****Version 1.0.0 DONE****
       - [x] To first Understand how to make your own cryptocurrency via ERC-20 token standards.
@@ -17,9 +17,11 @@
       - [x] Integrate nomics
       - [x] config setup  for deploy V1.0.0 on testnet like kovan via infura
 - [ ] ****---Project 3 VCB-DVApp ---****
-  - [ ] ****V1.0.0 WORKING****
-    - [ ] backend
-    - [ ] frontend
+  - [ ] ****V1.0.0 TO DEPLOY****
+    - [x] backend
+       - [x] Context and intent related scripts
+       - [x] API connector scripts
+    - [x] frontend
 
 ***
 
@@ -387,44 +389,34 @@ with Ether.
 ***
 =====================================================================
 
-> ## Project 3 VAB-DVApp
+> ## Project 3 VCB-DVApp
 
 ****Status: UI and debugging****
 
-Ticket 124
-- [ ] Cleaning/repeated code removal in Card section and App.js command sections & Final Styling for UI.
-- [ ] to resolve navigation Bugs
-
-------Bugs--------
-
-=====SMA=======
-sma->searchCompany do not works
-
-======FX==========
-FX prices-> searchCompany do not works
-fx prices -> SMA dont works
-
-====TSMA======
-tsma->sma do not works
-tsma->searchCompany do not works
-tsma->fx proces dont works
-
-
-====Works========
-searchCompany -> searchCompany works
-searchCompany->tsma or sma  or fx prices works
-sma->sma works
-sma ->  fx prices works
-sma ->tsma works
-main page->fx works
-fx->fx works
-FX prices -> TSMA works
-
+Ticket 125 to  deploy version 1.0.0
 
 -----------------
 
 > ### First Look
+
+****V1.0.0 🎉🎉****
+
+****Home****
+<img src="./project_images/vcbdv_img1.png">
+
+****Monthly Adjusted Stock Time Series Data Visualization****
+<img src="./project_images/vcbdv_img2.png">
+
 > ### Features
+- [x] Integration with Alpha Vantage API for stock related insights.
+- [x] Data Visualization
+ - [x] for Monthly Adjusted Stock Time Series (TSMA)
+ - [x] for Simple Moving Average Technical Indicator (SMA)
+ - [x] FX prices for currency pairs like INR to USD
+- [x] Search/Ask
+  - [x] Search by symbol and read/scroll
+  - [x] equity?
+  - [x] SMA?
 
 
 =====================================================================
@@ -442,7 +434,10 @@ FX prices -> TSMA works
 - [x] react-google-charts
 
 > ### Updates/Versions
-- [ ] V1.2.0 Can work on bitcoin predefined scripts to load the visualization charts.
+- [ ] V1.2.0 Can work on bitcoin predefined scripts to load the visualization charts or the alpha vantage cryptocurency endpoints or any other api's endpoint.
+- [ ] Better UI for chart like a dashboard.
+- [ ] Resolve navigation Bugs
+
 
 > ### Blueprint
 - [x] Test External API's Endpoints
@@ -457,10 +452,23 @@ FX prices -> TSMA works
     - [x] scroll & read search endpoint
     - [x] go back
     - [x] casual conversion predefined script added
-- [ ] Cleaning/repeated code removal & Final Styling for UI
-- [ ] Removing Bugs
-- [ ] Deploy
+- [x] Finalizing V1.0.0
+  - [x] Cleaning/repeated code removal in App.js command sections
+  - [x] Final Styling for UI
+- [ ] Deploy V1.0.0
 
 
 
 > ### Issues
+
+=====SMA=======
+sma->searchCompany do not works
+
+======FX==========
+FX prices-> searchCompany do not works
+fx prices -> SMA dont works
+
+====TSMA======
+tsma->sma do not works
+tsma->searchCompany do not works
+tsma->fx proces dont works

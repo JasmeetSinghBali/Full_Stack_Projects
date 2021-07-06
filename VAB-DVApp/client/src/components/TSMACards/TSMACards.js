@@ -18,7 +18,9 @@ const TSMACards=({tsma_data,tsma_symbol})=>{
   return(
     <Grow in>
       <Grid className={classes.container} container alignItems="strech" spacing={3}>
-        <TSMACard tsma_clean_data={tsma_data} tsma_symbol={tsma_symbol} />
+        <Grid item xs={12} sm={12} md={12} lg={12} style={{display:'flex'}}>
+          <TSMACard tsma_clean_data={tsma_data} tsma_symbol={tsma_symbol} />
+        </Grid>
       </Grid>
     </Grow>
   );

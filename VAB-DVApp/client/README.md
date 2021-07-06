@@ -1,3 +1,43 @@
+> ## Voice Controlled Based Data Visualization For Stocks/Finance Web App
+****Web Dev + AI + Data Visualization****
+
+> ### Project Screenshots
+
+****V1.0.0 🎉🎉****
+
+****Home****
+<img src="../../project_images/vcbdv_img1.png">
+
+****Monthly Adjusted Stock Time Series Data Visualization****
+<img src="../../project_images/vcbdv_img2.png">
+
+> ### Features
+- [x] Integration with Alpha Vantage API for stock related insights.
+- [x] Data Visualization
+ - [x] for Monthly Adjusted Stock Time Series (TSMA)
+ - [x] for Simple Moving Average Technical Indicator (SMA)
+ - [x] FX prices for currency pairs like INR to USD
+- [x] Search/Ask
+  - [x] Search by symbol and read/scroll
+  - [x] equity?
+  - [x] SMA?
+
+
+=====================================================================
+
+> ### Developer Section
+
+=====================================================================
+
+> ### Tech Stack/Core dependencies
+
+- [x] React
+- [x] Node
+- [x] Alan AI
+- [x] Alpha Vantage API  
+- [x] react-google-charts
+
+
 > # Some facts/important info that I came across while development
 
 - [x] Equity is used as capital raised by a company, which is then used to purchase assets, invest in projects, and fund operations.

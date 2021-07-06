@@ -6,6 +6,8 @@ import FxCards from './components/FxCards/FxCards';
 import SMACards from './components/SMACards/SMACards';
 import TSMACards from './components/TSMACards/TSMACards';
 
+import cleanData from './Helpers/cleanData';
+
 import useStyles from './styles.js';
 
 const alan_key=process.env.REACT_APP_AI_API_KEY;
@@ -48,46 +50,25 @@ const App=()=>{
         }
         if(command==='fxMONTHLY'){
 
-          let rawData={};
-          let cleanData=[];
-
-          for(let [key,value] of Object.entries(company_data)){
-              let newYear = key.substring(0,4);
-              rawData[newYear]=value;
-              cleanData.push(rawData);
-          }
+          const api_data = cleanData(company_data);
           //console.log(cleanData[0]);
-          setFxMonthlyData(cleanData[0]);
+          setFxMonthlyData(api_data);
           setFromSymbol(frmSymbol);
           setToSymbol(toSymbol);
           setFxInitiated(true);
         }
         if(command==='smaMONTHLY'){
 
-          let rawData={};
-          let cleanData=[];
-
-          for (let [key,value] of Object.entries(company_data)){
-            let newYear = key.substring(0,4);
-            rawData[newYear]=value;
-            cleanData.push(rawData);
-          }
-          setSMAData(cleanData[0]);
+          const api_data = cleanData(company_data);
+          setSMAData(api_data);
           setSMA_Symbol(sma_symbol);
           setSMAInitiated(true);
         }
         if(command==='tsmaMONTHLY'){
 
-          let rawData={};
-          let cleanData=[];
+          const api_data = cleanData(company_data);
 
-          for (let [key,value] of Object.entries(company_data)){
-            let newYear = key.substring(0,4);
-            rawData[newYear]=value;
-            cleanData.push(rawData);
-          }
-
-          setTSMAData(cleanData[0]);
+          setTSMAData(api_data);
           setTSMA_Symbol(tsma_symbol);
           setTSMAInitiated(true);
         }

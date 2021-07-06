@@ -18,7 +18,9 @@ const FxCards=({fx_data,frmSymbol,toSymbol})=>{
   return(
     <Grow in>
       <Grid className={classes.container} container alignItems="strech" spacing={3}>
-        <FxCard fx_clean_data={fx_data} frmSymbol={frmSymbol} toSymbol={toSymbol}/>
+        <Grid item xs={12} sm={12} md={12} lg={12} style={{display:'flex'}}>
+          <FxCard fx_clean_data={fx_data} frmSymbol={frmSymbol} toSymbol={toSymbol}/>
+        </Grid>
       </Grid>
     </Grow>
   );
