@@ -391,17 +391,9 @@ with Ether.
 
 ****Status: UI and debugging****
 
-Ticket 114 to work on Bug Like app dont navigates to sma if already in tsma
-
-====Works========
-searchCompany -> searchCompany works
-searchCompany->tsma or sma  or fx prices works
-sma->sma works
-sma ->  fx prices works
-sma ->tsma works
-main page->fx works
-fx->fx works
-FX prices -> TSMA works
+Ticket 124
+- [ ] Cleaning/repeated code removal in Card section and App.js command sections & Final Styling for UI.
+- [ ] to resolve navigation Bugs
 
 ------Bugs--------
 
@@ -418,6 +410,15 @@ tsma->searchCompany do not works
 tsma->fx proces dont works
 
 
+====Works========
+searchCompany -> searchCompany works
+searchCompany->tsma or sma  or fx prices works
+sma->sma works
+sma ->  fx prices works
+sma ->tsma works
+main page->fx works
+fx->fx works
+FX prices -> TSMA works
 
 
 -----------------
@@ -441,6 +442,7 @@ tsma->fx proces dont works
 - [x] react-google-charts
 
 > ### Updates/Versions
+- [ ] V1.2.0 Can work on bitcoin predefined scripts to load the visualization charts.
 
 > ### Blueprint
 - [x] Test External API's Endpoints
@@ -452,7 +454,11 @@ tsma->fx proces dont works
     - [x] FX prices monthly OHLC candlestick for currency pairs chart
     - [x] SMA technical indictator chart
     - [x] TSMA multiline chart + piechart or any other chart
-- [ ] Removing Bugs ,Cleaning, Reformatting & Final Styling for UI
+    - [x] scroll & read search endpoint
+    - [x] go back
+    - [x] casual conversion predefined script added
+- [ ] Cleaning/repeated code removal & Final Styling for UI
+- [ ] Removing Bugs
 - [ ] Deploy
 
 

@@ -13,6 +13,9 @@ const alan_key=process.env.REACT_APP_AI_API_KEY;
 const App=()=>{
 
   const [companiesdata,setCompaniesData] = useState([]);
+
+  const [activeCompany,setActiveCompany] = useState(-1);
+
   const [fxmonthlydata,setFxMonthlyData] = useState();
 
   const [fxinitiated,setFxInitiated] = useState(false);
@@ -35,10 +38,16 @@ const App=()=>{
       onCommand:({command,company_data,frmSymbol,toSymbol,sma_symbol,tsma_symbol})=>{
         if(command==='searchCompany'){
           setCompaniesData(company_data);
-
-
+          setActiveCompany(-1);
+        }
+        if(command==="home"){
+          window.location.reload();
+        }
+        if(command === 'highlight'){
+          setActiveCompany((prevActiveCompany)=>prevActiveCompany+1);
         }
         if(command==='fxMONTHLY'){
+
           let rawData={};
           let cleanData=[];
 
@@ -54,6 +63,7 @@ const App=()=>{
           setFxInitiated(true);
         }
         if(command==='smaMONTHLY'){
+
           let rawData={};
           let cleanData=[];
 
@@ -67,6 +77,7 @@ const App=()=>{
           setSMAInitiated(true);
         }
         if(command==='tsmaMONTHLY'){
+
           let rawData={};
           let cleanData=[];
 
@@ -122,7 +133,7 @@ const App=()=>{
       <div className={classes.logoContainer} >
         <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" className={classes.aiLogo} alt="from unsplash"/>
       </div>
-      <CompanyCards companydata={companiesdata} />
+      <CompanyCards companydata={companiesdata} activeCompany={activeCompany} />
     </>
   );
 }

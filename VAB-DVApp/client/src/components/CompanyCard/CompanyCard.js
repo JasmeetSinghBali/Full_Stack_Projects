@@ -1,11 +1,28 @@
-import React from 'react';
+import React,{useState,useEffect,createRef} from 'react';
 import {Card,CardActions,CardActionArea,CardContent,CardMedia,Button,Typography} from '@material-ui/core';
+
+import classnames from 'classnames';
+
 import useStyles from './styles.js';
 
-const CompanyCard=({company,i})=>{
+const CompanyCard=({company,i,activeCompany})=>{
   const classes=useStyles();
+  const [elRefs,setElRefs] = useState([]);
+  const scrollToRef = (ref)=>window.scroll(0,ref.current.offsetTop-50);
+  // did mount to set up the refferences for the cards
+  useEffect(()=>{
+    setElRefs((refs)=>Array(20).fill().map((_,j)=>refs[j] || createRef()));
+  },[]);
+
+  // each time i,elRefs,activeCompany changes
+  useEffect(()=>{
+    if(i===activeCompany && elRefs[activeCompany]){
+      scrollToRef(elRefs[activeCompany]);
+    }
+  },[i,activeCompany,elRefs]);
+
   return(
-    <Card className={classes.card}>
+    <Card ref={elRefs[i]} className={classnames(classes.card,activeCompany===i?classes.activeCard:null)}>
       <CardActionArea>
         <CardMedia className={classes.media} image="https://images.unsplash.com/photo-1567449303098-6dc0cc40a275?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
         <div className={classes.details}>

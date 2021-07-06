@@ -4,7 +4,7 @@ import {Grid,Grow,Typography} from '@material-ui/core';
 import useStyles from './styles.js';
 import CompanyCard from '../CompanyCard/CompanyCard';
 
-const CompanyCards=({companydata})=>{
+const CompanyCards=({companydata,activeCompany})=>{
   const classes = useStyles();
 
   const infoCards=[
@@ -15,6 +15,7 @@ const CompanyCards=({companydata})=>{
     { color: '#4527a0', title: '🤖 SMA by Symbol', info: 'MSFT,USD..', text: 'SMA for MSFT' },
     { color: '#A052DD', title: '🧐 What is SMA?', text: 'Explain SMA?' },
     { color: '#00838f', title: '🤖 FX Prices Terms', info: 'ILS to USD,\nINR to USD', text: 'FXP from INR to USD' },
+    { color: '#1565c0', title: '🧐 What is TSMA?', text: 'TSMA' },
   ];
 
   if(!companydata.length){
@@ -50,14 +51,13 @@ const CompanyCards=({companydata})=>{
       <Grid className={classes.container} container alignItems="strech" spacing={3}>
         {companydata.map((company,i)=>(
           <Grid key={i} item xs={12} sm={6} md={4} lg={3} style={{display:'flex'}}>
-            <CompanyCard company={company} i={i}/>
+            <CompanyCard company={company} activeCompany={activeCompany} i={i}/>
           </Grid>
         ))}
       </Grid>
     </Grow>
   );
 }
-
 
 
 export default CompanyCards;
