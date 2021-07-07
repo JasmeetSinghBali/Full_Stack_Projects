@@ -1,5 +1,7 @@
-> ## Voice Controlled Based Data Visualization For Stocks/Finance Web App
+> ## Voice Controlled Based Data Visualization For Stocks/Finance Related Insights
 ****Web Dev + AI + Data Visualization****
+
+> # Live Project ->>>🎉🎉 <a href="https://vcb-dvapp-jassi.vercel.app/">here</a>
 
 > ### Project Screenshots
 

@@ -1,8 +1,6 @@
 # Full Stack Projects Collection
 
 
-> ### STATUS:
-****To Deploy VCB-DV App Version 1.0.0****
 
 > ### TO DO
 - [x] ****---Project-1 Travel Bucket List ---****
@@ -16,12 +14,13 @@
       - [x] Build User Interface for Buy & Sell Token
       - [x] Integrate nomics
       - [x] config setup  for deploy V1.0.0 on testnet like kovan via infura
-- [ ] ****---Project 3 VCB-DVApp ---****
-  - [ ] ****V1.0.0 TO DEPLOY****
+- [x] ****---Project 3 VCB-DVApp ---****
+  - [x] ****V1.0.0 DONE****
     - [x] backend
        - [x] Context and intent related scripts
        - [x] API connector scripts
     - [x] frontend
+    - [x] deployed
 
 ***
 
@@ -391,9 +390,11 @@ with Ether.
 
 > ## Project 3 VCB-DVApp
 
-****Status: UI and debugging****
+=====================================================================
 
-Ticket 125 to  deploy version 1.0.0
+****Status: V1.0.0 deployed https://vcb-dvapp-jassi.vercel.app/****
+
+
 
 -----------------
 
@@ -455,7 +456,7 @@ Ticket 125 to  deploy version 1.0.0
 - [x] Finalizing V1.0.0
   - [x] Cleaning/repeated code removal in App.js command sections
   - [x] Final Styling for UI
-- [ ] Deploy V1.0.0
+- [x] Deploy V1.0.0
 
 
 
