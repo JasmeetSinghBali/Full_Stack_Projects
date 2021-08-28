@@ -1,12 +1,12 @@
 # Full Stack Projects Collection
 
+****Status: Active****
+(Working on Project-4 LappyStoreFinder)
 
-
-> ### TO DO
+> ### Projects CheckList
 - [x] ****---Project-1 Travel Bucket List ---****
    - [x] ****Version 1.2.0 DONE****
    - [x] ****Version 1.3.1 DONE**** Update,Delete and Like functionality
-   - [ ] ****Version 1.3.2 TO-DO**** Full SignUp/Login Functionality
 - [X] ****---Project-2 CryptoBay ---****
     - [x] ****Version 1.0.0 DONE****
       - [x] To first Understand how to make your own cryptocurrency via ERC-20 token standards.
@@ -21,6 +21,11 @@
        - [x] API connector scripts
     - [x] frontend
     - [x] deployed
+- [ ] ****---Project 4 Lappy-StoreFinder---****
+  - [ ] Version 1.0.0
+    - [ ] backend
+    - [ ] frontend
+    - [ ] deployed  
 
 ***
 
