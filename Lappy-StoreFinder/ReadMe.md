@@ -48,7 +48,12 @@
 
 - [x] Create local DB for testing with appropriate Schema.
 - [x] Basic API Boilerplate
-- [ ] Connect express to postgres and complete CRUD routes.
+- [x] Connect express to postgres and complete CRUD routes. https://node-postgres.com/
+  - [x] structuring express app with postgres https://node-postgres.com/guides/async-express
+- [ ] Client Setup
+  - [ ] React Basic Setup
+
+
 
 > # Some facts/important info that I came across while development
 
@@ -57,3 +62,4 @@
 - [x] best practices are to captilize the SQL part like CREATE DATABASE mydatabase and not create database mydatabase.
 - [x] https://www.postgresqltutorial.com/ comes in handy while using postgres.
 - [x] \d tablename to see data type and attributes details of the table.
+- [x] Never use string literals or any type of string concatination for querying databases as it makes the app vulnerable to sql injections instead use parameterized queries refer https://node-postgres.com/features/queries
