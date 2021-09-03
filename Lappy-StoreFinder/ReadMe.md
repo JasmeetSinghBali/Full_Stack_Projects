@@ -51,8 +51,12 @@
 - [x] Connect express to postgres and complete CRUD routes. https://node-postgres.com/
   - [x] structuring express app with postgres https://node-postgres.com/guides/async-express
 - [ ] Client Setup
-  - [ ] React Basic Setup
-
+  - [x] bootstrap create-react-app
+  - [x] React Router Setup
+      - [x] '/' Homepage with list of lappy shops
+      - [x] '/shops/:id' specific shop detail page
+      - [x] '/shops/:id/update' update a specific shop 
+  - [ ] React Context API Setup 3:14:26
 
 
 > # Some facts/important info that I came across while development
@@ -63,3 +67,5 @@
 - [x] https://www.postgresqltutorial.com/ comes in handy while using postgres.
 - [x] \d tablename to see data type and attributes details of the table.
 - [x] Never use string literals or any type of string concatination for querying databases as it makes the app vulnerable to sql injections instead use parameterized queries refer https://node-postgres.com/features/queries
+- [x] Setting Up Routing in React
+- [x] Switch in react-router-dom helps in preventing multiple components to load on screen i.e when it founds a specific path route it only loads that hence best practice is to wrap the Router inside of Switch.
