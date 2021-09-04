@@ -56,8 +56,12 @@
       - [x] '/' Homepage with list of lappy shops
       - [x] '/shops/:id' specific shop detail page
       - [x] '/shops/:id/update' update a specific shop 
-  - [ ] React Context API Setup 3:14:26
-
+  - [x] React Context API Setup 
+  - [x] Fetch data from backend to frontend
+    - [x] axios API setup
+    - [x] useEffect,useContext setup to list shops
+    - [x] render retreived data from backend
+  - [ ] Add new shops functionality
 
 > # Some facts/important info that I came across while development
 
@@ -68,4 +72,6 @@
 - [x] \d tablename to see data type and attributes details of the table.
 - [x] Never use string literals or any type of string concatination for querying databases as it makes the app vulnerable to sql injections instead use parameterized queries refer https://node-postgres.com/features/queries
 - [x] Setting Up Routing in React
-- [x] Switch in react-router-dom helps in preventing multiple components to load on screen i.e when it founds a specific path route it only loads that hence best practice is to wrap the Router inside of Switch.
+- [x] **Use of Switch in react-router-dom helps in preventing multiple components to load on screen i.e when it founds a specific path route it only loads that hence best practice is to wrap the Router inside of Switch.**
+- [x] **Advantages of using react context api to store data over the local storage is that all the components have access to react context api can easily retrieve the data i.e no hassle in passing props and messy stuff**
+- [x] **to only allow the useEffect code to run when components mount use empty dependancy array [] if empty array not mentioned then the useEffect code executes everytime the component re-renders or is mounted.**

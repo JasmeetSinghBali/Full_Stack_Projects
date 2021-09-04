@@ -9,7 +9,7 @@ router.get('/',async(req,res)=>{
   try{
     // postgres query to get all stores
     const results = await db.query("SELECT * FROM lappystores");
-    console.log(results);
+    //console.log(results);
 
     return res.status(200).json({
       status: "Up",

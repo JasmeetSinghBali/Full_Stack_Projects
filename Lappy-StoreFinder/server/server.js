@@ -2,6 +2,7 @@ require('dotenv').config();
 const PORT = process.env.API_PORT || 5001;
 
 const express = require('express');
+const cors = require('cors');
 
 const mountRoutes = require('./routes');
 const app = express();
@@ -9,7 +10,7 @@ const app = express();
 
 const morgan = require('morgan');
 
-
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
