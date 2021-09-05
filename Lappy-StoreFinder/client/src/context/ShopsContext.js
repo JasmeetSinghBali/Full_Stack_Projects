@@ -6,11 +6,16 @@ export const ShopsContextProvider = (props) =>{
 
     const [shops,setShops] = useState([]);
 
+    const addShops = (shop)=>{
+        // copying old shop list + adding new added shop via post route to backend
+        setShops([...shops,shop]);
+    };
     return(
         <ShopsContext.Provider 
             value={{
                 shops,
-                setShops
+                setShops,
+                addShops
             }}
         >
             {props.children}

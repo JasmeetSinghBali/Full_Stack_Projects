@@ -1,21 +1,46 @@
 import React,{useContext, useEffect} from 'react'
 import { ShopsContext } from '../context/ShopsContext';
 import ShopFinder from '../api/ShopFinder';
-
+import {useHistory} from 'react-router-dom';
 
 const ShopList = (props) => {
     const {shops,setShops} = useContext(ShopsContext);
+    const history = useHistory();
     useEffect(()=>{
         const fetchData = async()=>{
             try{
                 const resp = await ShopFinder.get("/");
                 setShops(resp.data.data.stores);
             }catch(err){
-    
+                console.log(err);
             }
         }
         fetchData();
     },[]);
+
+    const handleDelete = async(id)=>{
+        try{
+            const resp = await ShopFinder.delete(`/${id}`);
+            // add all the shops to the shops useState except the id that we deleted
+            setShops(shops.filter(shop=>{
+                return shop.id !== id;
+            }));
+            
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    const handleUpdate = async(id)=>{
+        try{
+            // navigate to the update route
+            // push the update route page in the history stack
+            history.push(`/shops/${id}/update`);
+            
+        }catch(err){
+            console.log(err);
+        }
+    }
 
     return (
         <div className="list-group">
@@ -40,8 +65,8 @@ const ShopList = (props) => {
                             <td>{"$".repeat(shop.price_range)}</td>
                             <td>{shop.contact}</td>
                             <td>reviews</td>
-                            <td><button className="btn btn-warning">Update</button></td>
-                            <td><button className="btn btn-danger">Delete</button></td>
+                            <td><button onClick={()=> handleUpdate(shop.id)}className="btn btn-warning">Update</button></td>
+                            <td><button onClick={() => handleDelete(shop.id)} className="btn btn-danger">Delete</button></td>
                         </tr>
                         )
                     })}

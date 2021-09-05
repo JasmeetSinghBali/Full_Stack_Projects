@@ -61,7 +61,13 @@
     - [x] axios API setup
     - [x] useEffect,useContext setup to list shops
     - [x] render retreived data from backend
-  - [ ] Add new shops functionality
+  - [x] Add new shops functionality
+  - [x] Delete functionality
+  - [x] Update functionality
+    - [x] used useHistory to navigate to different route for updating shop details.(useHistory will remember the browser history we embeded the updated shop id in the url and push to the history stack so that I can use the useParam hook then to grab that id and make the update request to backend)
+    - [x] used controlled form i.e useState to handle input forms both for update and add functionality
+    - [x] used direct api call to get specific id shop old details to act as placeholder for update form rather than useContext as if user bookmarks the page and then returns to this page then it will result in error.
+  - [ ] ShopDetails Page 4:26
 
 > # Some facts/important info that I came across while development
 
@@ -74,4 +80,7 @@
 - [x] Setting Up Routing in React
 - [x] **Use of Switch in react-router-dom helps in preventing multiple components to load on screen i.e when it founds a specific path route it only loads that hence best practice is to wrap the Router inside of Switch.**
 - [x] **Advantages of using react context api to store data over the local storage is that all the components have access to react context api can easily retrieve the data i.e no hassle in passing props and messy stuff**
-- [x] **to only allow the useEffect code to run when components mount use empty dependancy array [] if empty array not mentioned then the useEffect code executes everytime the component re-renders or is mounted.**
+- [x] **to only allow the useEffect code to run when components mount use empty dependancy array [] if empty array is not mentioned then the useEffect code executes everytime the component re-renders or is mounted.**
+
+- [x] **if passing argument to the function while onClick or onChange events make sure to return as  a arrow function like
+() => handleDelete(shop.id) in case of delete button onClick, as do not want to execute it directly instead pass refference to the function that is handling the logic**
