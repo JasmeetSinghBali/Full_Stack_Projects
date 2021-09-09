@@ -67,7 +67,8 @@
     - [x] used useHistory to navigate to different route for updating shop details.(useHistory will remember the browser history we embeded the updated shop id in the url and push to the history stack so that I can use the useParam hook then to grab that id and make the update request to backend)
     - [x] used controlled form i.e useState to handle input forms both for update and add functionality
     - [x] used direct api call to get specific id shop old details to act as placeholder for update form rather than useContext as if user bookmarks the page and then returns to this page then it will result in error.
-  - [ ] ShopDetails Page 4:26
+  - [x] ShopDetails when handling click for a row the update and delete brokes,the reason is that when update or delete are clicked the event click is propagated upwards to the parent i.e the row so technically the row onclick takes us to the detail page to tackle this we pass  the event object while calling the onupdate & ondelete refer ShopList.jsx
+  - [ ] Review and Rating Component
 
 > # Some facts/important info that I came across while development
 

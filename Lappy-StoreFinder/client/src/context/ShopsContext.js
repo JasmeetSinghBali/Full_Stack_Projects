@@ -5,6 +5,7 @@ export const ShopsContext = createContext();
 export const ShopsContextProvider = (props) =>{
 
     const [shops,setShops] = useState([]);
+    const [selectedShop,setSelectedShop] = useState(null);
 
     const addShops = (shop)=>{
         // copying old shop list + adding new added shop via post route to backend
@@ -15,7 +16,9 @@ export const ShopsContextProvider = (props) =>{
             value={{
                 shops,
                 setShops,
-                addShops
+                addShops,
+                selectedShop,
+                setSelectedShop
             }}
         >
             {props.children}

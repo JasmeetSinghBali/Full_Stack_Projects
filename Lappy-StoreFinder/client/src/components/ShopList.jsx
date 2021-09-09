@@ -18,7 +18,9 @@ const ShopList = (props) => {
         fetchData();
     },[]);
 
-    const handleDelete = async(id)=>{
+    const handleDelete = async(e,id)=>{
+        // so that the detail page is not displayed on clicking delete button
+        e.stopPropagation();
         try{
             const resp = await ShopFinder.delete(`/${id}`);
             // add all the shops to the shops useState except the id that we deleted
@@ -31,7 +33,9 @@ const ShopList = (props) => {
         }
     }
 
-    const handleUpdate = async(id)=>{
+    const handleUpdate = async(e,id)=>{
+        // so that the detail page is not displayed on clicking delete button
+        e.stopPropagation();
         try{
             // navigate to the update route
             // push the update route page in the history stack
@@ -40,6 +44,11 @@ const ShopList = (props) => {
         }catch(err){
             console.log(err);
         }
+    }
+    
+    // navigate to shop details page for specific shop id
+    const handleShopSelect = (id)=>{
+        history.push(`shops/${id}`);
     }
 
     return (
@@ -59,14 +68,14 @@ const ShopList = (props) => {
                 <tbody>
                     {shops && shops.map((shop)=>{
                         return(
-                        <tr key={shop.id}>
+                        <tr onClick={()=>handleShopSelect(shop.id)} key={shop.id}>
                             <td>{shop.name}</td>
                             <td>{shop.location}</td>
                             <td>{"$".repeat(shop.price_range)}</td>
                             <td>{shop.contact}</td>
                             <td>reviews</td>
-                            <td><button onClick={()=> handleUpdate(shop.id)}className="btn btn-warning">Update</button></td>
-                            <td><button onClick={() => handleDelete(shop.id)} className="btn btn-danger">Delete</button></td>
+                            <td><button onClick={(e)=> handleUpdate(e,shop.id)} className="btn btn-warning">Update</button></td>
+                            <td><button onClick={(e) => handleDelete(e,shop.id)} className="btn btn-danger">Delete</button></td>
                         </tr>
                         )
                     })}
