@@ -1,20 +1,14 @@
 > ## Lappy-StoreFinder (PERN)
 
 
-> # Live Project ->>>🎉🎉 <a href="">here</a>
-
-> ### Project Screenshots
-
 ****V1.0.0 🎉🎉****
 
 
-<img src="">
-
-
-<img src="">
 
 > ### Features
 
+- [x] CRUD 
+- [x] Reviews & Ratings
 
 
 =====================================================================
@@ -42,11 +36,12 @@
     - [x] Price Range - INT NOT NULL CHECK(price_range>=1 and price_range<=5)
   - [x] Review Table
     - [x] id - BIGSERIAL NOT NULL PRIMARY KEY
-    - [x] shop_id BIGINT NOT NULL REFERENCES lappystores(id) (Foreign Key - Table lappystores(id) this way we can have 1-many relation i.e 1 shop can have 100's/1000's of reviews) 
+    - [x] shop_id BIGINT NOT NULL REFERENCES lappystores(id) on delete cascade (Foreign Key - Table lappystores(id) this way we can have 1-many relation i.e 1 shop can have 100's/1000's of reviews) 
     - [x] name - VARCHAR(50) NOT NULL
     - [x] review/comment - TEXT NOT NULL
     - [x] rating - INT NOT NULL CHECK(rating>=1 and rating<=5>)
-    
+  - [x] **IMPORTANT remember to add on delete cascade constraint**
+    - refer https://stackoverflow.com/questions/14182079/delete-rows-with-foreign-key-in-postgresql#:~:text=To%20automate%20this%2C%20you%20could,be%20automatically%20deleted%20as%20well.
 
 > ### Blueprint
 
@@ -73,7 +68,18 @@
   - [x] Shopdetail Page skelton  
   - [ ] Review and Rating Component
     - [x] postgres new table with foreign key as lappystores id
-    - [ ] Star rating component
+    - [x] Star rating component
+    - [x] AddReviews Component
+- [x] Server side modifications
+  - [x] modify the get shop by id to get data regarding review table also i.e two calls to the DB with single endpoint.
+  - [x] Add review backend route
+- [x] Modification Add review
+  - [x] render new created review by making call to backend api
+    - [x] useLocation or useParams hook helps to access the url & params of the current page url.
+- [x] postgres Detour (for help-https://www.postgresqltutorial.com/)
+   - [x] aggregation in postgres for number of reviews
+   - [x] **Important SQL joins are always helpful to avoid multiple db query instead making a single query with join to get related data when two or more tables are involved.** 
+   - [x] nested subquery to get avg and count for each shop prevents 1 additional api call cost.
 
 > # Some facts/important info that I came across while development
 
@@ -98,3 +104,5 @@
     - [x] **used direct api call to get specific id shop old details to act as placeholder for update form rather than useContext as if user bookmarks the page and then returns to this page then it will result in error.**
   
   - [x] **ShopDetails when handling click for a row the update and delete brokes,the reason is that when update or delete are clicked the event click is propagated upwards to the parent i.e the row so technically the row onclick takes us to the detail page to tackle this we pass  the event object while calling the onupdate & ondelete refer ShopList.jsx**
+
+  - [x] **useLocation hook helps to access the url, better to use the useParams hooks to grab the params in the url of the current page**

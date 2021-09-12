@@ -8,16 +8,23 @@ const router = new Router();
 router.get('/',async(req,res)=>{
   try{
     // postgres query to get all stores
-    const results = await db.query("SELECT * FROM lappystores");
-    //console.log(results);
+    // const results = await db.query("SELECT * FROM lappystores");
+    
+    // ======== IMPORTANT ==============
+    // nested subquery to get avg & count for each shop along with the details for all the shop
+    const shopRatingData = await db.query("select * from lappystores left join (select shop_id,count(*),trunc(avg(rating),1) as average_rating from reviews group by shop_id ) reviews on lappystores.id = reviews.shop_id;"); 
+    // console.log("results",results);
+    //console.log("ratingdata",shopRatingData);
+
+    
 
     return res.status(200).json({
       status: "Up",
       message: "🦨 API works!!",
       resource: "GET all stores",
-      results: results.rows.length,
+      results: shopRatingData.rows.length,
       data: {
-        stores: results.rows,
+        stores: shopRatingData.rows,
       }
     });
   }catch(err){
@@ -45,17 +52,23 @@ router.get('/:id',async(req,res)=>{
     // bad approach
     // SELECT * FROM lappystores WHERE id=${ID}
     //good approach (Paramaterized queries) below [ID] the first item in the array i.e ID is replaced by $1 so $1 act as a placeholder
-    const results = await db.query("SELECT * FROM lappystores WHERE id = $1",[ID]);
+    const shops = await db.query("select * from lappystores left join (select shop_id,count(*),trunc(avg(rating),1) as average_rating from reviews group by shop_id ) reviews on lappystores.id = reviews.shop_id where id=$1;",[ID]);
 
+    // DB query for reviews from reviewTable postgres
+    const reviews = await db.query("SELECT * FROM reviews WHERE shop_id = $1",[ID]);
+    
     return res.status(200).json({
       status: "Up",
       message: "🦨 API works!!",
       resource: "GET store by id",
-      results:results.rows.length,
+      results: shops.rows.length,
       data: {
-        store: results.rows[0]
+        store: shops.rows[0],
+        reviews: reviews.rows
       }
     });
+
+    
 
   }catch(err){
     if(process.env.NODE_ENV!=='production'){
@@ -179,5 +192,45 @@ router.delete('/:id',async(req,res)=>{
     });
   }
 });
+
+// add a review to a shop
+router.post('/:id/addReview',async(req,res)=>{
+  try{
+
+    const newReview = await db.query('INSERT INTO reviews (shop_id,name,review,rating) values ($1,$2,$3,$4) RETURNING *;',
+    [req.params.id,req.body.name,req.body.review,req.body.rating]
+    );
+
+    console.log()
+
+    return res.status(201).json({
+      status: "Up",
+      message: "🦨 API works!!",
+      resource: "POST added new review",
+      success: true,
+      data:{
+        newReview: newReview.rows[0]
+      }
+    });
+
+  }catch(err){
+    if(process.env.NODE_ENV!=='production'){
+      return res.status(422).json({
+        status: "Up DevEnv",
+        message: "🧐 Unprocessable Entity",
+        success: false,
+        debug: err
+      });
+    }
+    return res.status(422).json({
+      status: "Up Prod",
+      message: "🧐 Unprocessable Entity",
+      sucess: false,
+      debug: "🐱‍🚀 error stack cannot be revealed!"
+    });
+  }
+});
+
+
 
 module.exports = router;

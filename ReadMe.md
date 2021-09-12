@@ -1,7 +1,7 @@
 # Full Stack Projects Collection
 
-****Status: Active****
-(Working on Project-4 LappyStoreFinder)
+****Status: Passive****
+
 
 > ### Projects CheckList
 - [x] ****---Project-1 Travel Bucket List ---****
@@ -21,11 +21,11 @@
        - [x] API connector scripts
     - [x] frontend
     - [x] deployed
-- [ ] ****---Project 4 Lappy-StoreFinder---****
-  - [ ] Version 1.0.0
-    - [ ] backend
-    - [ ] frontend
-    - [ ] deployed  
+- [x] ****---Project 4 Lappy-StoreFinder---****
+  - [x] Version 1.0.0
+    - [x] backend
+    - [x] frontend
+      
 
 ***
 

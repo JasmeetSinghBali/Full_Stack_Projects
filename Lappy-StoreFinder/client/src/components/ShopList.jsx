@@ -2,6 +2,7 @@ import React,{useContext, useEffect} from 'react'
 import { ShopsContext } from '../context/ShopsContext';
 import ShopFinder from '../api/ShopFinder';
 import {useHistory} from 'react-router-dom';
+import StarRating from './StarRating';
 
 const ShopList = (props) => {
     const {shops,setShops} = useContext(ShopsContext);
@@ -10,6 +11,7 @@ const ShopList = (props) => {
         const fetchData = async()=>{
             try{
                 const resp = await ShopFinder.get("/");
+                
                 setShops(resp.data.data.stores);
             }catch(err){
                 console.log(err);
@@ -50,6 +52,25 @@ const ShopList = (props) => {
     const handleShopSelect = (id)=>{
         history.push(`shops/${id}`);
     }
+    
+    // returning JSX for rendering rating data for all shop
+    const renderRating = (shop)=>{
+        if(!shop.count){
+            return(
+            <>
+                <span className="text-danger ml-1">0 reviews</span>
+            </>
+            )
+        }
+        return(
+            <>
+                <StarRating rating={shop.id}/>
+               <span className="text-danger ml-1">
+                   ({shop.count})
+                </span>
+            </>
+        )
+    }
 
     return (
         <div className="list-group">
@@ -73,7 +94,7 @@ const ShopList = (props) => {
                             <td>{shop.location}</td>
                             <td>{"$".repeat(shop.price_range)}</td>
                             <td>{shop.contact}</td>
-                            <td>reviews</td>
+                            <td>{renderRating(shop)}</td>
                             <td><button onClick={(e)=> handleUpdate(e,shop.id)} className="btn btn-warning">Update</button></td>
                             <td><button onClick={(e) => handleDelete(e,shop.id)} className="btn btn-danger">Delete</button></td>
                         </tr>
