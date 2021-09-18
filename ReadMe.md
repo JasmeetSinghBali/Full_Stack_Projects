@@ -1,6 +1,6 @@
 # Full Stack Projects Collection
 
-****Status: Passive****
+****Status: Active****
 
 
 > ### Projects CheckList
@@ -21,11 +21,14 @@
        - [x] API connector scripts
     - [x] frontend
     - [x] deployed
-- [x] ****---Project 4 Lappy-StoreFinder---****
+- [x] ****---Project 4 Lappy-StoreFinder CRUD PERN Stack---****
   - [x] Version 1.0.0
     - [x] backend
     - [x] frontend
-      
+- [x] ****---Project 5 Decentralized file storage on Blockchain IPFS---****
+  - [ ] Version 1.0.0
+    - [ ] Smart Contracts (Solidity)
+    - [ ] React frontend       
 
 ***
 
