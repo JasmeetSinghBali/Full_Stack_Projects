@@ -25,10 +25,9 @@
   - [x] Version 1.0.0
     - [x] backend
     - [x] frontend
-- [x] ****---Project 5 Decentralized file storage on Blockchain IPFS---****
+- [x] ****---Project 5 Take My Stuff ---****
   - [ ] Version 1.0.0
-    - [ ] Smart Contracts (Solidity)
-    - [ ] React frontend       
+    
 
 ***
 
