@@ -92,4 +92,19 @@
   - [x] go back to terminal and press a make sure the anderiod emulator is up and running before you press a in terminal
   - [x] open developer menu by ctrl+m inside anderiod virtual device
 
-- [x] ✔ RECOMMENDED 🐱‍🚀 Running on physical device
+- [x] ✔ RECOMMENDED 🐱‍🚀 Running on physical device or via web bundler in web
+
+  - [x] as the simulator is just a simulation not the real device.
+  - [x] expo from app store or google play
+  - [x] while the the metro bundler is running point the phone(with expo from playstore) to the qr code at the web make sure phone and the metro bundler are connected to same wireless network.
+  - [x] bring up developer menu by shaking device
+
+- [x] ✔ Debugging react-native applications (Logging)
+
+  - [x] the good old console.log statements , though the console.log have negative impacts in production use only development and testing make sure to remove console.log statements
+  - [x] debug with chrom dev tools, shake the phone or ctrl+m on windows for anderiod emulator
+  - [x] debug remote js
+  - [x] localhost:19001/debugger-ui/ -> sources-> dont pause an exception -> pause on caught exception , this will stop execution and chrome will highlight the line that is casuing the exception.
+  - [x] make sure to close the debug remote js once you are done debugging inside physical device
+
+- [ ] 🙌 Publishing
